@@ -197,7 +197,7 @@
         .premio-mayor-activo{color:#d32f2f;font-size:1.3em}
         
         .numbers-container{background:white;border-radius:15px;padding:20px;margin-bottom:20px;border:3px solid var(--dorado)}
-        .legend{display:flex;justify-content:center;gap:20px;margin-bottom:15px;font-size:0.9em}
+        .legend{display:flex;justify-content:center;gap:15px;margin-bottom:15px;font-size:0.85em;flex-wrap:wrap}
         .legend-item{display:flex;align-items:center;gap:5px}
         .legend-box{width:20px;height:20px;border-radius:3px}
         .numbers-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:600px;margin:0 auto}
@@ -255,6 +255,7 @@
             .logo-text{font-size:1.3em}
             .logo-img{width:50px;height:50px}
             .whatsapp-float{width:50px;height:50px;font-size:24px;bottom:20px;right:20px}
+            .legend{font-size:0.75em;gap:8px}
         }
     </style>
 </head>
@@ -271,66 +272,66 @@
                 <img src="https://i.imgur.com/GHIhUQo.jpg" alt="Bol$illo Lleno" class="logo-img">
                 <span class="logo-text">Bol$illo Lleno</span>
             </div>
-            <button class="admin-btn" onclick="openAdmin()"> Admin</button>
+            <button class="admin-btn" onclick="openAdmin()">&#128274; Admin</button>
         </div>
 
         <!-- WhatsApp Float Button -->
-        <a href="https://wa.me/573237343858?text=¡Hola! Quiero más información sobre estas dinámicas" class="whatsapp-float" target="_blank">
-            
+        <a href="https://wa.me/573237343858?text=Â¡Hola! Quiero mÃ¡s informaciÃ³n sobre estas dinÃ¡micas" class="whatsapp-float" target="_blank">
+            &#128241;
         </a>
-        <div class="wa-tooltip" id="waTooltip">¿Tienes dudas? ¡Escríbenos!</div>
+        <div class="wa-tooltip" id="waTooltip">Â¿Tienes dudas? Â¡EscrÃ­benos!</div>
 
         <!-- Password Modal -->
         <div class="modal" id="adminModal">
             <div class="modal-content">
-                <h3> Acceso Admin</h3>
-                <input type="password" id="pwdInput" placeholder="Contraseña" onkeypress="if(event.key==='Enter')checkPwd()">
+                <h3>&#128272; Acceso Admin</h3>
+                <input type="password" id="pwdInput" placeholder="ContraseÃ±a" onkeypress="if(event.key==='Enter')checkPwd()">
                 <button onclick="checkPwd()">Entrar</button>
-                <p class="error" id="pwdError">Contraseña incorrecta</p>
+                <p class="error" id="pwdError">ContraseÃ±a incorrecta</p>
             </div>
         </div>
 
         <!-- Home Section -->
         <div id="homeSection" class="section active">
             <div class="main-info">
-                <h2> La Única Rifa donde LA SUERTE SÍ TE ALCANZA</h2>
-                <p>Mientras otros grupos solo pagan a 3 ganadores, nosotros tenemos <strong>4 OPORTUNIDADES</strong> de ganar con un solo número</p>
+                <h2>&#127919; La Unica Rifa donde LA SUERTE SI TE ALCANZA</h2>
+                <p>Mientras otros grupos solo pagan a 3 ganadores, nosotros tenemos <strong>4 OPORTUNIDADES</strong> de ganar con un solo numero</p>
                 
                 <div class="features">
                     <div class="feature">
-                        <div class="feature-icon"></div>
+                        <div class="feature-icon">&#127942;</div>
                         <div class="feature-number">4X</div>
                         <div class="feature-text">Oportunidades de Ganar</div>
                     </div>
                     <div class="feature">
-                        <div class="feature-icon"></div>
+                        <div class="feature-icon">&#128081;</div>
                         <div class="feature-number">4</div>
                         <div class="feature-text">Ganadores por Sorteo</div>
                     </div>
                     <div class="feature">
-                        <div class="feature-icon"></div>
-                        <div class="feature-text">La Comunidad que<br><strong>MÁS PAGA</strong></div>
+                        <div class="feature-icon">&#128176;</div>
+                        <div class="feature-text">La Comunidad que<br><strong>MAS PAGA</strong></div>
                     </div>
                 </div>
 
                 <div class="combos-info">
-                    <h3> COMBOS ESPECIALES</h3>
-                    <p>¡Tenemos combos especiales para ti! Ahorra llevando varios números.</p>
-                    <p class="ejemplo">Ej: En sorteo de $2.000  Combo 3x$5.000 | En sorteo de $4.000  Combo 3x$10.000</p>
-                    <p style="font-size:0.9em;margin-top:10px;color:var(--dorado)">Cada sorteo tiene su propia promoción. ¡Revisa el tuyo!</p>
+                    <h3>&#127873; COMBOS ESPECIALES</h3>
+                    <p>Tenemos combos especiales para ti! Ahorra llevando varios numeros.</p>
+                    <p class="ejemplo">Ej: En sorteo de $2.000 -> Combo 3x$5.000 | En sorteo de $4.000 -> Combo 3x$10.000</p>
+                    <p style="font-size:0.9em;margin-top:10px;color:var(--dorado)">Cada sorteo tiene su propia promocion. Revisa el tuyo!</p>
                 </div>
 
                 <div class="premios-explicacion">
-                    <h4> 4 Formas de Ganar en Cada Sorteo:</h4>
-                    <p> <strong>PREMIO MAYOR:</strong> Últimas 2 cifras</p>
-                    <p> <strong>SECO 1:</strong> Primeras 2 cifras</p>
-                    <p> <strong>SECO 2:</strong> 2 cifras del medio</p>
-                    <p> <strong>SECO 3:</strong> Primera y última cifra</p>
+                    <h4>&#127808; 4 Formas de Ganar en Cada Sorteo:</h4>
+                    <p>&#128176; <strong>PREMIO MAYOR:</strong> Ultimas 2 cifras</p>
+                    <p>&#10024; <strong>SECO 1:</strong> Primeras 2 cifras</p>
+                    <p>&#10024; <strong>SECO 2:</strong> 2 cifras del medio</p>
+                    <p>&#10024; <strong>SECO 3:</strong> Primera y ultima cifra</p>
                 </div>
             </div>
 
             <div class="header">
-                <h1> Sorteos Activos</h1>
+                <h1>&#127922; Sorteos Activos</h1>
                 <p>Selecciona un sorteo para ver premios y participar</p>
             </div>
             <div id="sorteosList" class="sorteos-grid"></div>
@@ -342,7 +343,7 @@
         <!-- Game Section -->
         <div id="gameSection" class="section">
             <div class="game-header">
-                <a href="#" class="back-btn" onclick="showHome()"> Volver</a>
+                <a href="#" class="back-btn" onclick="showHome()">&#8592; Volver</a>
                 <h2 class="game-title" id="gameTitle"></h2>
                 <div class="game-info">
                     <span id="gameLottery"></span>
@@ -355,7 +356,7 @@
             </div>
 
             <div class="premios-activos" id="premiosActivos">
-                <h3> Premios de este Sorteo</h3>
+                <h3>&#127942; Premios de este Sorteo</h3>
                 <div id="listaPremios"></div>
             </div>
             
@@ -370,9 +371,9 @@
             </div>
 
             <div class="cart">
-                <h3> Tu Selección</h3>
+                <h3>&#128722; Tu Seleccion</h3>
                 <div class="selected-numbers" id="selectedList">
-                    <span style="color:#999;width:100%;text-align:center">Selecciona tus números</span>
+                    <span style="color:#999;width:100%;text-align:center">Selecciona tus numeros</span>
                 </div>
                 <div class="pricing" id="pricingInfo">
                     Individual: <span id="precioInd">$2.000</span> | 
@@ -382,11 +383,11 @@
                 <div class="combo-text" id="comboText"></div>
                 
                 <div class="pending-info" id="pendingInfo" style="display:none">
-                     Al hacer clic en "Apartar por WhatsApp", tus números quedarán reservados por 30 minutos. Si no realizas el pago, serán liberados automáticamente.
+                    Al hacer clic en "Apartar por WhatsApp", tus numeros quedaran reservados. Si no realizas el pago, seran liberados desde admin.
                 </div>
                 
                 <button class="whatsapp-btn" id="waBtn" onclick="sendWhatsApp()" disabled>
-                     Apartar por WhatsApp
+                    &#128241; Apartar por WhatsApp
                 </button>
             </div>
         </div>
@@ -395,13 +396,13 @@
         <div id="adminSection" class="section">
             <div class="admin-panel">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
-                    <h2 style="color:var(--verde-oscuro)"> Panel Admin</h2>
+                    <h2 style="color:var(--verde-oscuro)">&#9881; Panel Admin</h2>
                     <button class="btn btn-danger" onclick="logout()">Salir</button>
                 </div>
                 
                 <div class="admin-tabs">
                     <button class="admin-tab active" onclick="showAdminTab('sorteos',this)">Sorteos</button>
-                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">Números</button>
+                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">Numeros</button>
                 </div>
 
                 <div id="adminSorteos" class="admin-section active">
@@ -411,20 +412,20 @@
                         <input type="text" id="newName" placeholder="Ej: Sorteo Especial">
                     </div>
                     <div class="form-group">
-                        <label>Lotería:</label>
+                        <label>Loteria:</label>
                         <select id="newLottery">
-                            <option>Sinuano Día</option>
+                            <option>Sinuano Dia</option>
                             <option>Sinuano Noche</option>
-                            <option>Caribeña</option>
-                            <option>Dorado Mañana</option>
+                            <option>Caribena</option>
+                            <option>Dorado Manana</option>
                             <option>Dorado Tarde</option>
                             <option>Dorado Noche</option>
                             <option>Cafeterito</option>
                             <option>Paisita</option>
                             <option>Chontico</option>
-                            <option>Bogotá</option>
-                            <option>Quindío</option>
-                            <option>Medellín</option>
+                            <option>Bogota</option>
+                            <option>Quindio</option>
+                            <option>Medellin</option>
                             <option>Risaralda</option>
                             <option>Manizales</option>
                             <option>Valle</option>
@@ -441,10 +442,10 @@
                     </div>
 
                     <div class="premios-form">
-                        <h4> Configuración de Precios y Premios</h4>
+                        <h4>&#128176; Configuracion de Precios y Premios</h4>
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
                             <div class="form-group">
-                                <label>Precio por Número ($):</label>
+                                <label>Precio por Numero ($):</label>
                                 <input type="number" id="precioNumero" value="2000" min="1000" step="500">
                             </div>
                             <div class="form-group">
@@ -453,7 +454,7 @@
                             </div>
                         </div>
                         
-                        <h4 style="margin-top:15px"> Premios</h4>
+                        <h4 style="margin-top:15px">&#127942; Premios</h4>
                         <div class="form-group">
                             <label>PREMIO MAYOR ($):</label>
                             <input type="number" id="premioMayor" value="100000" min="10000" step="5000">
@@ -473,8 +474,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Texto Promoción Especial (opcional):</label>
-                            <input type="text" id="promoText" placeholder="Ej: ¡Lleva 5 números y participa en un sorteo extra!">
+                            <label>Texto Promocion Especial (opcional):</label>
+                            <input type="text" id="promoText" placeholder="Ej: Lleva 5 numeros y participa en un sorteo extra!">
                         </div>
                     </div>
 
@@ -501,7 +502,7 @@
                         
                         <h4 style="color:var(--verde-oscuro)">Marcar como Pagado</h4>
                         <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-                            <input type="number" id="numInput" placeholder="Número" style="width:100px;padding:10px;border:2px solid var(--verde-medio);border-radius:5px">
+                            <input type="number" id="numInput" placeholder="Numero" style="width:100px;padding:10px;border:2px solid var(--verde-medio);border-radius:5px">
                             <input type="text" id="nameInput" placeholder="Nombre comprador" style="flex:1;padding:10px;border:2px solid var(--verde-medio);border-radius:5px;min-width:150px">
                             <button class="btn btn-success" onclick="markPaid()">Confirmar</button>
                         </div>
@@ -515,9 +516,7 @@
     </div>
 
     <script>
-        // ==========================================
-        // CONFIGURACIÓN FIREBASE
-        // ==========================================
+        // CONFIGURACION FIREBASE
         const firebaseConfig = {
             apiKey: "AIzaSyA2_BKI_kA3QdmXFEV08Pd3Vu2yWgJ15hU",
             authDomain: "bolsillolleno-5d1f8.firebaseapp.com",
@@ -539,9 +538,6 @@
         let sorteos=[];
         let occupied={};
         let pending={};
-        let sorteosListener=null;
-        let occupiedListener=null;
-        let pendingListener=null;
 
         setTimeout(()=>{
             document.getElementById('waTooltip').classList.add('show');
@@ -596,8 +592,6 @@
 
         function showHome(){
             clearInterval(timerInterval);
-            if(occupiedListener)occupiedListener.off();
-            if(pendingListener)pendingListener.off();
             showSection('homeSection');
             renderSorteos();
         }
@@ -634,29 +628,29 @@
                 
                 const premiosHtml=`
                     <div class="premios-box">
-                        <h4> Premios</h4>
-                        <div class="premio-item premio-mayor"><span>Mayor (últimas 2):</span><span>$${parseInt(s.premioMayor).toLocaleString()}</span></div>
+                        <h4>&#127942; Premios</h4>
+                        <div class="premio-item premio-mayor"><span>Mayor (ultimas 2):</span><span>$${parseInt(s.premioMayor).toLocaleString()}</span></div>
                         <div class="premio-item"><span>Seco 1 (primeras 2):</span><span>$${parseInt(s.premioSeco1).toLocaleString()}</span></div>
                         <div class="premio-item"><span>Seco 2 (del medio):</span><span>$${parseInt(s.premioSeco2).toLocaleString()}</span></div>
-                        <div class="premio-item"><span>Seco 3 (1ra+últ):</span><span>$${parseInt(s.premioSeco3).toLocaleString()}</span></div>
+                        <div class="premio-item"><span>Seco 3 (1ra+ult):</span><span>$${parseInt(s.premioSeco3).toLocaleString()}</span></div>
                     </div>
                     <div class="precios-box">
-                        <div class="precio-individual">Número: $${parseInt(s.precioNumero).toLocaleString()}</div>
-                        <div class="precio-combo"> Combo 3x: $${parseInt(s.precioCombo).toLocaleString()}</div>
+                        <div class="precio-individual">Numero: $${parseInt(s.precioNumero).toLocaleString()}</div>
+                        <div class="precio-combo">&#127873; Combo 3x: $${parseInt(s.precioCombo).toLocaleString()}</div>
                     </div>
                 `;
                 
-                const promoHtml=s.promoText?`<div class="promo-box"><strong> Promo:</strong> ${s.promoText}</div>`:'';
+                const promoHtml=s.promoText?`<div class="promo-box"><strong>&#127881; Promo:</strong> ${s.promoText}</div>`:'';
                 
                 card.innerHTML=`
                     <div class="sorteo-status">ACTIVO</div>
                     <div class="sorteo-name">${s.name}</div>
-                    <div class="sorteo-info"> ${s.lottery}</div>
-                    <div class="sorteo-info"> ${formatDate(date)}</div>
+                    <div class="sorteo-info">&#127922; ${s.lottery}</div>
+                    <div class="sorteo-info">&#128197; ${formatDate(date)}</div>
                     ${premiosHtml}
                     ${promoHtml}
                     <div class="countdown"><div class="countdown-time" id="cd-${s.id}">00:00:00</div></div>
-                    <button class="play-btn" onclick="enterGame('${s.id}')"> Jugar Ahora</button>
+                    <button class="play-btn" onclick="enterGame('${s.id}')">&#127903; Jugar Ahora</button>
                 `;
                 container.appendChild(card);
                 startCountdown(s.id,date);
@@ -684,43 +678,38 @@
             
             selected=[];
             
-            if(occupiedListener)occupiedListener.off();
-            if(pendingListener)pendingListener.off();
-            
-            occupiedListener=database.ref('occupied/'+id);
-            occupiedListener.on('value',(snapshot)=>{
+            database.ref('occupied/'+id).on('value',(snapshot)=>{
                 occupied=snapshot.val()||{};
                 renderGrid();
                 updateCart();
             });
             
-            pendingListener=database.ref('pending/'+id);
-            pendingListener.on('value',(snapshot)=>{
+            database.ref('pending/'+id).on('value',(snapshot)=>{
                 pending=snapshot.val()||{};
                 renderGrid();
                 updateCart();
             });
             
             document.getElementById('gameTitle').textContent=currentSorteo.name;
-            document.getElementById('gameLottery').textContent=' '+currentSorteo.lottery;
-            document.getElementById('gameDate').textContent=' '+formatDate(new Date(currentSorteo.date));
+            document.getElementById('gameLottery').textContent='&#127922; '+currentSorteo.lottery;
+            document.getElementById('gameDate').textContent='&#128197; '+formatDate(new Date(currentSorteo.date));
             
             const premiosDiv=document.getElementById('listaPremios');
             premiosDiv.innerHTML=`
                 <div class="premio-activo premio-mayor-activo">
-                    <span class="premio-nombre"> PREMIO MAYOR (últimas 2 cifras)</span>
+                    <span class="premio-nombre">&#127942; PREMIO MAYOR (ultimas 2 cifras)</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioMayor).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre"> SECO 1 (primeras 2 cifras)</span>
+                    <span class="premio-nombre">&#10024; SECO 1 (primeras 2 cifras)</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco1).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre"> SECO 2 (2 cifras del medio)</span>
+                    <span class="premio-nombre">&#10024; SECO 2 (2 cifras del medio)</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco2).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre"> SECO 3 (1ra + última cifra)</span>
+                    <span class="premio-nombre">&#10024; SECO 3 (1ra + ultima cifra)</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco3).toLocaleString()}</span>
                 </div>
             `;
@@ -775,14 +764,14 @@
 
         function toggleNum(num){
             if(occupied[num]||pending[num]){
-                alert('Este número ya no está disponible');
+                alert('Este numero ya no esta disponible');
                 return;
             }
             const idx=selected.indexOf(num);
             if(idx>-1){
                 selected.splice(idx,1);
             }else{
-                if(selected.length>=10){alert('Máximo 10 números');return;}
+                if(selected.length>=10){alert('Maximo 10 numeros');return;}
                 selected.push(num);
                 selected.sort();
             }
@@ -801,7 +790,7 @@
             const cantidadCombo=3;
             
             if(selected.length===0){
-                list.innerHTML='<span style="color:#999;width:100%;text-align:center">Selecciona tus números</span>';
+                list.innerHTML='<span style="color:#999;width:100%;text-align:center">Selecciona tus numeros</span>';
                 totalEl.textContent='$0';
                 comboEl.textContent='';
                 btn.disabled=true;
@@ -812,7 +801,7 @@
             selected.forEach(n=>{
                 const tag=document.createElement('div');
                 tag.className='selected-tag';
-                tag.innerHTML=`${n} <span onclick="removeNum('${n}')">×</span>`;
+                tag.innerHTML=`${n} <span onclick="removeNum('${n}')">X</span>`;
                 list.appendChild(tag);
             });
             
@@ -822,7 +811,7 @@
             const ahorro=combos*((precioNum*cantidadCombo)-precioComb);
             
             totalEl.textContent='$'+total.toLocaleString();
-            comboEl.textContent=combos>0?`¡Ahorras $${ahorro.toLocaleString()} con ${combos} combo(s)!`:'';
+            comboEl.textContent=combos>0?`Ahorras $${ahorro.toLocaleString()} con ${combos} combo(s)!`:'';
             btn.disabled=false;
         }
 
@@ -846,7 +835,6 @@
             const singles=selected.length%cantidadCombo;
             const total=(combos*precioComb)+(singles*precioNum);
             
-            // Marcar como pendientes en Firebase ANTES de abrir WhatsApp
             showLoading(true);
             const updates={};
             selected.forEach(num=>{
@@ -856,14 +844,14 @@
             database.ref().update(updates).then(()=>{
                 showLoading(false);
                 
-                let msg=`¡Hola! Quiero participar en *${currentSorteo.name}*\n`;
-                msg+=` Lotería: ${currentSorteo.lottery}\n\n`;
-                msg+=` Números: ${selected.join(', ')}\n`;
-                msg+=` Total: $${total.toLocaleString()}\n\n`;
+                let msg=`Hola! Quiero participar en *${currentSorteo.name}*\n`;
+                msg+=`Loteria: ${currentSorteo.lottery}\n\n`;
+                msg+=`Numeros: ${selected.join(', ')}\n`;
+                msg+=`Total: $${total.toLocaleString()}\n\n`;
                 msg+=`Premios:\n`;
-                msg+=` Mayor: $${parseInt(currentSorteo.premioMayor).toLocaleString()}\n`;
-                msg+=` Secos: $${parseInt(currentSorteo.premioSeco1).toLocaleString()} c/u\n\n`;
-                msg+=`¿Cómo realizo el pago? `;
+                msg+=`Mayor: $${parseInt(currentSorteo.premioMayor).toLocaleString()}\n`;
+                msg+=`Secos: $${parseInt(currentSorteo.premioSeco1).toLocaleString()} c/u\n\n`;
+                msg+=`Como realizo el pago?`;
                 
                 window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
                 
@@ -871,7 +859,7 @@
                 updateCart();
             }).catch(err=>{
                 showLoading(false);
-                alert('Error al reservar números: '+err.message);
+                alert('Error al reservar numeros: '+err.message);
             });
         }
 
@@ -932,7 +920,7 @@
                 document.getElementById('newDate').value='';
                 document.getElementById('promoText').value='';
                 showLoading(false);
-                alert(' Sorteo creado exitosamente');
+                alert('Sorteo creado exitosamente');
             }).catch(err=>{
                 showLoading(false);
                 alert('Error: '+err.message);
@@ -940,7 +928,7 @@
         }
 
         function deleteSorteo(id){
-            if(!confirm('¿Eliminar este sorteo y todos sus números?'))return;
+            if(!confirm('Eliminar este sorteo y todos sus numeros?'))return;
             showLoading(true);
             const updates={};
             updates['sorteos/'+id]=null;
@@ -998,7 +986,7 @@
             const name=document.getElementById('nameInput').value.trim()||'Sin nombre';
             const id=document.getElementById('selectSorteo').value;
             
-            if(!num||num<0||num>99){alert('Número inválido (00-99)');return;}
+            if(!num||num<0||num>99){alert('Numero invalido (00-99)');return;}
             
             showLoading(true);
             const updates={};
@@ -1009,7 +997,7 @@
                 document.getElementById('numInput').value='';
                 document.getElementById('nameInput').value='';
                 showLoading(false);
-                alert(` Número ${num} marcado como pagado`);
+                alert(`Numero ${num} marcado como pagado`);
             }).catch(err=>{
                 showLoading(false);
                 alert('Error: '+err.message);
@@ -1047,7 +1035,7 @@
             const nums=Object.keys(allNums).sort();
             
             if(nums.length===0){
-                list.innerHTML='<p style="color:#999;text-align:center">No hay números ocupados</p>';
+                list.innerHTML='<p style="color:#999;text-align:center">No hay numeros ocupados</p>';
                 return;
             }
             
