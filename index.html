@@ -22,7 +22,8 @@
         }
         
         .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;background:rgba(255,255,255,0.1);padding:15px;border-radius:15px}
-        .logo-container{display:flex;align-items:center;gap:15px}
+        .logo-container{display:flex;align-items:center;gap:15px;cursor:pointer;transition:transform 0.3s}
+        .logo-container:hover{transform:scale(1.02)}
         .logo-img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid var(--dorado);box-shadow:0 0 15px rgba(255,215,0,0.5)}
         .logo-text{color:var(--dorado);font-size:1.8em;font-weight:bold;text-shadow:2px 2px 4px rgba(0,0,0,0.5)}
         .admin-btn{background:var(--dorado);color:var(--verde-oscuro);padding:8px 20px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:bold;border:none;transition:all 0.3s}
@@ -182,7 +183,9 @@
         .play-btn:hover{background:var(--dorado-oscuro);transform:scale(1.02)}
         
         .game-header{background:white;border-radius:15px;padding:20px;margin-bottom:20px;text-align:center;border:3px solid var(--dorado)}
-        .back-btn{color:var(--verde-oscuro);text-decoration:none;display:inline-block;margin-bottom:15px;font-weight:bold}
+        .back-btn{color:var(--verde-oscuro);text-decoration:none;display:inline-flex;align-items:center;margin-bottom:15px;font-weight:bold;font-size:1.3em;padding:10px 20px;background:linear-gradient(135deg,var(--dorado),#ffed4e);border-radius:25px;border:2px solid var(--verde-oscuro);transition:all 0.3s;box-shadow:0 4px 10px rgba(0,0,0,0.2)}
+        .back-btn:hover{transform:scale(1.05);box-shadow:0 6px 15px rgba(0,0,0,0.3)}
+        .back-btn::before{content:'←';margin-right:8px;font-size:1.4em}
         .game-title{font-size:1.8em;color:var(--verde-oscuro);margin-bottom:10px}
         .game-info{display:flex;justify-content:center;gap:20px;color:#666;margin-bottom:15px;flex-wrap:wrap}
         .game-countdown{background:linear-gradient(135deg,var(--verde-oscuro),var(--verde-medio));color:var(--dorado);padding:20px;border-radius:10px;display:inline-block;border:3px solid var(--dorado)}
@@ -256,6 +259,7 @@
             .logo-img{width:50px;height:50px}
             .whatsapp-float{width:50px;height:50px;font-size:24px;bottom:20px;right:20px}
             .legend{font-size:0.75em;gap:8px}
+            .back-btn{font-size:1.1em;padding:8px 16px}
         }
     </style>
 </head>
@@ -268,7 +272,7 @@
 
     <div class="container">
         <div class="top-bar">
-            <div class="logo-container">
+            <div class="logo-container" onclick="goHome()">
                 <img src="https://i.imgur.com/GHIhUQo.jpg" alt="Bol$illo Lleno" class="logo-img">
                 <span class="logo-text">Bol$illo Lleno</span>
             </div>
@@ -343,7 +347,7 @@
         <!-- Game Section -->
         <div id="gameSection" class="section">
             <div class="game-header">
-                <a href="#" class="back-btn" onclick="showHome()">&#8592; Volver</a>
+                <a href="#" class="back-btn" onclick="showHome()">Volver a Sorteos</a>
                 <h2 class="game-title" id="gameTitle"></h2>
                 <div class="game-info">
                     <span id="gameLottery"></span>
@@ -539,6 +543,10 @@
                 }
                 showLoading(false);
             });
+        }
+
+        function goHome() {
+            showHome();
         }
 
         function openAdmin(){
