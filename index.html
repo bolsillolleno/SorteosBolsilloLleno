@@ -19,6 +19,7 @@
             --verde-claro:#4CAF50;
             --dorado:#FFD700;
             --dorado-oscuro:#D4AF37;
+            --dorado-brillante:#FFA500;
         }
         
         .top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;background:rgba(255,255,255,0.1);padding:15px;border-radius:15px}
@@ -273,8 +274,70 @@
         .pricing{text-align:center;color:#666;font-size:0.9em;margin-bottom:10px}
         .total{text-align:center;font-size:1.8em;color:var(--verde-oscuro);font-weight:bold;margin:15px 0}
         .combo-text{color:var(--verde-claro);font-size:0.85em;text-align:center;margin-bottom:15px;font-weight:bold}
-        .whatsapp-btn{width:100%;padding:15px;background:#25D366;color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
-        .whatsapp-btn:disabled{background:#ccc;cursor:not-allowed}
+        .whatsapp-btn{width:100%;padding:15px;background:linear-gradient(135deg, #25D366, #128C7E);color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all 0.3s;box-shadow:0 5px 15px rgba(37,211,102,0.4)}
+        .whatsapp-btn:disabled{background:#ccc;cursor:not-allowed;box-shadow:none}
+        .whatsapp-btn:hover:not(:disabled){transform:translateY(-3px);box-shadow:0 8px 25px rgba(37,211,102,0.6)}
+        
+        /* BOTÓN NEUROMARKETING MEJORADO */
+        .blessing-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--dorado) 0%, var(--dorado-brillante) 50%, var(--dorado) 100%);
+            color: var(--verde-oscuro);
+            border: none;
+            border-radius: 15px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5), 0 0 0 4px rgba(255, 215, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            animation: pulse-gold 2s infinite;
+        }
+        .blessing-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5), 0 0 0 4px rgba(255, 215, 0, 0.2); }
+            50% { box-shadow: 0 12px 35px rgba(255, 215, 0, 0.8), 0 0 0 8px rgba(255, 215, 0, 0.1); }
+        }
+        .blessing-btn:hover:not(:disabled) {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(255, 215, 0, 0.7), 0 0 0 6px rgba(255, 215, 0, 0.3);
+        }
+        .blessing-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            animation: none;
+            box-shadow: none;
+        }
+        .blessing-btn .icon {
+            font-size: 1.5em;
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
         
         .admin-panel{background:white;border-radius:15px;padding:20px;border:3px solid var(--dorado)}
         .admin-tabs{display:flex;gap:10px;margin-bottom:20px;border-bottom:2px solid #eee;padding-bottom:10px}
@@ -292,39 +355,73 @@
         .btn-warning{background:#ff9800;color:white}
         .btn-info{background:#2196F3;color:white}
         
-        /* PROMOCIONES MÚLTIPLES */
-        .promos-container {
+        /* COMBOS MÚLTIPLES MEJORADOS */
+        .combos-container {
             background: #f9f9f9;
             padding: 15px;
             border-radius: 10px;
             margin: 15px 0;
             border: 2px solid var(--dorado);
         }
-        .promo-item {
+        .combos-container h4 {
+            color: var(--verde-oscuro);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .combo-item {
             background: white;
-            padding: 10px;
+            padding: 15px;
             border-radius: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            margin-bottom: 15px;
+            border: 2px solid var(--verde-medio);
+            display: grid;
+            grid-template-columns: 1fr 1fr auto;
             gap: 10px;
+            align-items: center;
         }
-        .promo-item input {
-            flex: 1;
-            min-width: 200px;
+        .combo-item input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
-        .promo-display {
-            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-            padding: 8px 12px;
+        .combo-item label {
+            font-size: 0.85em;
+            color: var(--verde-oscuro);
+            font-weight: bold;
+        }
+        .combo-display {
+            background: linear-gradient(135deg, var(--dorado), #ffed4e);
+            padding: 10px 15px;
             border-radius: 20px;
             margin: 5px;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 0.9em;
             color: var(--verde-oscuro);
-            border: 2px solid var(--verde-medio);
+            border: 2px solid var(--verde-oscuro);
+            font-weight: bold;
+        }
+        .combo-display .delete {
+            cursor: pointer;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+        
+        /* COMBOS INFO EN TARJETA */
+        .combos-list {
+            margin: 10px 0;
+        }
+        .combo-mini {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            padding: 5px 10px;
+            border-radius: 15px;
+            margin: 3px;
+            display: inline-block;
+            font-size: 0.85em;
+            color: var(--verde-oscuro);
+            border: 1px solid var(--verde-medio);
         }
         
         .premios-form{background:#f9f9f9;padding:15px;border-radius:10px;margin:15px 0;border:3px solid var(--dorado)}
@@ -340,6 +437,34 @@
         .occupied-item{display:flex;justify-content:space-between;align-items:center;padding:8px;border-bottom:1px solid #eee}
         
         .pending-info{background:#fff3e0;padding:10px;border-radius:8px;margin-bottom:15px;border-left:4px solid #ff9800;font-size:0.9em;color:#e65100}
+        
+        /* INPUT MÚLTIPLE NÚMEROS */
+        .multi-input-container {
+            background: #f0f8f0;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid var(--verde-medio);
+            margin-bottom: 15px;
+        }
+        .multi-input-container label {
+            color: var(--verde-oscuro);
+            font-weight: bold;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .multi-input-container input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--verde-medio);
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: monospace;
+        }
+        .multi-input-container .hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
         
         /* MODAL EDICIÓN */
         .edit-modal-content {
@@ -366,6 +491,13 @@
                 width: 30px;
                 height: 30px;
                 font-size: 1.2em;
+            }
+            .combo-item {
+                grid-template-columns: 1fr;
+            }
+            .blessing-btn {
+                font-size: 1.1em;
+                padding: 15px;
             }
         }
     </style>
@@ -423,10 +555,14 @@
                     <label>Precio por Número ($):</label>
                     <input type="number" id="editPrecioNumero" min="1000" step="500">
                 </div>
-                <div class="form-group">
-                    <label>Precio Combo 3x ($):</label>
-                    <input type="number" id="editPrecioCombo" min="3000" step="500">
+                
+                <!-- COMBOS MÚLTIPLES EN EDICIÓN -->
+                <div class="combos-container" id="editCombosContainer">
+                    <h4>&#127873; Combos Especiales (Múltiples)</h4>
+                    <div id="editCombosList"></div>
+                    <button class="btn btn-primary" onclick="addEditCombo()" style="margin-top:10px;width:100%">+ Añadir Combo</button>
                 </div>
+                
                 <div class="form-group">
                     <label>Premio Mayor ($):</label>
                     <input type="number" id="editPremioMayor" min="10000" step="5000">
@@ -444,12 +580,6 @@
                         <label>Seco 3 ($):</label>
                         <input type="number" id="editPremioSeco3" min="5000" step="1000">
                     </div>
-                </div>
-                
-                <div class="promos-container" id="editPromosContainer">
-                    <h4 style="color:var(--verde-oscuro);margin-bottom:10px">&#127873; Promociones</h4>
-                    <div id="editPromosList"></div>
-                    <button class="btn btn-primary" onclick="addEditPromo()" style="margin-top:10px">+ Añadir Promoción</button>
                 </div>
                 
                 <div style="margin-top:20px">
@@ -495,8 +625,8 @@
                 <div class="combos-info">
                     <h3>&#127873; COMBOS ESPECIALES</h3>
                     <p>¡Tenemos combos especiales para ti! Ahorra llevando varios números.</p>
-                    <p class="ejemplo">Ej: En sorteo de $2.000 -> Combo 3x$5.000 | En sorteo de $4.000 -> Combo 3x$10.000</p>
-                    <p style="font-size:0.9em;margin-top:10px;color:var(--dorado)">¡Cada sorteo tiene su propia promoción. Revisa el tuyo!</p>
+                    <p class="ejemplo">Ej: En sorteo de $2.000 -> Combo 3x$5.000 | Combo 5x$8.000 | Combo 10x$15.000</p>
+                    <p style="font-size:0.9em;margin-top:10px;color:var(--dorado)">¡Cada sorteo tiene sus propios combos. Revisa el tuyo!</p>
                 </div>
 
                 <div class="premios-explicacion">
@@ -549,18 +679,21 @@
                     <span style="color:#999;width:100%;text-align:center">Selecciona tus números</span>
                 </div>
                 <div class="pricing" id="pricingInfo">
-                    Individual: <span id="precioInd">$2.000</span> | 
-                    Combo 3x: <span id="precioCombo">$5.000</span>
+                    Precio individual: <span id="precioInd">$2.000</span>
                 </div>
+                <div id="combosAplicados" style="margin:10px 0;"></div>
                 <div class="total" id="totalPrice">$0</div>
                 <div class="combo-text" id="comboText"></div>
                 
                 <div class="pending-info" id="pendingInfo" style="display:none">
-                    Al hacer clic en "Apartar por WhatsApp", tus números quedarán reservados. Si no realizas el pago, serán liberados desde admin.
+                    Al hacer clic en "Asegura tus Bendiciones", tus números quedarán reservados. Si no realizas el pago, serán liberados desde admin.
                 </div>
                 
-                <button class="whatsapp-btn" id="waBtn" onclick="sendWhatsApp()" disabled>
-                    &#128241; Apartar por WhatsApp
+                <!-- BOTÓN NEUROMARKETING -->
+                <button class="blessing-btn" id="waBtn" onclick="sendWhatsApp()" disabled>
+                    <span class="icon">&#128330;</span>
+                    <span>Asegura tus Bendiciones</span>
+                    <span class="icon">&#128170;</span>
                 </button>
             </div>
         </div>
@@ -595,15 +728,17 @@
 
                     <div class="premios-form">
                         <h4>&#128176; Configuración de Precios y Premios</h4>
-                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-                            <div class="form-group">
-                                <label>Precio por Número ($):</label>
-                                <input type="number" id="precioNumero" value="2000" min="1000" step="500">
-                            </div>
-                            <div class="form-group">
-                                <label>Precio Combo 3x ($):</label>
-                                <input type="number" id="precioComboNew" value="5000" min="3000" step="500">
-                            </div>
+                        <div class="form-group">
+                            <label>Precio por Número ($):</label>
+                            <input type="number" id="precioNumero" value="2000" min="1000" step="500">
+                        </div>
+                        
+                        <!-- COMBOS MÚLTIPLES -->
+                        <div class="combos-container">
+                            <h4>&#127873; Combos Especiales (Múltiples)</h4>
+                            <p style="font-size:0.85em;color:#666;margin-bottom:10px">Agrega todos los combos que quieras. El sistema aplicará automáticamente el mejor descuento.</p>
+                            <div id="combosList"></div>
+                            <button class="btn btn-primary" onclick="addCombo()" style="margin-top:10px;width:100%">+ Añadir Combo</button>
                         </div>
                         
                         <h4 style="margin-top:15px">&#127942; Premios</h4>
@@ -624,13 +759,6 @@
                                 <label>Seco 3 ($):</label>
                                 <input type="number" id="premioSeco3" value="10000" min="5000" step="1000">
                             </div>
-                        </div>
-                        
-                        <!-- PROMOCIONES MÚLTIPLES -->
-                        <div class="promos-container">
-                            <h4 style="color:var(--verde-oscuro);margin-bottom:10px">&#127873; Promociones Especiales</h4>
-                            <div id="promosList"></div>
-                            <button class="btn btn-primary" onclick="addPromo()" style="margin-top:10px">+ Añadir Promoción</button>
                         </div>
                     </div>
 
@@ -655,12 +783,21 @@
                             <div class="stat-box"><div class="stat-number" id="statDisp">100</div><div>Libres</div></div>
                         </div>
                         
-                        <h4 style="color:var(--verde-oscuro)">Marcar como Pagado</h4>
-                        <div style="display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap">
-                            <input type="number" id="numInput" placeholder="Número" style="width:100px;padding:10px;border:2px solid var(--verde-medio);border-radius:5px">
-                            <input type="text" id="nameInput" placeholder="Nombre comprador" style="flex:1;padding:10px;border:2px solid var(--verde-medio);border-radius:5px;min-width:150px">
-                            <button class="btn btn-success" onclick="markPaid()">Confirmar</button>
+                        <!-- INPUT MÚLTIPLE MEJORADO -->
+                        <div class="multi-input-container">
+                            <label>&#128204; Marcar Números como Pagados (Múltiples)</label>
+                            <input type="text" id="multiNumInput" placeholder="Ej: 01, 03, 05, 10, 15, 20">
+                            <p class="hint">Separa los números por comas. Puedes usar espacios o no. Ej: 01,02,03 o 01, 02, 03</p>
                         </div>
+                        
+                        <div class="form-group">
+                            <label>Nombre del Cliente:</label>
+                            <input type="text" id="nameInput" placeholder="Nombre de quien compró los números">
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="markMultiplePaid()" style="width:100%;margin-bottom:20px">
+                            &#9989; Confirmar Números como Pagados
+                        </button>
                         
                         <h4 style="color:var(--verde-oscuro)">Ocupados / Pendientes</h4>
                         <div class="occupied-list" id="occupiedList"></div>
@@ -693,8 +830,9 @@
         let sorteos=[];
         let occupied={};
         let pending={};
-        let promosTemp = [];
-        let editPromosTemp = [];
+        let combosTemp = [];
+        let editCombosTemp = [];
+        const MAX_NUMEROS = 15; // AUMENTADO A 15
 
         setTimeout(()=>{
             document.getElementById('waTooltip').classList.add('show');
@@ -764,6 +902,43 @@
             document.getElementById('admin'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
         }
 
+        // COMBOS MÚLTIPLES - ADMIN
+        function addCombo() {
+            const container = document.getElementById('combosList');
+            const comboItem = document.createElement('div');
+            comboItem.className = 'combo-item';
+            comboItem.innerHTML = `
+                <div>
+                    <label>Cantidad de números:</label>
+                    <input type="number" class="combo-cantidad" placeholder="Ej: 3" min="2" max="15" value="3">
+                </div>
+                <div>
+                    <label>Precio combo ($):</label>
+                    <input type="number" class="combo-precio" placeholder="Ej: 5000" min="1000" step="500" value="5000">
+                </div>
+                <button class="btn btn-danger" onclick="this.parentElement.remove()" style="align-self:end">&#128465;</button>
+            `;
+            container.appendChild(comboItem);
+        }
+
+        function getCombos() {
+            const items = document.querySelectorAll('#combosList .combo-item');
+            const combos = [];
+            items.forEach(item => {
+                const cantidad = parseInt(item.querySelector('.combo-cantidad').value);
+                const precio = parseInt(item.querySelector('.combo-precio').value);
+                if (cantidad && precio && cantidad > 1) {
+                    combos.push({ cantidad, precio });
+                }
+            });
+            return combos.sort((a, b) => b.cantidad - a.cantidad); // Ordenar de mayor a menor cantidad
+        }
+
+        function formatCombosText(combos) {
+            if (!combos || combos.length === 0) return '';
+            return combos.map(c => `${c.cantidad}x $${c.precio.toLocaleString()}`).join(' | ');
+        }
+
         function renderSorteos(){
             const container=document.getElementById('sorteosList');
             const empty=document.getElementById('noSorteos');
@@ -787,12 +962,10 @@
                 card.className='sorteo-card';
                 if(hours<2)card.classList.add('urgent');
                 
-                // Mostrar promociones
-                let promosHtml = '';
-                if (s.promos && s.promos.length > 0) {
-                    promosHtml = s.promos.map(p => `<div class="promo-display">&#127881; ${p}</div>`).join('');
-                } else if (s.promoText) {
-                    promosHtml = `<div class="promo-display">&#127881; ${s.promoText}</div>`;
+                // Mostrar combos
+                let combosHtml = '';
+                if (s.combos && s.combos.length > 0) {
+                    combosHtml = `<div class="combos-list">${s.combos.map(c => `<span class="combo-mini">&#127873; ${c.cantidad}x $${c.precio.toLocaleString()}</span>`).join('')}</div>`;
                 }
                 
                 const premiosHtml=`
@@ -805,11 +978,9 @@
                     </div>
                     <div class="precios-box">
                         <div class="precio-individual">Número: $${parseInt(s.precioNumero).toLocaleString()}</div>
-                        <div class="precio-combo">&#127873; Combo 3x: $${parseInt(s.precioCombo).toLocaleString()}</div>
+                        ${s.combos && s.combos.length > 0 ? `<div style="color:var(--dorado);margin-top:5px">&#127873; Combos disponibles</div>` : ''}
                     </div>
                 `;
-                
-                const promoContainer = promosHtml ? `<div style="margin:10px 0">${promosHtml}</div>` : '';
                 
                 card.innerHTML=`
                     <div class="sorteo-status">ACTIVO</div>
@@ -817,7 +988,7 @@
                     <div class="sorteo-info">&#127922; ${s.lottery}</div>
                     <div class="sorteo-info">&#128197; ${formatDate(date)}</div>
                     ${premiosHtml}
-                    ${promoContainer}
+                    ${combosHtml}
                     <div class="countdown"><div class="countdown-time" id="cd-${s.id}">00:00:00</div></div>
                     <button class="play-btn" onclick="enterGame('${s.id}')">&#127903; Jugar Ahora</button>
                 `;
@@ -884,7 +1055,6 @@
             `;
             
             document.getElementById('precioInd').textContent='$'+parseInt(currentSorteo.precioNumero).toLocaleString();
-            document.getElementById('precioCombo').textContent='$'+parseInt(currentSorteo.precioCombo).toLocaleString();
             document.getElementById('pendingInfo').style.display='block';
             
             updateCart();
@@ -943,7 +1113,7 @@
             if(idx>-1){
                 selected.splice(idx,1);
             }else{
-                if(selected.length>=10){alert('Máximo 10 números');return;}
+                if(selected.length>=MAX_NUMEROS){alert(`Máximo ${MAX_NUMEROS} números`);return;}
                 selected.push(num);
                 selected.sort();
             }
@@ -951,20 +1121,89 @@
             renderGrid();
         }
 
+        // CÁLCULO INTELIGENTE DE COMBOS MÚLTIPLES
+        function calcularMejorPrecio(cantidad, precioUnitario, combos) {
+            if (!combos || combos.length === 0) {
+                return {
+                    total: cantidad * precioUnitario,
+                    ahorro: 0,
+                    desglose: [{ tipo: 'individual', cantidad: cantidad, precio: precioUnitario }]
+                };
+            }
+
+            // Ordenar combos de mayor a menor cantidad
+            const sortedCombos = [...combos].sort((a, b) => b.cantidad - a.cantidad);
+            
+            let mejorTotal = cantidad * precioUnitario;
+            let mejorDesglose = [{ tipo: 'individual', cantidad: cantidad, precio: precioUnitario }];
+            let maxAhorro = 0;
+
+            // Función recursiva para encontrar la mejor combinación
+            function encontrarMejorCombinacion(restantes, desgloseActual, totalActual) {
+                if (restantes === 0) {
+                    const ahorro = (cantidad * precioUnitario) - totalActual;
+                    if (totalActual < mejorTotal || (totalActual === mejorTotal && ahorro > maxAhorro)) {
+                        mejorTotal = totalActual;
+                        mejorDesglose = [...desgloseActual];
+                        maxAhorro = ahorro;
+                    }
+                    return;
+                }
+
+                // Probar cada combo
+                for (let combo of sortedCombos) {
+                    if (combo.cantidad <= restantes) {
+                        const veces = Math.floor(restantes / combo.cantidad);
+                        for (let i = veces; i > 0; i--) {
+                            const nuevoDesglose = [...desgloseActual, { 
+                                tipo: 'combo', 
+                                cantidad: combo.cantidad, 
+                                precio: combo.precio,
+                                veces: i
+                            }];
+                            encontrarMejorCombinacion(
+                                restantes - (combo.cantidad * i), 
+                                nuevoDesglose, 
+                                totalActual + (combo.precio * i)
+                            );
+                        }
+                    }
+                }
+
+                // Probar con individuales para el resto
+                if (restantes > 0) {
+                    encontrarMejorCombinacion(0, [...desgloseActual, { 
+                        tipo: 'individual', 
+                        cantidad: restantes, 
+                        precio: precioUnitario 
+                    }], totalActual + (restantes * precioUnitario));
+                }
+            }
+
+            encontrarMejorCombinacion(cantidad, [], 0);
+            
+            return {
+                total: mejorTotal,
+                ahorro: (cantidad * precioUnitario) - mejorTotal,
+                desglose: mejorDesglose
+            };
+        }
+
         function updateCart(){
             const list=document.getElementById('selectedList');
             const totalEl=document.getElementById('totalPrice');
             const comboEl=document.getElementById('comboText');
+            const combosAplicadosEl=document.getElementById('combosAplicados');
             const btn=document.getElementById('waBtn');
             
             const precioNum=parseInt(currentSorteo.precioNumero);
-            const precioComb=parseInt(currentSorteo.precioCombo);
-            const cantidadCombo=3;
+            const combos=currentSorteo.combos || [];
             
             if(selected.length===0){
                 list.innerHTML='<span style="color:#999;width:100%;text-align:center">Selecciona tus números</span>';
                 totalEl.textContent='$0';
                 comboEl.textContent='';
+                combosAplicadosEl.innerHTML='';
                 btn.disabled=true;
                 return;
             }
@@ -977,13 +1216,38 @@
                 list.appendChild(tag);
             });
             
-            const combos=Math.floor(selected.length/cantidadCombo);
-            const singles=selected.length%cantidadCombo;
-            const total=(combos*precioComb)+(singles*precioNum);
-            const ahorro=combos*((precioNum*cantidadCombo)-precioComb);
+            // Calcular mejor precio con combos múltiples
+            const resultado = calcularMejorPrecio(selected.length, precioNum, combos);
             
-            totalEl.textContent='$'+total.toLocaleString();
-            comboEl.textContent=combos>0?`¡Ahorras $${ahorro.toLocaleString()} con ${combos} combo(s)!`:'';;
+            totalEl.textContent='$'+resultado.total.toLocaleString();
+            
+            // Mostrar desglose de combos aplicados
+            let desgloseHtml = '';
+            let comboTexto = '';
+            
+            if (resultado.ahorro > 0) {
+                desgloseHtml = '<div style="background:#e8f5e9;padding:10px;border-radius:8px;margin:10px 0;font-size:0.9em;">';
+                desgloseHtml += '<strong>&#127873; Combos aplicados:</strong><br>';
+                
+                resultado.desglose.forEach(item => {
+                    if (item.tipo === 'combo') {
+                        const subtotal = item.precio * item.veces;
+                        const cantidadTotal = item.cantidad * item.veces;
+                        desgloseHtml += `• ${item.veces}x Combo ${item.cantidad} números = ${cantidadTotal} números ($${subtotal.toLocaleString()})<br>`;
+                    } else if (item.tipo === 'individual' && item.cantidad > 0) {
+                        const subtotal = item.cantidad * item.precio;
+                        desgloseHtml += `• ${item.cantidad} individuales ($${subtotal.toLocaleString()})<br>`;
+                    }
+                });
+                
+                desgloseHtml += '</div>';
+                comboTexto = `¡Ahorras $${resultado.ahorro.toLocaleString()} con los combos!`;
+            } else {
+                desgloseHtml = `<div style="color:#666;font-size:0.9em;">${selected.length} números x $${precioNum.toLocaleString()} = $${(selected.length * precioNum).toLocaleString()}</div>`;
+            }
+            
+            combosAplicadosEl.innerHTML = desgloseHtml;
+            comboEl.textContent = comboTexto;
             btn.disabled=false;
         }
 
@@ -1000,12 +1264,9 @@
             if(selected.length===0)return;
             
             const precioNum=parseInt(currentSorteo.precioNumero);
-            const precioComb=parseInt(currentSorteo.precioCombo);
-            const cantidadCombo=3;
+            const combos=currentSorteo.combos || [];
             
-            const combos=Math.floor(selected.length/cantidadCombo);
-            const singles=selected.length%cantidadCombo;
-            const total=(combos*precioComb)+(singles*precioNum);
+            const resultado = calcularMejorPrecio(selected.length, precioNum, combos);
             
             showLoading(true);
             const updates={};
@@ -1016,14 +1277,17 @@
             database.ref().update(updates).then(()=>{
                 showLoading(false);
                 
-                let msg=`¡Hola! Quiero participar en *${currentSorteo.name}*\n`;
+                let msg=`¡Hola! Quiero asegurar mis bendiciones en *${currentSorteo.name}* &#128330;&#128170;\n\n`;
                 msg+=`Lotería: ${currentSorteo.lottery}\n\n`;
                 msg+=`Números: ${selected.join(', ')}\n`;
-                msg+=`Total: $${total.toLocaleString()}\n\n`;
-                msg+=`Premios:\n`;
-                msg+=`Mayor: $${parseInt(currentSorteo.premioMayor).toLocaleString()}\n`;
-                msg+=`Secos: $${parseInt(currentSorteo.premioSeco1).toLocaleString()} c/u\n\n`;
-                msg+=`¿Cómo realizo el pago?`;
+                msg+=`Total a pagar: $${resultado.total.toLocaleString()}\n`;
+                if (resultado.ahorro > 0) {
+                    msg+=`¡Ahorro de $${resultado.ahorro.toLocaleString()} con combos!\n`;
+                }
+                msg+=`\nPremios:\n`;
+                msg+=`&#127942; Mayor: $${parseInt(currentSorteo.premioMayor).toLocaleString()}\n`;
+                msg+=`&#10024; Secos: $${parseInt(currentSorteo.premioSeco1).toLocaleString()} c/u\n\n`;
+                msg+=`¿Cómo realizo el pago para confirmar mis números?`;
                 
                 window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
                 
@@ -1033,23 +1297,6 @@
                 showLoading(false);
                 alert('Error al reservar números: '+err.message);
             });
-        }
-
-        // PROMOCIONES MÚLTIPLES
-        function addPromo() {
-            const container = document.getElementById('promosList');
-            const promoItem = document.createElement('div');
-            promoItem.className = 'promo-item';
-            promoItem.innerHTML = `
-                <input type="text" placeholder="Ej: Lleva 5 números y participa en un sorteo extra" class="promo-input">
-                <button class="btn btn-danger" onclick="this.parentElement.remove()">&#128465;</button>
-            `;
-            container.appendChild(promoItem);
-        }
-
-        function getPromos() {
-            const inputs = document.querySelectorAll('#promosList .promo-item input');
-            return Array.from(inputs).map(input => input.value.trim()).filter(val => val !== '');
         }
 
         function renderAdminSorteos(){
@@ -1064,15 +1311,14 @@
                 const item=document.createElement('div');
                 item.className='sorteo-item';
                 
-                // Contar promociones
-                let promoCount = 0;
-                if (s.promos && Array.isArray(s.promos)) promoCount = s.promos.length;
-                else if (s.promoText) promoCount = 1;
+                // Contar combos
+                let comboCount = 0;
+                if (s.combos && Array.isArray(s.combos)) comboCount = s.combos.length;
                 
                 item.innerHTML=`
                     <div>
                         <strong style="color:var(--verde-oscuro)">${s.name}</strong><br>
-                        <small>${s.lottery} | $${parseInt(s.precioNumero).toLocaleString()} c/u | Mayor: $${parseInt(s.premioMayor).toLocaleString()} | ${promoCount} promo(s)</small>
+                        <small>${s.lottery} | $${parseInt(s.precioNumero).toLocaleString()} c/u | ${comboCount} combo(s) | Mayor: $${parseInt(s.premioMayor).toLocaleString()}</small>
                     </div>
                     <div style="display:flex;gap:5px">
                         <button class="btn btn-info" onclick="openEditModal('${s.id}')">&#9998; Editar</button>
@@ -1088,7 +1334,6 @@
             const lottery=document.getElementById('newLottery').value;
             const date=document.getElementById('newDate').value;
             const precioNumero=document.getElementById('precioNumero').value;
-            const precioCombo=document.getElementById('precioComboNew').value;
             const premioMayor=document.getElementById('premioMayor').value;
             const premioSeco1=document.getElementById('premioSeco1').value;
             const premioSeco2=document.getElementById('premioSeco2').value;
@@ -1097,19 +1342,18 @@
             if(!name||!date){alert('Completa nombre y fecha');return;}
             if(new Date(date)<new Date()){alert('La fecha debe ser futura');return;}
             
-            const promos = getPromos();
+            const combos = getCombos();
             
             const newSorteo={
                 name:name,
                 lottery:lottery,
                 date:date,
                 precioNumero:precioNumero,
-                precioCombo:precioCombo,
+                combos:combos, // Array de combos múltiples
                 premioMayor:premioMayor,
                 premioSeco1:premioSeco1,
                 premioSeco2:premioSeco2,
                 premioSeco3:premioSeco3,
-                promos: promos,
                 created:Date.now()
             };
             
@@ -1118,7 +1362,7 @@
                 document.getElementById('newName').value='';
                 document.getElementById('newLottery').value='';
                 document.getElementById('newDate').value='';
-                document.getElementById('promosList').innerHTML='';
+                document.getElementById('combosList').innerHTML='';
                 showLoading(false);
                 alert('Sorteo creado exitosamente');
             }).catch(err=>{
@@ -1127,7 +1371,7 @@
             });
         }
 
-        // EDICIÓN DE SORTEOS
+        // EDICIÓN DE SORTEOS CON COMBOS MÚLTIPLES
         function openEditModal(id) {
             const sorteo = sorteos.find(s => s.id === id);
             if (!sorteo) return;
@@ -1136,29 +1380,25 @@
             document.getElementById('editName').value = sorteo.name;
             document.getElementById('editLottery').value = sorteo.lottery || '';
             
-            // Formatear fecha para input datetime-local
             const date = new Date(sorteo.date);
             const formattedDate = date.toISOString().slice(0, 16);
             document.getElementById('editDate').value = formattedDate;
             
             document.getElementById('editPrecioNumero').value = sorteo.precioNumero;
-            document.getElementById('editPrecioCombo').value = sorteo.precioCombo;
             document.getElementById('editPremioMayor').value = sorteo.premioMayor;
             document.getElementById('editPremioSeco1').value = sorteo.premioSeco1;
             document.getElementById('editPremioSeco2').value = sorteo.premioSeco2;
             document.getElementById('editPremioSeco3').value = sorteo.premioSeco3;
             
-            // Cargar promociones
-            const editPromosList = document.getElementById('editPromosList');
-            editPromosList.innerHTML = '';
-            editPromosTemp = [];
+            // Cargar combos múltiples
+            const editCombosList = document.getElementById('editCombosList');
+            editCombosList.innerHTML = '';
+            editCombosTemp = [];
             
-            if (sorteo.promos && Array.isArray(sorteo.promos)) {
-                sorteo.promos.forEach(promo => {
-                    addEditPromo(promo);
+            if (sorteo.combos && Array.isArray(sorteo.combos)) {
+                sorteo.combos.forEach(combo => {
+                    addEditCombo(combo.cantidad, combo.precio);
                 });
-            } else if (sorteo.promoText) {
-                addEditPromo(sorteo.promoText);
             }
             
             document.getElementById('editModal').classList.add('active');
@@ -1168,20 +1408,35 @@
             document.getElementById('editModal').classList.remove('active');
         }
 
-        function addEditPromo(value = '') {
-            const container = document.getElementById('editPromosList');
-            const promoItem = document.createElement('div');
-            promoItem.className = 'promo-item';
-            promoItem.innerHTML = `
-                <input type="text" placeholder="Ej: Lleva 5 números y participa en un sorteo extra" class="edit-promo-input" value="${value}">
-                <button class="btn btn-danger" onclick="this.parentElement.remove()">&#128465;</button>
+        function addEditCombo(cantidad = '', precio = '') {
+            const container = document.getElementById('editCombosList');
+            const comboItem = document.createElement('div');
+            comboItem.className = 'combo-item';
+            comboItem.innerHTML = `
+                <div>
+                    <label>Cantidad:</label>
+                    <input type="number" class="edit-combo-cantidad" placeholder="Ej: 3" min="2" max="15" value="${cantidad}">
+                </div>
+                <div>
+                    <label>Precio ($):</label>
+                    <input type="number" class="edit-combo-precio" placeholder="Ej: 5000" min="1000" step="500" value="${precio}">
+                </div>
+                <button class="btn btn-danger" onclick="this.parentElement.remove()" style="align-self:end">&#128465;</button>
             `;
-            container.appendChild(promoItem);
+            container.appendChild(comboItem);
         }
 
-        function getEditPromos() {
-            const inputs = document.querySelectorAll('#editPromosList .edit-promo-input');
-            return Array.from(inputs).map(input => input.value.trim()).filter(val => val !== '');
+        function getEditCombos() {
+            const items = document.querySelectorAll('#editCombosList .combo-item');
+            const combos = [];
+            items.forEach(item => {
+                const cantidad = parseInt(item.querySelector('.edit-combo-cantidad').value);
+                const precio = parseInt(item.querySelector('.edit-combo-precio').value);
+                if (cantidad && precio && cantidad > 1) {
+                    combos.push({ cantidad, precio });
+                }
+            });
+            return combos.sort((a, b) => b.cantidad - a.cantidad);
         }
 
         function saveEditSorteo() {
@@ -1190,7 +1445,6 @@
             const lottery = document.getElementById('editLottery').value;
             const date = document.getElementById('editDate').value;
             const precioNumero = document.getElementById('editPrecioNumero').value;
-            const precioCombo = document.getElementById('editPrecioCombo').value;
             const premioMayor = document.getElementById('editPremioMayor').value;
             const premioSeco1 = document.getElementById('editPremioSeco1').value;
             const premioSeco2 = document.getElementById('editPremioSeco2').value;
@@ -1201,19 +1455,18 @@
                 return;
             }
             
-            const promos = getEditPromos();
+            const combos = getEditCombos();
             
             const updates = {
                 name: name,
                 lottery: lottery,
                 date: date,
                 precioNumero: precioNumero,
-                precioCombo: precioCombo,
+                combos: combos,
                 premioMayor: premioMayor,
                 premioSeco1: premioSeco1,
                 premioSeco2: premioSeco2,
-                premioSeco3: premioSeco3,
-                promos: promos
+                premioSeco3: premioSeco3
             };
             
             showLoading(true);
@@ -1281,23 +1534,38 @@
             management.style.display='block';
         }
 
-        function markPaid(){
-            const num=document.getElementById('numInput').value.padStart(2,'0');
-            const name=document.getElementById('nameInput').value.trim()||'Sin nombre';
-            const id=document.getElementById('selectSorteo').value;
+        // MARCAR MÚLTIPLES NÚMEROS COMO PAGADOS
+        function markMultiplePaid(){
+            const input = document.getElementById('multiNumInput').value.trim();
+            const name = document.getElementById('nameInput').value.trim() || 'Sin nombre';
+            const id = document.getElementById('selectSorteo').value;
             
-            if(!num||num<0||num>99){alert('Número inválido (00-99)');return;}
+            if(!input){alert('Ingresa al menos un número');return;}
+            
+            // Parsear números separados por comas
+            const numeros = input.split(/[,，\s]+/).map(n => n.trim().padStart(2, '0')).filter(n => {
+                const num = parseInt(n);
+                return !isNaN(num) && num >= 0 && num <= 99;
+            });
+            
+            if(numeros.length === 0){alert('No se encontraron números válidos (00-99)');return;}
+            
+            // Eliminar duplicados
+            const numerosUnicos = [...new Set(numeros)];
             
             showLoading(true);
             const updates={};
-            updates['occupied/'+id+'/'+num]=name;
-            updates['pending/'+id+'/'+num]=null;
+            
+            numerosUnicos.forEach(num => {
+                updates['occupied/'+id+'/'+num]=name;
+                updates['pending/'+id+'/'+num]=null;
+            });
             
             database.ref().update(updates).then(()=>{
-                document.getElementById('numInput').value='';
+                document.getElementById('multiNumInput').value='';
                 document.getElementById('nameInput').value='';
                 showLoading(false);
-                alert(`Número ${num} marcado como pagado`);
+                alert(`${numerosUnicos.length} número(s) marcado(s) como pagado(s): ${numerosUnicos.join(', ')}`);
             }).catch(err=>{
                 showLoading(false);
                 alert('Error: '+err.message);
