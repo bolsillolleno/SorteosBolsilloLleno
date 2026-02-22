@@ -469,8 +469,9 @@
             <div id="noSorteos" style="text-align:center;color:#fff;padding:40px;display:none">
                 <h3>No hay sorteos activos</h3>
             </div>
-        </div>
-       <div class="main-info">
+            
+            <!-- INFORMACIÓN PRINCIPAL SOLO EN HOME -->
+            <div class="main-info">
                 <h2>&#127919; La Única Rifa donde LA SUERTE SI TE ALCANZA</h2>
                 <p>Mientras otros grupos solo pagan a 3 ganadores, nosotros tenemos <strong>4 OPORTUNIDADES</strong> de ganar con un solo número</p>
                 
@@ -506,6 +507,8 @@
                     <p>&#10024; <strong>SECO 3:</strong> Primera y última cifra</p>
                 </div>
             </div>
+        </div>
+
         <!-- Game Section -->
         <div id="gameSection" class="section">
             <div class="game-header">
@@ -1090,7 +1093,6 @@
             const premioSeco1=document.getElementById('premioSeco1').value;
             const premioSeco2=document.getElementById('premioSeco2').value;
             const premioSeco3=document.getElementById('premioSeco3').value;
-            const promoText=document.getElementById('promoText')?.value?.trim() || '';
             
             if(!name||!date){alert('Completa nombre y fecha');return;}
             if(new Date(date)<new Date()){alert('La fecha debe ser futura');return;}
@@ -1108,7 +1110,6 @@
                 premioSeco2:premioSeco2,
                 premioSeco3:premioSeco3,
                 promos: promos,
-                promoText: promoText,
                 created:Date.now()
             };
             
