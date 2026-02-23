@@ -17,6 +17,9 @@
             --verde-oscuro:#1a5f1a;
             --verde-medio:#2d8a2d;
             --verde-claro:#4CAF50;
+            --verde-disponible:#4CAF50;
+            --amarillo-reservado:#FFC107;
+            --rojo-pagado:#f44336;
             --dorado:#FFD700;
             --dorado-oscuro:#D4AF37;
             --dorado-brillante:#FFA500;
@@ -244,7 +247,7 @@
         .legend-item{display:flex;align-items:center;gap:5px}
         .legend-box{width:20px;height:20px;border-radius:3px}
         .numbers-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;max-width:600px;margin:0 auto}
-        .number-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;border-radius:5px;cursor:pointer;font-size:12px;font-weight:bold;transition:all 0.2s;position:relative}
+        .number-cell{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1px solid #ddd;border-radius:5px;cursor:pointer;font-size:12px;font-weight:bold;transition:all 0.2s;position:relative;flex-direction:column;line-height:1}
         .number-cell:hover:not(.occupied):not(.pending){transform:scale(1.1)}
         .number-cell.available{background:#f0f0f0}
         .number-cell.selected{background:var(--verde-claro);color:white;box-shadow:0 0 10px rgba(76,175,80,0.5)}
@@ -263,8 +266,27 @@
             align-items: center;
             justify-content: center;
         }
-        .number-cell.occupied{background:#ff5252;color:#fff;cursor:not-allowed;opacity:0.7}
+        .number-cell.occupied{background:#ff5252;color:#fff;cursor:not-allowed}
         .number-cell.pending{background:#ff9800;color:#fff;cursor:not-allowed}
+        
+        /* MOSTRAR NOMBRE EN CELDA */
+        .number-cell .client-name {
+            font-size: 8px;
+            font-weight: normal;
+            opacity: 0.9;
+            max-width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            text-align: center;
+        }
+        .number-cell.occupied .client-name,
+        .number-cell.pending .client-name {
+            color: #fff;
+        }
+        .number-cell.available .client-name {
+            display: none;
+        }
         
         .cart{background:white;border-radius:15px;padding:20px;max-width:400px;margin:0 auto;border:3px solid var(--dorado)}
         .cart h3{text-align:center;margin-bottom:15px;color:var(--verde-oscuro)}
@@ -473,6 +495,518 @@
             overflow-y: auto;
         }
         
+        /* ADMIN NUMBERS GRID STYLES - ACTUALIZADO CON NUEVA FUNCIONALIDAD */
+        .admin-numbers-section {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 3px solid var(--dorado);
+        }
+        
+        .admin-numbers-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .admin-numbers-title {
+            color: var(--verde-oscuro);
+            font-size: 1.3em;
+            font-weight: bold;
+        }
+        
+        /* NUEVOS ESTILOS PARA FILTROS Y BÚSQUEDA */
+        .admin-controls {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .admin-search-box {
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .admin-search-box input {
+            width: 100%;
+            padding: 10px 15px 10px 40px;
+            border: 2px solid var(--verde-medio);
+            border-radius: 25px;
+            font-size: 1em;
+        }
+        
+        .admin-search-box::before {
+            content: '🔍';
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .admin-filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            border: 2px solid #ddd;
+            background: white;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .filter-btn.active {
+            border-color: var(--verde-oscuro);
+            background: var(--verde-oscuro);
+            color: var(--dorado);
+        }
+        
+        .filter-btn .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .dot-disponible { background: var(--verde-disponible); }
+        .dot-reservado { background: var(--amarillo-reservado); }
+        .dot-pagado { background: var(--rojo-pagado); }
+        
+        .admin-selection-mode {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 2px solid var(--verde-medio);
+        }
+        
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 26px;
+            background: #ccc;
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .toggle-switch.active {
+            background: var(--verde-claro);
+        }
+        
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .toggle-switch.active::after {
+            transform: translateX(24px);
+        }
+        
+        .admin-info-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: var(--dorado);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+        
+        .admin-selection-info {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: var(--dorado);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border: 2px solid var(--dorado);
+        }
+        
+        .admin-selection-count {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .admin-selected-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 15px;
+            min-height: 30px;
+        }
+        
+        .admin-selected-tag {
+            background: var(--dorado);
+            color: var(--verde-oscuro);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .admin-selected-tag span {
+            cursor: pointer;
+            color: #d32f2f;
+        }
+        
+        .admin-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .admin-action-group {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 10px;
+            border: 2px solid var(--verde-medio);
+        }
+        
+        .admin-action-group h4 {
+            color: var(--verde-oscuro);
+            margin-bottom: 10px;
+            font-size: 1em;
+        }
+        
+        .admin-action-group input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 2px solid var(--verde-medio);
+            border-radius: 5px;
+        }
+        
+        .admin-btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .admin-btn-group .btn {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .status-legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            flex-wrap: wrap;
+        }
+        
+        .status-legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .status-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+        
+        /* NUEVO: MODAL DE GESTIÓN DE NÚMEROS */
+        .gestion-modal-content {
+            max-width: 500px;
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 0;
+            border-radius: 15px;
+        }
+        
+        .gestion-header {
+            background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-medio));
+            color: var(--dorado);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .gestion-header h3 {
+            color: var(--dorado);
+            margin: 0;
+            font-size: 1.5em;
+        }
+        
+        .gestion-numeros {
+            font-size: 1.2em;
+            margin-top: 10px;
+            word-break: break-all;
+        }
+        
+        .gestion-body {
+            padding: 25px;
+        }
+        
+        .contactos-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+            border: 2px solid var(--verde-medio);
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: var(--verde-oscuro);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .contactos-btn:hover {
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-claro));
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .contactos-btn .icon {
+            font-size: 1.5em;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            color: var(--verde-oscuro);
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--verde-medio);
+        }
+        
+        .phone-input-wrapper {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .country-code {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px;
+            background: #f5f5f5;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .country-code .flag {
+            font-size: 1.5em;
+        }
+        
+        .estado-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .estado-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .estado-option:hover {
+            border-color: var(--verde-medio);
+            background: #f9f9f9;
+        }
+        
+        .estado-option.selected {
+            border-color: var(--verde-oscuro);
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+        
+        .estado-option input[type="radio"] {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--verde-oscuro);
+        }
+        
+        .estado-option label {
+            flex: 1;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--verde-oscuro);
+        }
+        
+        .estado-option .subtext {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: normal;
+        }
+        
+        .gestion-footer {
+            display: flex;
+            gap: 15px;
+            padding: 0 25px 25px;
+        }
+        
+        .gestion-footer .btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-cancelar {
+            background: #f44336;
+            color: white;
+        }
+        
+        .btn-confirmar {
+            background: var(--verde-claro);
+            color: white;
+        }
+        
+        /* Grid de números admin con colores actualizados */
+        .admin-numbers-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 4px;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        
+        .admin-number-cell {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: all 0.2s;
+            position: relative;
+            padding: 2px;
+            text-align: center;
+        }
+        
+        .admin-number-cell:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+        
+        .admin-number-cell.disponible {
+            background: var(--verde-disponible);
+            color: white;
+        }
+        
+        .admin-number-cell.reservado {
+            background: var(--amarillo-reservado);
+            color: #333;
+        }
+        
+        .admin-number-cell.pagado {
+            background: var(--rojo-pagado);
+            color: white;
+        }
+        
+        .admin-number-cell.seleccionado {
+            border: 3px solid #2196F3;
+            box-shadow: 0 0 0 2px #2196F3, 0 0 10px rgba(33,150,243,0.5);
+            transform: scale(1.1);
+            z-index: 20;
+        }
+        
+        .admin-number-cell.filtrado {
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        
+        .admin-number-cell .num {
+            font-size: 13px;
+            font-weight: bold;
+        }
+        
+        .admin-number-cell .nombre {
+            font-size: 7px;
+            font-weight: normal;
+            opacity: 0.9;
+            max-width: 95%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            margin-top: 1px;
+        }
+        
+        .admin-number-cell.disponible .nombre {
+            display: none;
+        }
+        
         @media(max-width:600px){
             .numbers-grid{grid-template-columns:repeat(5,1fr)}
             .game-countdown-time{font-size:1.5em}
@@ -498,6 +1032,32 @@
             .blessing-btn {
                 font-size: 1.1em;
                 padding: 15px;
+            }
+            .admin-actions {
+                grid-template-columns: 1fr;
+            }
+            .number-cell .client-name {
+                font-size: 6px;
+            }
+            .admin-numbers-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 3px;
+            }
+            .admin-number-cell .num {
+                font-size: 11px;
+            }
+            .admin-number-cell .nombre {
+                font-size: 6px;
+            }
+            .admin-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .admin-search-box {
+                min-width: 100%;
+            }
+            .gestion-footer {
+                flex-direction: column;
             }
         }
     </style>
@@ -585,6 +1145,78 @@
                 <div style="margin-top:20px">
                     <button class="btn btn-success" onclick="saveEditSorteo()">Guardar Cambios</button>
                     <button class="btn btn-danger" onclick="closeEditModal()">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- NUEVO: Modal de Gestión de Números -->
+        <div class="modal" id="gestionModal">
+            <div class="modal-content gestion-modal-content">
+                <div class="gestion-header">
+                    <h3>&#128295; Gestión de números</h3>
+                    <div class="gestion-numeros" id="gestionNumeros"></div>
+                </div>
+                
+                <div class="gestion-body">
+                    <!-- Botón de Contactos -->
+                    <button class="contactos-btn" onclick="abrirContactos()">
+                        <span class="icon">&#128101;</span>
+                        <span>Contactos</span>
+                    </button>
+                    
+                    <!-- Campo Nombre -->
+                    <div class="input-group">
+                        <label>Nombre</label>
+                        <input type="text" id="gestionNombre" placeholder="Nombre del cliente">
+                    </div>
+                    
+                    <!-- Campo Teléfono -->
+                    <div class="input-group">
+                        <label>Teléfono</label>
+                        <div class="phone-input-wrapper">
+                            <div class="country-code">
+                                <span class="flag">🇨🇴</span>
+                                <span>+57</span>
+                            </div>
+                            <input type="tel" id="gestionTelefono" placeholder="300 123 4567" style="flex:1">
+                        </div>
+                    </div>
+                    
+                    <!-- Opciones de Estado -->
+                    <div class="estado-options">
+                        <div class="estado-option selected" onclick="seleccionarEstado('reservar')">
+                            <input type="radio" name="estado" value="reservar" id="estReservar" checked>
+                            <label for="estReservar">
+                                Reservar
+                            </label>
+                        </div>
+                        
+                        <div class="estado-option" onclick="seleccionarEstado('pagado')">
+                            <input type="radio" name="estado" value="pagado" id="estPagado">
+                            <label for="estPagado">
+                                Pagado
+                            </label>
+                        </div>
+                        
+                        <div class="estado-option" onclick="seleccionarEstado('disponible')">
+                            <input type="radio" name="estado" value="disponible" id="estDisponible">
+                            <label for="estDisponible">
+                                Disponible
+                                <div class="subtext">(Restablecer)</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="gestion-footer">
+                    <button class="btn btn-cancelar" onclick="cerrarGestionModal()">
+                        <span>❌</span>
+                        <span>Cancelar</span>
+                    </button>
+                    <button class="btn btn-confirmar" onclick="confirmarGestion()">
+                        <span>✅</span>
+                        <span>Confirmar</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -708,7 +1340,7 @@
                 
                 <div class="admin-tabs">
                     <button class="admin-tab active" onclick="showAdminTab('sorteos',this)">Sorteos</button>
-                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">Números</button>
+                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">Gestión de Números</button>
                 </div>
 
                 <div id="adminSorteos" class="admin-section active">
@@ -771,36 +1403,70 @@
                 <div id="adminNumeros" class="admin-section">
                     <div class="form-group">
                         <label>Seleccionar Sorteo:</label>
-                        <select id="selectSorteo" onchange="loadNumbers()">
+                        <select id="selectSorteo" onchange="loadAdminNumbersManager()">
                             <option value="">-- Seleccionar --</option>
                         </select>
                     </div>
                     
-                    <div id="numManager" style="display:none">
-                        <div class="stats">
-                            <div class="stat-box"><div class="stat-number">100</div><div>Total</div></div>
-                            <div class="stat-box"><div class="stat-number" id="statOcup">0</div><div>Ocupados</div></div>
-                            <div class="stat-box"><div class="stat-number" id="statDisp">100</div><div>Libres</div></div>
+                    <div id="adminNumbersManager" style="display:none">
+                        <!-- Barra de información -->
+                        <div class="admin-info-bar">
+                            <span id="adminDisponiblesText">Disponibles: 100/100</span>
+                            <span id="adminSorteoInfo"></span>
                         </div>
                         
-                        <!-- INPUT MÚLTIPLE MEJORADO -->
-                        <div class="multi-input-container">
-                            <label>&#128204; Marcar Números como Pagados (Múltiples)</label>
-                            <input type="text" id="multiNumInput" placeholder="Ej: 01, 03, 05, 10, 15, 20">
-                            <p class="hint">Separa los números por comas. Puedes usar espacios o no. Ej: 01,02,03 o 01, 02, 03</p>
+                        <!-- Controles: Búsqueda, Filtros y Selección múltiple -->
+                        <div class="admin-controls">
+                            <div class="admin-search-box">
+                                <input type="text" id="adminSearchInput" placeholder="Buscar por nombre..." oninput="filtrarPorNombre()">
+                            </div>
+                            
+                            <div class="admin-filters">
+                                <button class="filter-btn active" onclick="setFiltro('todos')" id="filtroTodos">
+                                    <span class="dot" style="background: linear-gradient(90deg, var(--verde-disponible), var(--amarillo-reservado), var(--rojo-pagado))"></span>
+                                    Ver todos
+                                </button>
+                                <button class="filter-btn" onclick="setFiltro('disponibles')" id="filtroDisponibles">
+                                    <span class="dot dot-disponible"></span>
+                                    Disponibles
+                                </button>
+                                <button class="filter-btn" onclick="setFiltro('reservados')" id="filtroReservados">
+                                    <span class="dot dot-reservado"></span>
+                                    Reservados
+                                </button>
+                                <button class="filter-btn" onclick="setFiltro('pagados')" id="filtroPagados">
+                                    <span class="dot dot-pagado"></span>
+                                    Pagados
+                                </button>
+                            </div>
+                            
+                            <div class="admin-selection-mode">
+                                <span>sel. varios</span>
+                                <div class="toggle-switch" id="toggleSeleccionMultiple" onclick="toggleSeleccionMultiple()"></div>
+                            </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label>Nombre del Cliente:</label>
-                            <input type="text" id="nameInput" placeholder="Nombre de quien compró los números">
+                        <!-- Grid de números -->
+                        <div class="admin-numbers-section">
+                            <div class="admin-numbers-header">
+                                <div class="admin-numbers-title">&#128204; Tabla de Números</div>
+                                <button class="btn btn-warning" onclick="clearAdminSelection()">Limpiar</button>
+                            </div>
+                            
+                            <div class="admin-numbers-grid" id="adminNumbersGrid"></div>
                         </div>
                         
-                        <button class="btn btn-success" onclick="markMultiplePaid()" style="width:100%;margin-bottom:20px">
-                            &#9989; Confirmar Números como Pagados
-                        </button>
-                        
-                        <h4 style="color:var(--verde-oscuro)">Ocupados / Pendientes</h4>
-                        <div class="occupied-list" id="occupiedList"></div>
+                        <!-- Panel de selección (aparece cuando hay números seleccionados) -->
+                        <div class="admin-selection-info" id="adminSelectionPanel" style="display:none">
+                            <div class="admin-selection-count">
+                                Números seleccionados: <span id="adminSelectedCount">0</span>
+                            </div>
+                            <div class="admin-selected-numbers" id="adminSelectedList"></div>
+                            
+                            <button class="btn btn-success" onclick="abrirModalGestion()" style="width:100%;padding:15px;font-size:1.1em;">
+                                &#128295; Gestionar Números Seleccionados
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -826,13 +1492,19 @@
         const WHATSAPP='573237343858';
         let currentSorteo=null;
         let selected=[];
+        let adminSelected=[];
         let timerInterval=null;
         let sorteos=[];
         let occupied={};
         let pending={};
         let combosTemp = [];
         let editCombosTemp = [];
-        const MAX_NUMEROS = 15; // AUMENTADO A 15
+        const MAX_NUMEROS = 15;
+
+        // NUEVAS VARIABLES PARA ADMIN
+        let adminFilter = 'todos'; // 'todos', 'disponibles', 'reservados', 'pagados'
+        let seleccionMultipleActiva = false;
+        let adminSearchTerm = '';
 
         setTimeout(()=>{
             document.getElementById('waTooltip').classList.add('show');
@@ -900,6 +1572,10 @@
             document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
             btn.classList.add('active');
             document.getElementById('admin'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
+            
+            if(tab === 'numeros') {
+                updateSelect();
+            }
         }
 
         // COMBOS MÚLTIPLES - ADMIN
@@ -931,7 +1607,7 @@
                     combos.push({ cantidad, precio });
                 }
             });
-            return combos.sort((a, b) => b.cantidad - a.cantidad); // Ordenar de mayor a menor cantidad
+            return combos.sort((a, b) => b.cantidad - a.cantidad);
         }
 
         function formatCombosText(combos) {
@@ -1083,14 +1759,25 @@
                 const num=i.toString().padStart(2,'0');
                 const cell=document.createElement('div');
                 cell.className='number-cell';
-                cell.textContent=num;
+                
+                // Número principal
+                const numSpan = document.createElement('span');
+                numSpan.textContent = num;
+                cell.appendChild(numSpan);
+                
+                // Nombre del cliente si existe
+                const nameSpan = document.createElement('span');
+                nameSpan.className = 'client-name';
                 
                 if(occupied[num]){
                     cell.classList.add('occupied');
+                    nameSpan.textContent = occupied[num].length > 6 ? occupied[num].substring(0,6)+'..' : occupied[num];
                     cell.title='Pagado: '+occupied[num];
                 }else if(pending[num]){
                     cell.classList.add('pending');
-                    cell.title='Pendiente: '+pending[num];
+                    const pendingName = pending[num].replace('Reservado - ', '');
+                    nameSpan.textContent = pendingName.length > 6 ? pendingName.substring(0,6)+'..' : pendingName;
+                    cell.title='Pendiente: '+pendingName;
                 }else if(selected.includes(num)){
                     cell.classList.add('selected');
                     cell.title='Clic para quitar de selección';
@@ -1100,6 +1787,11 @@
                     cell.title='Clic para seleccionar';
                     cell.onclick=()=>toggleNum(num);
                 }
+                
+                if(occupied[num] || pending[num]) {
+                    cell.appendChild(nameSpan);
+                }
+                
                 grid.appendChild(cell);
             }
         }
@@ -1131,14 +1823,12 @@
                 };
             }
 
-            // Ordenar combos de mayor a menor cantidad
             const sortedCombos = [...combos].sort((a, b) => b.cantidad - a.cantidad);
             
             let mejorTotal = cantidad * precioUnitario;
             let mejorDesglose = [{ tipo: 'individual', cantidad: cantidad, precio: precioUnitario }];
             let maxAhorro = 0;
 
-            // Función recursiva para encontrar la mejor combinación
             function encontrarMejorCombinacion(restantes, desgloseActual, totalActual) {
                 if (restantes === 0) {
                     const ahorro = (cantidad * precioUnitario) - totalActual;
@@ -1150,7 +1840,6 @@
                     return;
                 }
 
-                // Probar cada combo
                 for (let combo of sortedCombos) {
                     if (combo.cantidad <= restantes) {
                         const veces = Math.floor(restantes / combo.cantidad);
@@ -1170,7 +1859,6 @@
                     }
                 }
 
-                // Probar con individuales para el resto
                 if (restantes > 0) {
                     encontrarMejorCombinacion(0, [...desgloseActual, { 
                         tipo: 'individual', 
@@ -1216,12 +1904,10 @@
                 list.appendChild(tag);
             });
             
-            // Calcular mejor precio con combos múltiples
             const resultado = calcularMejorPrecio(selected.length, precioNum, combos);
             
             totalEl.textContent='$'+resultado.total.toLocaleString();
             
-            // Mostrar desglose de combos aplicados
             let desgloseHtml = '';
             let comboTexto = '';
             
@@ -1311,7 +1997,6 @@
                 const item=document.createElement('div');
                 item.className='sorteo-item';
                 
-                // Contar combos
                 let comboCount = 0;
                 if (s.combos && Array.isArray(s.combos)) comboCount = s.combos.length;
                 
@@ -1349,7 +2034,7 @@
                 lottery:lottery,
                 date:date,
                 precioNumero:precioNumero,
-                combos:combos, // Array de combos múltiples
+                combos:combos,
                 premioMayor:premioMayor,
                 premioSeco1:premioSeco1,
                 premioSeco2:premioSeco2,
@@ -1371,7 +2056,6 @@
             });
         }
 
-        // EDICIÓN DE SORTEOS CON COMBOS MÚLTIPLES
         function openEditModal(id) {
             const sorteo = sorteos.find(s => s.id === id);
             if (!sorteo) return;
@@ -1390,7 +2074,6 @@
             document.getElementById('editPremioSeco2').value = sorteo.premioSeco2;
             document.getElementById('editPremioSeco3').value = sorteo.premioSeco3;
             
-            // Cargar combos múltiples
             const editCombosList = document.getElementById('editCombosList');
             editCombosList.innerHTML = '';
             editCombosTemp = [];
@@ -1508,120 +2191,333 @@
             });
         }
 
-        function loadNumbers(){
+        // NUEVA GESTIÓN DE NÚMEROS CON FUNCIONALIDAD COMPLETA
+        function loadAdminNumbersManager(){
             const id=document.getElementById('selectSorteo').value;
-            const management=document.getElementById('numManager');
+            const manager=document.getElementById('adminNumbersManager');
             
             if(!id){
-                management.style.display='none';
+                manager.style.display='none';
                 return;
             }
             
             currentSorteo=sorteos.find(s=>s.id===id);
+            adminSelected = [];
+            adminSearchTerm = '';
+            document.getElementById('adminSearchInput').value = '';
             
+            // Actualizar info del sorteo
+            document.getElementById('adminSorteoInfo').textContent = `${currentSorteo.lottery} | Mayor: $${parseInt(currentSorteo.premioMayor).toLocaleString()}`;
+            
+            // Escuchar cambios en tiempo real
             database.ref('occupied/'+id).on('value',(snapshot)=>{
                 occupied=snapshot.val()||{};
-                updateStats();
-                renderOccupied();
+                renderAdminGrid();
+                updateAdminInfoBar();
             });
             
             database.ref('pending/'+id).on('value',(snapshot)=>{
                 pending=snapshot.val()||{};
-                updateStats();
-                renderOccupied();
+                renderAdminGrid();
+                updateAdminInfoBar();
             });
             
-            management.style.display='block';
+            manager.style.display='block';
+            updateAdminSelectionPanel();
         }
 
-        // MARCAR MÚLTIPLES NÚMEROS COMO PAGADOS
-        function markMultiplePaid(){
-            const input = document.getElementById('multiNumInput').value.trim();
-            const name = document.getElementById('nameInput').value.trim() || 'Sin nombre';
-            const id = document.getElementById('selectSorteo').value;
-            
-            if(!input){alert('Ingresa al menos un número');return;}
-            
-            // Parsear números separados por comas
-            const numeros = input.split(/[,，\s]+/).map(n => n.trim().padStart(2, '0')).filter(n => {
-                const num = parseInt(n);
-                return !isNaN(num) && num >= 0 && num <= 99;
-            });
-            
-            if(numeros.length === 0){alert('No se encontraron números válidos (00-99)');return;}
-            
-            // Eliminar duplicados
-            const numerosUnicos = [...new Set(numeros)];
-            
-            showLoading(true);
-            const updates={};
-            
-            numerosUnicos.forEach(num => {
-                updates['occupied/'+id+'/'+num]=name;
-                updates['pending/'+id+'/'+num]=null;
-            });
-            
-            database.ref().update(updates).then(()=>{
-                document.getElementById('multiNumInput').value='';
-                document.getElementById('nameInput').value='';
-                showLoading(false);
-                alert(`${numerosUnicos.length} número(s) marcado(s) como pagado(s): ${numerosUnicos.join(', ')}`);
-            }).catch(err=>{
-                showLoading(false);
-                alert('Error: '+err.message);
-            });
+        function updateAdminInfoBar() {
+            const total = 100;
+            const pagados = Object.keys(occupied).length;
+            const reservados = Object.keys(pending).length;
+            const disponibles = total - pagados - reservados;
+            document.getElementById('adminDisponiblesText').textContent = `Disponibles: ${disponibles}/100`;
         }
 
-        function releaseNum(num,type){
-            const id=document.getElementById('selectSorteo').value;
-            showLoading(true);
-            const updates={};
-            if(type==='occupied'||type==='both'){
-                updates['occupied/'+id+'/'+num]=null;
+        function renderAdminGrid(){
+            const grid=document.getElementById('adminNumbersGrid');
+            if(!grid) return;
+            
+            grid.innerHTML='';
+            
+            for(let i=0;i<100;i++){
+                const num=i.toString().padStart(2,'0');
+                const cell=document.createElement('div');
+                cell.className='admin-number-cell';
+                cell.dataset.numero = num;
+                
+                // Determinar estado
+                let estado = 'disponible';
+                let clientName = '';
+                
+                if(occupied[num]){
+                    estado = 'pagado';
+                    clientName = occupied[num];
+                }else if(pending[num]){
+                    estado = 'reservado';
+                    clientName = pending[num].replace('Reservado - ', '');
+                }
+                
+                // Aplicar filtro de visualización
+                let visible = true;
+                if(adminFilter === 'disponibles' && estado !== 'disponible') visible = false;
+                if(adminFilter === 'reservados' && estado !== 'reservado') visible = false;
+                if(adminFilter === 'pagados' && estado !== 'pagado') visible = false;
+                
+                // Aplicar filtro de búsqueda
+                if(adminSearchTerm && !clientName.toLowerCase().includes(adminSearchTerm.toLowerCase())) {
+                    visible = false;
+                }
+                
+                if(!visible) {
+                    cell.classList.add('filtrado');
+                }
+                
+                cell.classList.add(estado);
+                
+                // Número
+                const numSpan = document.createElement('span');
+                numSpan.className = 'num';
+                numSpan.textContent = num;
+                cell.appendChild(numSpan);
+                
+                // Nombre (solo si no es disponible)
+                if(estado !== 'disponible') {
+                    const nameSpan = document.createElement('span');
+                    nameSpan.className = 'nombre';
+                    nameSpan.textContent = clientName.length > 8 ? clientName.substring(0,8)+'..' : clientName;
+                    nameSpan.title = clientName;
+                    cell.appendChild(nameSpan);
+                }
+                
+                // Marcar como seleccionado si está en la lista
+                if(adminSelected.includes(num)) {
+                    cell.classList.add('seleccionado');
+                }
+                
+                // Evento click
+                cell.onclick = () => handleAdminNumberClick(num, estado);
+                
+                grid.appendChild(cell);
             }
-            if(type==='pending'||type==='both'){
-                updates['pending/'+id+'/'+num]=null;
+        }
+
+        function handleAdminNumberClick(num, estado) {
+            // Si la selección múltiple está activa
+            if(seleccionMultipleActiva) {
+                toggleAdminSelection(num);
+            } else {
+                // Selección simple - abrir modal directamente
+                adminSelected = [num];
+                abrirModalGestion();
             }
-            database.ref().update(updates).then(()=>{
-                showLoading(false);
-            }).catch(err=>{
-                showLoading(false);
-                alert('Error: '+err.message);
-            });
         }
 
-        function updateStats(){
-            const occ=Object.keys(occupied).length;
-            const pen=Object.keys(pending).length;
-            document.getElementById('statOcup').textContent=occ+pen;
-            document.getElementById('statDisp').textContent=100-occ-pen;
+        function toggleAdminSelection(num) {
+            const idx = adminSelected.indexOf(num);
+            if(idx > -1) {
+                adminSelected.splice(idx, 1);
+            } else {
+                adminSelected.push(num);
+                adminSelected.sort();
+            }
+            renderAdminGrid();
+            updateAdminSelectionPanel();
         }
 
-        function renderOccupied(){
-            const list=document.getElementById('occupiedList');
-            const allNums={...occupied,...pending};
-            const nums=Object.keys(allNums).sort();
+        function toggleSeleccionMultiple() {
+            seleccionMultipleActiva = !seleccionMultipleActiva;
+            const toggle = document.getElementById('toggleSeleccionMultiple');
+            toggle.classList.toggle('active', seleccionMultipleActiva);
             
-            if(nums.length===0){
-                list.innerHTML='<p style="color:#999;text-align:center">No hay números ocupados</p>';
+            if(!seleccionMultipleActiva) {
+                // Al desactivar, limpiar selección
+                adminSelected = [];
+                renderAdminGrid();
+                updateAdminSelectionPanel();
+            }
+        }
+
+        function setFiltro(filtro) {
+            adminFilter = filtro;
+            
+            // Actualizar botones
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('filtro' + filtro.charAt(0).toUpperCase() + filtro.slice(1)).classList.add('active');
+            
+            renderAdminGrid();
+        }
+
+        function filtrarPorNombre() {
+            adminSearchTerm = document.getElementById('adminSearchInput').value.trim();
+            renderAdminGrid();
+        }
+
+        function updateAdminSelectionPanel(){
+            const panel = document.getElementById('adminSelectionPanel');
+            const count = document.getElementById('adminSelectedCount');
+            const list = document.getElementById('adminSelectedList');
+            
+            if(adminSelected.length === 0 || !seleccionMultipleActiva){
+                panel.style.display = 'none';
                 return;
             }
             
-            list.innerHTML='';
-            nums.forEach(n=>{
-                const isPending=pending[n]!==undefined;
-                const item=document.createElement('div');
-                item.className='occupied-item';
-                item.innerHTML=`
-                    <span>
-                        <strong style="color:${isPending?'#ff9800':'var(--verde-oscuro)'}">${n}</strong> 
-                        - ${allNums[n]} ${isPending?'(PENDIENTE)':'(PAGADO)'}
-                    </span>
-                    <button class="btn btn-warning" style="padding:5px 10px;font-size:12px" onclick="releaseNum('${n}','${isPending?'pending':'occupied'}')">
-                        Liberar
-                    </button>
-                `;
-                list.appendChild(item);
+            panel.style.display = 'block';
+            count.textContent = adminSelected.length;
+            
+            list.innerHTML = '';
+            adminSelected.forEach(n => {
+                const tag = document.createElement('div');
+                tag.className = 'admin-selected-tag';
+                tag.innerHTML = `${n} <span onclick="removeAdminNum('${n}')">X</span>`;
+                list.appendChild(tag);
+            });
+        }
+
+        function removeAdminNum(num){
+            const idx = adminSelected.indexOf(num);
+            if(idx > -1){
+                adminSelected.splice(idx, 1);
+                renderAdminGrid();
+                updateAdminSelectionPanel();
+            }
+        }
+
+        function clearAdminSelection(){
+            adminSelected = [];
+            renderAdminGrid();
+            updateAdminSelectionPanel();
+        }
+
+        // NUEVO: Modal de Gestión de Números
+        function abrirModalGestion() {
+            if(adminSelected.length === 0) return;
+            
+            const modal = document.getElementById('gestionModal');
+            const numerosDiv = document.getElementById('gestionNumeros');
+            
+            // Mostrar números seleccionados
+            numerosDiv.textContent = adminSelected.join(', ');
+            
+            // Limpiar campos
+            document.getElementById('gestionNombre').value = '';
+            document.getElementById('gestionTelefono').value = '';
+            
+            // Resetear estado a "Reservar"
+            seleccionarEstado('reservar');
+            
+            modal.classList.add('active');
+        }
+
+        function cerrarGestionModal() {
+            document.getElementById('gestionModal').classList.remove('active');
+        }
+
+        function seleccionarEstado(estado) {
+            // Remover selección anterior
+            document.querySelectorAll('.estado-option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('.estado-option input').forEach(input => input.checked = false);
+            
+            // Seleccionar nuevo
+            let inputId = '';
+            if(estado === 'reservar') inputId = 'estReservar';
+            else if(estado === 'pagado') inputId = 'estPagado';
+            else if(estado === 'disponible') inputId = 'estDisponible';
+            
+            const option = document.querySelector(`input#${inputId}`).closest('.estado-option');
+            option.classList.add('selected');
+            document.getElementById(inputId).checked = true;
+        }
+
+        function abrirContactos() {
+            // Intentar abrir la app de contactos del teléfono
+            // Esto funciona en Android/iOS si la app está instalada
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.vcf';
+            input.style.display = 'none';
+            
+            // Alternativa: usar protocolo para abrir app de contactos
+            // Nota: Los navegadores modernos restringen esto por seguridad
+            // La mejor opción es usar el picker de contactos si está disponible
+            
+            if('contacts' in navigator && 'ContactsManager' in window) {
+                // API de Contact Picker (Chrome Android)
+                navigator.contacts.select(['name', 'tel'], {multiple: false})
+                    .then(contacts => {
+                        if(contacts.length > 0) {
+                            const contact = contacts[0];
+                            document.getElementById('gestionNombre').value = contact.name[0] || '';
+                            if(contact.tel && contact.tel.length > 0) {
+                                let tel = contact.tel[0].replace(/\D/g, '');
+                                if(tel.startsWith('57')) tel = tel.substring(2);
+                                document.getElementById('gestionTelefono').value = tel;
+                            }
+                        }
+                    })
+                    .catch(err => {
+                        console.log('Error al acceder a contactos:', err);
+                        alert('No se pudo acceder a los contactos. Por favor ingresa los datos manualmente.');
+                    });
+            } else {
+                // Fallback: Intentar abrir intent de Android
+                // Esto no funciona en todos los navegadores
+                alert('Para acceder a tus contactos, por favor copia y pega la información manualmente o usa la app desde tu teléfono móvil.');
+            }
+        }
+
+        function confirmarGestion() {
+            const nombre = document.getElementById('gestionNombre').value.trim();
+            const telefono = document.getElementById('gestionTelefono').value.trim();
+            const estado = document.querySelector('input[name="estado"]:checked').value;
+            
+            if(estado !== 'disponible' && !nombre) {
+                alert('Por favor ingresa el nombre del cliente');
+                return;
+            }
+            
+            showLoading(true);
+            
+            const updates = {};
+            
+            adminSelected.forEach(num => {
+                if(estado === 'reservar') {
+                    updates['pending/'+currentSorteo.id+'/'+num] = nombre + ' - ' + new Date().toLocaleTimeString();
+                    updates['occupied/'+currentSorteo.id+'/'+num] = null;
+                } else if(estado === 'pagado') {
+                    updates['occupied/'+currentSorteo.id+'/'+num] = nombre;
+                    updates['pending/'+currentSorteo.id+'/'+num] = null;
+                } else if(estado === 'disponible') {
+                    updates['occupied/'+currentSorteo.id+'/'+num] = null;
+                    updates['pending/'+currentSorteo.id+'/'+num] = null;
+                }
+            });
+            
+            database.ref().update(updates).then(() => {
+                showLoading(false);
+                
+                let msg = '';
+                if(estado === 'reservar') msg = `${adminSelected.length} número(s) reservado(s) para: ${nombre}`;
+                else if(estado === 'pagado') msg = `${adminSelected.length} número(s) marcado(s) como PAGADO(S) a: ${nombre}`;
+                else if(estado === 'disponible') msg = `${adminSelected.length} número(s) liberado(s) correctamente`;
+                
+                alert(msg);
+                
+                // Limpiar
+                adminSelected = [];
+                cerrarGestionModal();
+                renderAdminGrid();
+                updateAdminSelectionPanel();
+                
+                // Si estaba en modo selección múltiple, mantenerlo pero limpiar selección
+                if(!seleccionMultipleActiva) {
+                    seleccionMultipleActiva = false;
+                    document.getElementById('toggleSeleccionMultiple').classList.remove('active');
+                }
+            }).catch(err => {
+                showLoading(false);
+                alert('Error: ' + err.message);
             });
         }
 
@@ -1635,6 +2531,10 @@
 
         document.getElementById('editModal').addEventListener('click',function(e){
             if(e.target===this)this.classList.remove('active');
+        });
+
+        document.getElementById('gestionModal').addEventListener('click',function(e){
+            if(e.target===this)cerrarGestionModal();
         });
 
         loadSorteosFromFirebase();
