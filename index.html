@@ -6,7 +6,7 @@
     <title>🙏 Bol$illo Lleno | Sorteos Bendecidos</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
-    
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
         
@@ -3034,14 +3034,15 @@
             💬
         </a>
 
-        <div class="modal" id="adminModal">
-            <div class="modal-content">
-                <h3>🔐 Acceso Admin</h3>
-                <input type="password" id="pwdInput" placeholder="Contraseña" onkeypress="if(event.key==='Enter')checkPwd()">
-                <button onclick="checkPwd()">Entrar</button>
-                <p class="error" id="pwdError">Contraseña incorrecta</p>
-            </div>
-        </div>
+    <div class="modal" id="adminModal">
+    <div class="modal-content">
+        <h3>🔐 Acceso Admin</h3>
+        <input type="email" id="emailInput" placeholder="Email" style="margin-bottom:10px;" onkeypress="if(event.key==='Enter')document.getElementById('pwdInput').focus()">
+        <input type="password" id="pwdInput" placeholder="Contraseña" onkeypress="if(event.key==='Enter')checkPwd()">
+        <button onclick="checkPwd()">Entrar</button>
+        <p class="error" id="pwdError">Contraseña incorrecta</p>
+    </div>
+</div>
 
         <div class="modal" id="editModal">
             <div class="modal-content" style="max-width:500px;">
@@ -3776,8 +3777,8 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        const PASSWORD='yurypatycg123';
         const WHATSAPP='573237343858';
+const ADMIN_EMAIL = 'admin@bolsillo.com'; 
         let currentSorteo=null;
         let selected=[];
         let adminSelected=[];
@@ -3952,14 +3953,42 @@
         }
 
         function openAdmin(){
-            document.getElementById('adminModal').classList.add('active');
-            document.getElementById('pwdInput').value='';
-            document.getElementById('pwdInput').focus();
-            document.getElementById('pwdError').style.display='none';
-        }
+    // Verificar si ya hay sesión activa
+    const user = firebase.auth().currentUser;
+    if(user && user.email === ADMIN_EMAIL){
+        showSection('adminSection');
+        renderAdminSorteos();
+        updateSelect();
+        updateSelectCombos();
+        actualizarDashboard();
+        loadClientesDB();
+        return;
+    }
+    
+    document.getElementById('adminModal').classList.add('active');
+    document.getElementById('emailInput').value='';
+    document.getElementById('pwdInput').value='';
+    document.getElementById('emailInput').focus();
+    document.getElementById('pwdError').style.display='none';
+}
 
         function checkPwd(){
-            if(document.getElementById('pwdInput').value===PASSWORD){
+    const email = document.getElementById('emailInput').value.trim();
+    const password = document.getElementById('pwdInput').value;
+    
+    if(!email || !password){
+        document.getElementById('pwdError').textContent = 'Ingresa email y contraseña';
+        document.getElementById('pwdError').style.display='block';
+        return;
+    }
+    
+    showLoading(true);
+    
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            showLoading(false);
+            const user = userCredential.user;
+            if(user.email === ADMIN_EMAIL){
                 document.getElementById('adminModal').classList.remove('active');
                 showSection('adminSection');
                 renderAdminSorteos();
@@ -3967,15 +3996,31 @@
                 updateSelectCombos();
                 actualizarDashboard();
                 loadClientesDB();
-            }else{
+            } else {
+                firebase.auth().signOut();
+                document.getElementById('pwdError').textContent = 'No tienes permisos de administrador';
                 document.getElementById('pwdError').style.display='block';
             }
-        }
+        })
+        .catch((error) => {
+            showLoading(false);
+            let mensaje = 'Error al iniciar sesión';
+            if(error.code === 'auth/user-not-found') mensaje = 'Usuario no encontrado';
+            if(error.code === 'auth/wrong-password') mensaje = 'Contraseña incorrecta';
+            if(error.code === 'auth/invalid-email') mensaje = 'Email inválido';
+            document.getElementById('pwdError').textContent = mensaje;
+            document.getElementById('pwdError').style.display='block';
+        });
+}
 
         function logout(){
-            showSection('homeSection');
-            renderSorteos();
-        }
+    firebase.auth().signOut().then(() => {
+        showSection('homeSection');
+        renderSorteos();
+    }).catch((error) => {
+        console.error('Error al cerrar sesión:', error);
+    });
+}
 
         function showSection(id){
             document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
@@ -5165,6 +5210,23 @@
         });
         document.getElementById('confirmModal').addEventListener('click',function(e){
             if(e.target===this)cerrarConfirmModal();
+        });
+
+            // Configurar persistencia de sesión (local = permanente hasta cerrar sesión)
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+            .then(() => {
+                console.log('Persistencia configurada: LOCAL');
+            })
+            .catch((error) => {
+                console.error('Error configurando persistencia:', error);
+            });
+
+        // Escuchar cambios en estado de autenticación
+        firebase.auth().onAuthStateChanged((user) => {
+            if(user && document.getElementById('adminSection').classList.contains('active')){
+                // Usuario logueado y en panel admin, todo bien
+                console.log('Sesión activa:', user.email);
+            }
         });
 
         initParticles();
