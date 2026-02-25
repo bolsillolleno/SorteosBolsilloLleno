@@ -440,11 +440,12 @@
             margin-bottom:25px;
         }
         
+        /* ===== SORTEO CARD MEJORADO ===== */
         .sorteo-card{
             background: linear-gradient(145deg, #fff, #f5f5f5);
-            border-radius:20px;
-            padding:20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            border-radius:25px;
+            padding:25px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
             cursor:pointer;
             transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position:relative;
@@ -452,10 +453,20 @@
             overflow: hidden;
         }
         
+        .sorteo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradiente-dorado);
+        }
+        
         .sorteo-card:hover{
             transform:translateY(-8px) scale(1.01);
             border-color:var(--dorado);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4), 0 0 40px rgba(255,215,0,0.2);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 50px rgba(255,215,0,0.3);
         }
         
         .sorteo-card.urgent{
@@ -465,44 +476,45 @@
         
         @keyframes urgent-pulse{
             0%,100%{ box-shadow:0 10px 40px rgba(255,82,82,0.4) }
-            50%{ box-shadow:0 15px 50px rgba(255,82,82,0.7) }
+            50%{ box-shadow:0 20px 60px rgba(255,82,82,0.7) }
         }
         
         .sorteo-status{
             position:absolute;
-            top:12px;
-            right:12px;
+            top:15px;
+            right:15px;
             background: linear-gradient(145deg, var(--verde-claro), #2e7d32);
             color:white;
-            padding:5px 12px;
-            border-radius:15px;
-            font-size:11px;
-            font-weight:700;
+            padding:6px 15px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:800;
             text-transform: uppercase;
             letter-spacing: 1px;
             animation: status-glow 2s ease-in-out infinite;
+            box-shadow: 0 5px 15px rgba(76,175,80,0.4);
         }
         
         @keyframes status-glow {
             0%, 100% { box-shadow: 0 0 10px rgba(76,175,80,0.5); }
-            50% { box-shadow: 0 0 20px rgba(76,175,80,0.8); }
+            50% { box-shadow: 0 0 25px rgba(76,175,80,0.8); }
         }
         
         .sorteo-urgency-badge {
             position: absolute;
-            top: 12px;
-            left: 12px;
+            top: 15px;
+            left: 15px;
             background: linear-gradient(145deg, #d32f2f, #b71c1c);
             color: white;
-            padding: 5px 10px;
-            border-radius: 15px;
-            font-size: 10px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
             font-weight: 800;
             text-transform: uppercase;
             animation: urgency-badge-pulse 1s ease-in-out infinite;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
         }
         
         @keyframes urgency-badge-pulse {
@@ -511,24 +523,84 @@
         }
         
         .sorteo-name{
-            font-size:1.3em;
+            font-size:1.5em;
             font-weight:800;
             color:var(--verde-oscuro);
-            margin-bottom:10px;
-            margin-top:10px;
+            margin-bottom:12px;
+            margin-top:15px;
         }
         
         .sorteo-info{
             color:#555;
-            margin-bottom:6px;
-            font-size:0.9em;
+            margin-bottom:8px;
+            font-size:0.95em;
             font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* ===== DISPONIBILIDAD EN SORTEO - ACTUALIZADO ===== */
+        .sorteo-disponibilidad {
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin: 15px 0;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .dispo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .dispo-label {
+            font-size: 0.85em;
+            color: #666;
+            font-weight: 600;
+        }
+        
+        .dispo-value {
+            font-size: 1.1em;
+            font-weight: 800;
+            color: var(--verde-oscuro);
+        }
+        
+        .dispo-value.bajo { color: #d32f2f; }
+        .dispo-value.medio { color: #ff9800; }
+        .dispo-value.alto { color: #4CAF50; }
+        
+        .dispo-bar {
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .dispo-fill {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.5s ease;
+        }
+        
+        .dispo-fill.alto {
+            background: linear-gradient(90deg, var(--verde-claro), #4CAF50);
+        }
+        
+        .dispo-fill.medio {
+            background: linear-gradient(90deg, #ff9800, #ffc107);
+        }
+        
+        .dispo-fill.bajo {
+            background: linear-gradient(90deg, #f44336, #ff5252);
         }
         
         .premios-box{
             background: var(--gradiente-dorado);
-            padding:15px;
-            border-radius:12px;
+            padding:18px;
+            border-radius:15px;
             margin:15px 0;
             text-align:left;
             border:3px solid var(--verde-oscuro);
@@ -539,14 +611,14 @@
             color:var(--verde-oscuro);
             margin-bottom:12px;
             text-align:center;
-            font-size: 1em;
+            font-size: 1.1em;
         }
         
         .premio-item{
             display:flex;
             justify-content:space-between;
-            margin-bottom:6px;
-            font-size:0.85em;
+            margin-bottom:8px;
+            font-size:0.9em;
             color:var(--verde-oscuro);
             font-weight:600;
         }
@@ -554,7 +626,7 @@
         .premio-mayor{
             font-weight:800;
             color:#d32f2f;
-            font-size:1em;
+            font-size:1.05em;
             animation: premio-destacado 2s ease-in-out infinite;
         }
         
@@ -565,9 +637,9 @@
         
         .precios-box{
             background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
-            padding:12px;
-            border-radius:10px;
-            margin:12px 0;
+            padding:15px;
+            border-radius:12px;
+            margin:15px 0;
             text-align:center;
             border: 2px solid var(--dorado);
         }
@@ -575,39 +647,39 @@
         .precio-individual{
             color:var(--dorado);
             font-weight:700;
-            font-size: 1em;
+            font-size: 1.1em;
         }
         
         .countdown{
             background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
             color:var(--dorado);
-            padding:15px;
-            border-radius:12px;
+            padding:18px;
+            border-radius:15px;
             text-align:center;
             margin:15px 0;
             border:3px solid var(--dorado);
         }
         
         .countdown-time{
-            font-size:1.5em;
+            font-size:1.6em;
             font-weight:800;
             font-family:'Courier New', monospace;
         }
         
         .play-btn{
             width:100%;
-            padding:16px;
+            padding:18px;
             background: var(--gradiente-dorado);
             color:var(--verde-oscuro);
             border:none;
             border-radius:15px;
-            font-size:16px;
+            font-size:17px;
             font-weight:800;
             cursor:pointer;
             transition:all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase;
             letter-spacing: 2px;
-            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.4);
             position: relative;
             overflow: hidden;
             animation: play-btn-pulse 2s ease-in-out infinite;
@@ -620,7 +692,7 @@
         
         .play-btn:hover{
             transform:scale(1.05) translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255,215,0,0.6);
+            box-shadow: 0 20px 50px rgba(255,215,0,0.6);
         }
         
         .main-info{
@@ -682,7 +754,7 @@
             font-weight: 500;
         }
         
-        /* ===== COMBOS NEUROMARKETING ===== */
+        /* ===== COMBOS NEUROMARKETING - SOLO 3 ===== */
         .combos-section {
             background: linear-gradient(145deg, #fff, #f8f8f8);
             border-radius: 25px;
@@ -735,7 +807,7 @@
         
         .combos-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 12px;
             margin-bottom: 15px;
         }
@@ -743,7 +815,7 @@
         .combo-card {
             background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
             border-radius: 15px;
-            padding: 15px 10px;
+            padding: 20px 10px;
             text-align: center;
             border: 3px solid var(--dorado);
             position: relative;
@@ -781,7 +853,7 @@
         
         .combo-cantidad {
             color: var(--dorado);
-            font-size: 2em;
+            font-size: 2.5em;
             font-weight: 800;
             margin-bottom: 5px;
         }
@@ -790,21 +862,10 @@
             color: #ffeb3b;
         }
         
-        .combo-precio {
+        .combo-texto {
             color: white;
-            font-size: 1.3em;
-            font-weight: 800;
-            margin-bottom: 5px;
-        }
-        
-        .combo-ahorro {
-            color: #81c784;
-            font-size: 0.75em;
+            font-size: 0.9em;
             font-weight: 600;
-        }
-        
-        .combo-card.popular .combo-ahorro {
-            color: #ffcc80;
         }
         
         .combos-footer {
@@ -920,38 +981,6 @@
             color: var(--verde-oscuro);
             font-weight: 800;
             font-size: 1.1em;
-        }
-        
-        .combos-info{
-            background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
-            color:var(--dorado);
-            padding:18px;
-            border-radius:15px;
-            margin-top:18px;
-            font-weight:600;
-            border:3px solid var(--dorado);
-        }
-        
-        .combos-info h3{
-            font-size:1.2em;
-            margin-bottom:10px;
-            color:white;
-        }
-        
-        .combos-info p{
-            color:white;
-            margin-bottom:8px;
-            font-size: 0.9em;
-        }
-        
-        .combos-info .ejemplo{
-            color:var(--dorado);
-            font-size:0.85em;
-            font-style:italic;
-            background: rgba(255,215,0,0.15);
-            padding: 8px 12px;
-            border-radius: 8px;
-            display: inline-block;
         }
         
         .premios-explicacion{
@@ -1118,47 +1147,153 @@
             font-size: 1em;
         }
         
+        /* ===== GAME HEADER MEJORADO ===== */
         .game-header{
             background: linear-gradient(145deg, #fff, #f5f5f5);
-            border-radius:20px;
-            padding:20px;
+            border-radius:25px;
+            padding:25px;
             margin-bottom:20px;
             text-align:center;
             border:4px solid var(--dorado);
-            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: var(--gradiente-dorado);
         }
         
         .game-title{
-            font-size:1.6em;
+            font-size:1.8em;
             color:var(--verde-oscuro);
-            margin-bottom:10px;
+            margin-bottom:12px;
             font-weight: 800;
         }
         
         .game-info{
             display:flex;
             justify-content:center;
-            gap:15px;
+            gap:20px;
             color:#555;
             margin-bottom:15px;
             flex-wrap:wrap;
-            font-weight: 500;
-            font-size: 0.9em;
+            font-weight: 600;
+            font-size: 0.95em;
         }
         
         .game-countdown{
             background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
             color:var(--dorado);
-            padding:18px;
-            border-radius:12px;
+            padding:20px;
+            border-radius:15px;
             display:inline-block;
             border:3px solid var(--dorado);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
         
         .game-countdown-time{
-            font-size:1.8em;
+            font-size:2em;
             font-weight:800;
             font-family:'Courier New', monospace;
+        }
+        
+        /* ===== DISPONIBILIDAD EN GAME ===== */
+        .game-disponibilidad {
+            background: linear-gradient(145deg, #f8f8f8, #e8e8e8);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border: 3px solid var(--dorado);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .game-dispo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .game-dispo-label {
+            font-size: 0.95em;
+            color: #555;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .game-dispo-value {
+            font-size: 1.3em;
+            font-weight: 800;
+            color: var(--verde-oscuro);
+        }
+        
+        .game-dispo-value.alto { color: #4CAF50; }
+        .game-dispo-value.medio { color: #ff9800; }
+        .game-dispo-value.bajo { color: #d32f2f; }
+        
+        .game-dispo-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        
+        .game-dispo-stat {
+            text-align: center;
+        }
+        
+        .game-dispo-stat-number {
+            font-weight: 800;
+            font-size: 1.1em;
+            color: var(--verde-oscuro);
+        }
+        
+        .game-dispo-bar {
+            height: 14px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .game-dispo-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .game-dispo-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        .game-dispo-fill.alto {
+            background: linear-gradient(90deg, #4CAF50, #81c784);
+        }
+        
+        .game-dispo-fill.medio {
+            background: linear-gradient(90deg, #ff9800, #ffc107);
+        }
+        
+        .game-dispo-fill.bajo {
+            background: linear-gradient(90deg, #f44336, #ff5252);
         }
         
         .premios-activos.blessed {
@@ -1262,49 +1397,151 @@
             font-weight: 700;
         }
         
-        .combos-blessed-section {
-            margin-top: 20px;
-            padding-top: 15px;
-            border-top: 2px dashed rgba(26, 95, 26, 0.3);
+        /* ===== COMBOS INFO NEUROMARKETING ===== */
+        .combos-info-section {
+            background: linear-gradient(145deg, #fff, #f8f8f8);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 4px solid var(--dorado);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
-        .combos-blessed-title {
+        .combos-info-header {
             text-align: center;
-            color: var(--verde-oscuro);
-            font-size: 1.2em;
-            font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
         }
         
-        .combo-blessed-card {
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.25), rgba(255, 237, 78, 0.35));
-            border: 2px solid var(--dorado);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 8px;
+        .combos-info-title {
+            color: var(--verde-oscuro);
+            font-size: 1.3em;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .combos-info-title .fire {
+            animation: fire-bounce 0.5s ease-in-out infinite;
+        }
+        
+        @keyframes fire-bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        
+        .combos-info-subtitle {
+            color: #d32f2f;
+            font-size: 0.85em;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+        
+        .combos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .combo-info-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 12px 15px;
+            background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
+            border-radius: 12px;
+            border: 2px solid var(--dorado);
+            transition: all 0.3s;
         }
         
-        .combo-blessed-name {
-            font-weight: 700;
+        .combo-info-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(255,215,0,0.3);
+        }
+        
+        .combo-info-item.best {
+            background: linear-gradient(145deg, #d32f2f, #b71c1c);
+            animation: best-combo-pulse 2s ease-in-out infinite;
+            border: 3px solid #ffeb3b;
+        }
+        
+        @keyframes best-combo-pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(211, 47, 47, 0.4); }
+            50% { box-shadow: 0 10px 35px rgba(211, 47, 47, 0.7); }
+        }
+        
+        .combo-info-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .combo-info-cantidad {
+            background: var(--gradiente-dorado);
             color: var(--verde-oscuro);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9em;
+        }
+        
+        .combo-info-text {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+        
+        .combo-info-precio {
+            color: var(--dorado);
+            font-weight: 800;
+            font-size: 1.1em;
+        }
+        
+        .combo-info-item.best .combo-info-precio {
+            color: #ffeb3b;
+        }
+        
+        .best-badge {
+            background: #ffeb3b;
+            color: #d32f2f;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.7em;
+            font-weight: 800;
+            margin-left: 10px;
+            animation: badge-blink 1s ease-in-out infinite;
+        }
+        
+        @keyframes badge-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .combos-aplicado {
+            background: linear-gradient(145deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.25));
+            border: 2px solid var(--verde-claro);
+            border-radius: 12px;
+            padding: 15px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        
+        .combos-aplicado-text {
+            color: var(--verde-oscuro);
+            font-weight: 700;
             font-size: 0.95em;
         }
         
-        .combo-blessed-detail {
-            color: #555;
-            font-size: 0.8em;
-        }
-        
-        .combo-blessed-price {
-            background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
-            color: var(--dorado);
-            padding: 8px 15px;
-            border-radius: 20px;
+        .combos-aplicado-ahorro {
+            color: #d32f2f;
             font-weight: 800;
-            font-size: 1em;
+            font-size: 1.1em;
+            margin-top: 5px;
         }
         
         .numbers-container{
@@ -1460,28 +1697,30 @@
             display: none;
         }
         
+        /* ===== CARRITO COMPACTO ARRIBA ===== */
         .cart{
             background: linear-gradient(145deg, #fff, #f8f8f8);
             border-radius:20px;
-            padding:20px;
+            padding:18px;
+            margin-bottom:20px;
             border:4px solid var(--dorado);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         
         .cart h3{
             text-align:center;
-            margin-bottom:15px;
+            margin-bottom:12px;
             color:var(--verde-oscuro);
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
         
         .selected-numbers{
             display:flex;
             flex-wrap:wrap;
-            gap:6px;
-            margin-bottom:15px;
-            min-height:40px;
-            padding:12px;
+            gap:5px;
+            margin-bottom:12px;
+            min-height:35px;
+            padding:10px;
             background: linear-gradient(145deg, #f0f0f0, #e8e8e8);
             border-radius:10px;
             border: 2px dashed #ccc;
@@ -1490,12 +1729,12 @@
         .selected-tag{
             background: linear-gradient(145deg, var(--verde-claro), #2e7d32);
             color:white;
-            padding:4px 12px;
-            border-radius:15px;
-            font-size:12px;
+            padding:3px 10px;
+            border-radius:12px;
+            font-size:11px;
             display:flex;
             align-items:center;
-            gap:6px;
+            gap:5px;
             font-weight: 600;
             animation: tag-in 0.3s ease;
         }
@@ -1514,34 +1753,34 @@
         .pricing{
             text-align:center;
             color:#555;
-            font-size:0.9em;
-            margin-bottom:10px;
+            font-size:0.85em;
+            margin-bottom:8px;
         }
         
         .total{
             text-align:center;
-            font-size:1.8em;
+            font-size:1.5em;
             color:var(--verde-oscuro);
             font-weight:800;
-            margin:12px 0;
+            margin:10px 0;
         }
         
         .combo-text{
             color:var(--verde-claro);
-            font-size:0.85em;
+            font-size:0.8em;
             text-align:center;
-            margin-bottom:12px;
+            margin-bottom:10px;
             font-weight:700;
         }
         
         .whatsapp-btn{
             width:100%;
-            padding:16px;
+            padding:14px;
             background: linear-gradient(145deg, #25D366, #128C7E);
             color:white;
             border:none;
-            border-radius:15px;
-            font-size:16px;
+            border-radius:12px;
+            font-size:15px;
             font-weight:800;
             cursor:pointer;
             display:flex;
@@ -1566,12 +1805,12 @@
         
         .blessing-btn {
             width: 100%;
-            padding: 18px;
+            padding: 16px;
             background: var(--gradiente-dorado);
             color: var(--verde-oscuro);
             border: none;
-            border-radius: 15px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1em;
             font-weight: 800;
             cursor: pointer;
             display: flex;
@@ -1582,7 +1821,7 @@
             box-shadow: 0 10px 35px rgba(255, 215, 0, 0.6);
             text-transform: uppercase;
             animation: blessing-pulse 2s infinite;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         @keyframes blessing-pulse {
@@ -1603,12 +1842,12 @@
         
         .view-more-btn {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             background: linear-gradient(145deg, var(--verde-oscuro), var(--verde-medio));
             color: var(--dorado);
             border: 2px solid var(--dorado);
-            border-radius: 12px;
-            font-size: 1em;
+            border-radius: 10px;
+            font-size: 0.9em;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s;
@@ -1772,6 +2011,7 @@
             margin-bottom: 5px;
         }
         
+        /* ===== SOCIAL CON IMÁGENES ===== */
         .social-section {
             background: linear-gradient(145deg, #fff, #f8f8f8);
             border-radius: 20px;
@@ -1785,7 +2025,7 @@
             color: var(--verde-oscuro);
             font-size: 1.3em;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .social-grid {
@@ -1798,18 +2038,18 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
-            padding: 15px 10px;
+            gap: 10px;
+            padding: 20px 10px;
             border-radius: 15px;
             text-decoration: none;
             color: white;
             font-weight: 700;
-            font-size: 0.8em;
+            font-size: 0.85em;
             transition: all 0.3s;
         }
         
         .social-btn:hover {
-            transform: translateY(-5px) scale(1.05);
+            transform: translateY(-8px) scale(1.05);
         }
         
         .social-btn.whatsapp {
@@ -1824,8 +2064,11 @@
             background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
         }
         
-        .social-icon {
-            font-size: 2em;
+        .social-icon-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            filter: drop-shadow(0 3px 5px rgba(0,0,0,0.3));
         }
         
         .testimonials-section {
@@ -1957,31 +2200,151 @@
             color:white;
         }
         
-        .combos-container {
+        /* ===== COMBOS ADMIN ===== */
+        .combos-admin-section {
             background: linear-gradient(145deg, #f9f9f9, #f0f0f0);
-            padding: 15px;
-            border-radius: 12px;
-            margin: 15px 0;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
             border: 3px solid var(--dorado);
         }
         
-        .combo-item {
-            background: white;
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 2px solid var(--verde-medio);
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
+        .combos-admin-title {
+            color: var(--verde-oscuro);
+            font-size: 1.2em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
         }
         
-        .combo-item input {
+        .combo-admin-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 2px solid var(--verde-medio);
+        }
+        
+        .combo-admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .combo-admin-num {
+            background: var(--gradiente-dorado);
+            color: var(--verde-oscuro);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+        
+        .combo-admin-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        
+        .combo-admin-fields input {
             width: 100%;
             padding: 10px;
             border: 2px solid #ddd;
             border-radius: 8px;
+            font-size: 0.85em;
+        }
+        
+        .combos-admin-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .combos-admin-actions .btn {
+            flex: 1;
+            margin: 0;
+        }
+        
+        /* ===== BASE DE DATOS CLIENTES ===== */
+        .clientes-db-section {
+            background: linear-gradient(145deg, #f9f9f9, #f0f0f0);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border: 3px solid var(--dorado);
+        }
+        
+        .clientes-db-title {
+            color: var(--verde-oscuro);
+            font-size: 1.2em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .clientes-search {
+            margin-bottom: 15px;
+        }
+        
+        .clientes-search input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--verde-medio);
+            border-radius: 25px;
             font-size: 0.9em;
+        }
+        
+        .clientes-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .cliente-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            border: 2px solid #e0e0e0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .cliente-item:hover {
+            border-color: var(--dorado);
+            transform: translateX(5px);
+        }
+        
+        .cliente-info {
+            flex: 1;
+        }
+        
+        .cliente-nombre {
+            font-weight: 700;
+            color: var(--verde-oscuro);
+            font-size: 0.95em;
+        }
+        
+        .cliente-telefono {
+            color: #666;
+            font-size: 0.85em;
+        }
+        
+        .cliente-select-btn {
+            background: var(--gradiente-dorado);
+            color: var(--verde-oscuro);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.8em;
+            cursor: pointer;
         }
         
         .premios-form{
@@ -2221,6 +2584,29 @@
             border-radius: 10px;
             font-weight: 700;
             font-size: 0.9em;
+        }
+        
+        /* ===== BOTÓN CONTACTOS ===== */
+        .contactos-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(145deg, #4CAF50, #2e7d32);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+        
+        .contactos-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(76, 175, 80, 0.4);
         }
         
         .estado-options {
@@ -2574,8 +2960,9 @@
             .features { grid-template-columns: repeat(3, 1fr); }
             .social-grid { grid-template-columns: repeat(3, 1fr); }
             .sorteos-grid { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-            .combos-grid { grid-template-columns: repeat(4, 1fr); }
+            .combos-grid { grid-template-columns: repeat(3, 1fr); }
             .stats-grid { grid-template-columns: repeat(4, 1fr); }
+            .combo-admin-fields { grid-template-columns: 1fr 1fr 1fr; }
         }
         
         @media(max-width:480px){
@@ -2590,8 +2977,11 @@
             .feature-number { font-size: 1.5em; }
             .feature-text { font-size: 0.7em; }
             .premio-detalle-desc { font-size: 0.8em; }
-            .combos-grid { grid-template-columns: repeat(2, 1fr); }
+            .combos-grid { grid-template-columns: repeat(3, 1fr); }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .combo-admin-fields { grid-template-columns: 1fr; }
+            .combo-cantidad { font-size: 1.8em; }
+            .combo-texto { font-size: 0.75em; }
         }
     </style>
 </head>
@@ -2705,6 +3095,12 @@
                     <div id="gestionNumeros"></div>
                 </div>
                 <div class="gestion-body">
+                    <!-- BOTÓN DE CONTACTOS -->
+                    <button class="contactos-btn" onclick="abrirContactos()">
+                        <span>📱</span>
+                        <span>Buscar en Contactos</span>
+                    </button>
+                    
                     <div class="input-group">
                         <label>Nombre</label>
                         <input type="text" id="gestionNombre" placeholder="Nombre del cliente">
@@ -2802,7 +3198,7 @@
                 <p>¡Vuelve pronto!</p>
             </div>
             
-            <!-- COMBOS NEUROMARKETING -->
+            <!-- COMBOS NEUROMARKETING - SOLO 3 SIN PRECIOS -->
             <div class="combos-section">
                 <div class="combos-header">
                     <div class="combos-title">🎁 COMBOS ESPECIALES</div>
@@ -2811,24 +3207,16 @@
                 <div class="combos-grid">
                     <div class="combo-card">
                         <div class="combo-cantidad">3</div>
-                        <div class="combo-precio">$5.000</div>
-                        <div class="combo-ahorro">Ahorra $1.000</div>
-                    </div>
-                    <div class="combo-card">
-                        <div class="combo-cantidad">5</div>
-                        <div class="combo-precio">$8.000</div>
-                        <div class="combo-ahorro">Ahorra $2.000</div>
+                        <div class="combo-texto">números</div>
                     </div>
                     <div class="combo-card popular">
                         <div class="combo-badge">🔥 MÁS VENDIDO</div>
-                        <div class="combo-cantidad">10</div>
-                        <div class="combo-precio">$15.000</div>
-                        <div class="combo-ahorro">Ahorra $5.000</div>
+                        <div class="combo-cantidad">7</div>
+                        <div class="combo-texto">números</div>
                     </div>
                     <div class="combo-card">
-                        <div class="combo-cantidad">20</div>
-                        <div class="combo-precio">$28.000</div>
-                        <div class="combo-ahorro">Ahorra $12.000</div>
+                        <div class="combo-cantidad">10</div>
+                        <div class="combo-texto">números</div>
                     </div>
                 </div>
                 <div class="combos-footer">
@@ -2861,7 +3249,7 @@
                         <div class="paso-numero">3</div>
                         <div class="paso-content">
                             <div class="paso-titulo">Aprovecha los combos</div>
-                            <div class="paso-desc">Si llevas 3, 5, 10 o más números, el descuento se aplica automáticamente</div>
+                            <div class="paso-desc">Si llevas 3, 7 o 10 números, el descuento se aplica automáticamente</div>
                         </div>
                     </div>
                     <div class="paso">
@@ -3040,15 +3428,15 @@
                 <div class="social-title">📱 Síguenos en Redes</div>
                 <div class="social-grid">
                     <a href="https://chat.whatsapp.com/Hn8QhqoUUv0610x9dM6D67?mode=gi_t" class="social-btn whatsapp" target="_blank">
-                        <span class="social-icon">💬</span>
+                        <img src="https://i.imgur.com/hRV1Bs5.png" alt="WhatsApp" class="social-icon-img">
                         <span>WhatsApp</span>
                     </a>
                     <a href="https://www.facebook.com/share/1APUavLfoG/" class="social-btn facebook" target="_blank">
-                        <span class="social-icon">📘</span>
+                        <img src="https://i.imgur.com/e18424o.png" alt="Facebook" class="social-icon-img">
                         <span>Facebook</span>
                     </a>
                     <a href="https://www.instagram.com/ianstarcol?igsh=ZXhnNXZrMHpoYTg=" class="social-btn instagram" target="_blank">
-                        <span class="social-icon">📷</span>
+                        <img src="https://i.imgur.com/lIHOybr.png" alt="Instagram" class="social-icon-img">
                         <span>Instagram</span>
                     </a>
                 </div>
@@ -3066,6 +3454,32 @@
                     <span id="gameLottery"></span>
                     <span id="gameDate"></span>
                 </div>
+                
+                <!-- DISPONIBILIDAD EN GAME -->
+                <div class="game-disponibilidad" id="gameDisponibilidad">
+                    <div class="game-dispo-header">
+                        <span class="game-dispo-label">📊 Números disponibles</span>
+                        <span class="game-dispo-value" id="gameDispoValue">--/100</span>
+                    </div>
+                    <div class="game-dispo-stats">
+                        <div class="game-dispo-stat">
+                            <div class="game-dispo-stat-number" id="statLibres">--</div>
+                            <div>Libres</div>
+                        </div>
+                        <div class="game-dispo-stat">
+                            <div class="game-dispo-stat-number" id="statReservados">--</div>
+                            <div>Pendientes</div>
+                        </div>
+                        <div class="game-dispo-stat">
+                            <div class="game-dispo-stat-number" id="statPagados">--</div>
+                            <div>Pagados</div>
+                        </div>
+                    </div>
+                    <div class="game-dispo-bar">
+                        <div class="game-dispo-fill" id="gameDispoFill" style="width:0%"></div>
+                    </div>
+                </div>
+                
                 <div class="game-countdown">
                     <div>Cierra en:</div>
                     <div class="game-countdown-time" id="gameTimer">00:00:00</div>
@@ -3082,23 +3496,28 @@
                 <p class="blessed-subtitle">"Cada número es una semilla de fe"</p>
                 
                 <div id="listaPremios" class="blessed-list"></div>
-                
-                <div class="combos-blessed-section" id="combosBlessedSection" style="display:none;">
-                    <div class="combos-blessed-title">🍀 Combos de la Suerte</div>
-                    <div id="combosBlessedList"></div>
+            </div>
+            
+            <!-- COMBOS INFO NEUROMARKETING -->
+            <div class="combos-info-section" id="combosInfoSection">
+                <div class="combos-info-header">
+                    <div class="combos-info-title">
+                        <span class="fire">🔥</span>
+                        <span>COMBOS DISPONIBLES</span>
+                        <span class="fire">🔥</span>
+                    </div>
+                    <div class="combos-info-subtitle">¡Elige la cantidad y ahorra automáticamente!</div>
+                </div>
+                <div class="combos-list" id="combosList">
+                    <!-- Se llena dinámicamente -->
+                </div>
+                <div class="combos-aplicado" id="combosAplicado" style="display:none;">
+                    <div class="combos-aplicado-text">🎉 ¡Combo aplicado!</div>
+                    <div class="combos-aplicado-ahorro" id="combosAhorro"></div>
                 </div>
             </div>
             
-            <div class="numbers-container">
-                <div class="legend">
-                    <div class="legend-item"><div class="legend-box" style="background:#f0f0f0;border:2px solid #ddd"></div>Libre</div>
-                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #4CAF50, #2e7d32)"></div>Tu</div>
-                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #ff9800, #f57c00)"></div>Pend</div>
-                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #ff5252, #d32f2f)"></div>Pag</div>
-                </div>
-                <div class="numbers-grid" id="numbersGrid"></div>
-            </div>
-
+            <!-- CARRITO ARRIBA DE LA TABLA -->
             <div class="cart">
                 <h3>🛒 Tu Selección</h3>
                 <div class="selected-numbers" id="selectedList">
@@ -3107,7 +3526,6 @@
                 <div class="pricing" id="pricingInfo">
                     Precio: <span id="precioInd">$2.000</span>
                 </div>
-                <div id="combosAplicados" style="margin:10px 0;"></div>
                 <div class="total" id="totalPrice">$0</div>
                 <div class="combo-text" id="comboText"></div>
                 
@@ -3121,6 +3539,16 @@
                     🎰 Ver Otros Sorteos
                 </button>
             </div>
+            
+            <div class="numbers-container">
+                <div class="legend">
+                    <div class="legend-item"><div class="legend-box" style="background:#f0f0f0;border:2px solid #ddd"></div>Libre</div>
+                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #4CAF50, #2e7d32)"></div>Tu</div>
+                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #ff9800, #f57c00)"></div>Pend</div>
+                    <div class="legend-item"><div class="legend-box" style="background:linear-gradient(145deg, #ff5252, #d32f2f)"></div>Pag</div>
+                </div>
+                <div class="numbers-grid" id="numbersGrid"></div>
+            </div>
         </div>
 
         <div id="adminSection" class="section">
@@ -3133,6 +3561,8 @@
                 <div class="admin-tabs">
                     <button class="admin-tab active" onclick="showAdminTab('sorteos',this)">Sorteos</button>
                     <button class="admin-tab" onclick="showAdminTab('numeros',this)">Números</button>
+                    <button class="admin-tab" onclick="showAdminTab('combos',this)">🎁 Combos</button>
+                    <button class="admin-tab" onclick="showAdminTab('clientes',this)">👥 Clientes</button>
                     <button class="admin-tab" onclick="showAdminTab('dashboard',this)">📊 Estadísticas</button>
                 </div>
 
@@ -3220,6 +3650,41 @@
                     </div>
                 </div>
                 
+                <!-- ADMIN COMBOS -->
+                <div id="adminCombos" class="admin-section">
+                    <div class="combos-admin-section">
+                        <div class="combos-admin-title">🎁 Configurar Combos del Sorteo</div>
+                        <div class="form-group">
+                            <label>Seleccionar Sorteo:</label>
+                            <select id="selectSorteoCombos" onchange="cargarCombosSorteo()">
+                                <option value="">-- Seleccionar Sorteo --</option>
+                            </select>
+                        </div>
+                        <div id="combosConfigSection" style="display:none;">
+                            <div id="combosAdminList">
+                                <!-- Se llenan dinámicamente -->
+                            </div>
+                            <div class="combos-admin-actions">
+                                <button class="btn btn-success" onclick="guardarCombos()">💾 Guardar Combos</button>
+                                <button class="btn btn-danger" onclick="resetCombos()">🔄 Restablecer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- BASE DE DATOS CLIENTES -->
+                <div id="adminClientes" class="admin-section">
+                    <div class="clientes-db-section">
+                        <div class="clientes-db-title">👥 Base de Datos de Clientes</div>
+                        <div class="clientes-search">
+                            <input type="text" id="clientesSearchInput" placeholder="Buscar por nombre o teléfono..." oninput="filtrarClientes()">
+                        </div>
+                        <div class="clientes-list" id="clientesList">
+                            <!-- Se llena dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- DASHBOARD DE ESTADÍSTICAS -->
                 <div id="adminDashboard" class="admin-section">
                     <div class="dashboard-section">
@@ -3271,15 +3736,15 @@
             
             <div class="social-grid" style="margin-bottom:20px;">
                 <a href="https://chat.whatsapp.com/Hn8QhqoUUv0610x9dM6D67?mode=gi_t" class="social-btn whatsapp" target="_blank">
-                    <span class="social-icon">💬</span>
+                    <img src="https://i.imgur.com/hRV1Bs5.png" alt="WhatsApp" class="social-icon-img">
                     <span>Unirse</span>
                 </a>
                 <a href="https://www.facebook.com/share/1APUavLfoG/" class="social-btn facebook" target="_blank">
-                    <span class="social-icon">📘</span>
+                    <img src="https://i.imgur.com/e18424o.png" alt="Facebook" class="social-icon-img">
                     <span>Facebook</span>
                 </a>
                 <a href="https://www.instagram.com/ianstarcol?igsh=ZXhnNXZrMHpoYTg=" class="social-btn instagram" target="_blank">
-                    <span class="social-icon">📷</span>
+                    <img src="https://i.imgur.com/lIHOybr.png" alt="Instagram" class="social-icon-img">
                     <span>Instagram</span>
                 </a>
             </div>
@@ -3325,6 +3790,15 @@
 
         let adminFilter = 'todos';
         let adminSearchTerm = '';
+        
+        // Base de datos de clientes
+        let clientesDB = [];
+        
+        // Combos por sorteo (hasta 5)
+        let combosSorteo = {};
+        
+        // Suscripciones a disponibilidad de sorteos
+        let sorteosListeners = {};
 
         function initParticles() {
             const container = document.getElementById('particles');
@@ -3377,11 +3851,99 @@
                 const data=snapshot.val();
                 sorteos=data?Object.keys(data).map(key=>({id:key,...data[key]})):[];
                 renderSorteos();
+                setupSorteosRealtimeListeners();
                 if(document.getElementById('adminSection').classList.contains('active')){
                     renderAdminSorteos();
                     updateSelect();
+                    updateSelectCombos();
                 }
                 showLoading(false);
+            });
+        }
+        
+        // ===== SUSCRIBIRSE A DISPONIBILIDAD EN TIEMPO REAL DE TODOS LOS SORTEOS =====
+        function setupSorteosRealtimeListeners() {
+            // Limpiar listeners anteriores
+            Object.values(sorteosListeners).forEach(unsubscribe => unsubscribe && unsubscribe());
+            sorteosListeners = {};
+            
+            const now = new Date();
+            const active = sorteos.filter(s => new Date(s.date) > now);
+            
+            active.forEach(s => {
+                // Escuchar cambios en occupied y pending para cada sorteo activo
+                const occupiedRef = database.ref('occupied/' + s.id);
+                const pendingRef = database.ref('pending/' + s.id);
+                
+                const updateDisponibilidad = () => {
+                    Promise.all([
+                        occupiedRef.once('value'),
+                        pendingRef.once('value')
+                    ]).then(([occupiedSnap, pendingSnap]) => {
+                        const occupiedData = occupiedSnap.val() || {};
+                        const pendingData = pendingSnap.val() || {};
+                        const pagados = Object.keys(occupiedData).length;
+                        const reservados = Object.keys(pendingData).length;
+                        const disponibles = 100 - pagados - reservados;
+                        
+                        // Actualizar en Firebase
+                        database.ref('sorteos/' + s.id + '/disponibles').set(disponibles);
+                        
+                        // Actualizar en la UI si estamos en la página principal
+                        if(document.getElementById('homeSection').classList.contains('active')) {
+                            actualizarDisponibilidadSorteoUI(s.id, disponibles);
+                        }
+                    });
+                };
+                
+                // Suscribirse a cambios
+                occupiedRef.on('value', updateDisponibilidad);
+                pendingRef.on('value', updateDisponibilidad);
+                
+                sorteosListeners[s.id] = () => {
+                    occupiedRef.off('value', updateDisponibilidad);
+                    pendingRef.off('value', updateDisponibilidad);
+                };
+            });
+        }
+        
+        // ===== ACTUALIZAR UI DE DISPONIBILIDAD EN TIEMPO REAL =====
+        function actualizarDisponibilidadSorteoUI(sorteoId, disponibles) {
+            const card = document.querySelector(`[data-sorteo-id="${sorteoId}"]`);
+            if(!card) return;
+            
+            const porcentaje = (disponibles / 100) * 100;
+            const claseDispo = porcentaje > 50 ? 'alto' : porcentaje > 20 ? 'medio' : 'bajo';
+            const claseTexto = porcentaje <= 20 ? 'bajo' : porcentaje > 50 ? 'alto' : 'medio';
+            
+            const valueEl = card.querySelector('.dispo-value');
+            const fillEl = card.querySelector('.dispo-fill');
+            
+            if(valueEl) {
+                valueEl.textContent = `${disponibles}/100`;
+                valueEl.className = 'dispo-value ' + claseTexto;
+            }
+            if(fillEl) {
+                fillEl.style.width = `${porcentaje}%`;
+                fillEl.className = 'dispo-fill ' + claseDispo;
+            }
+        }
+        
+        // Cargar base de datos de clientes
+        function loadClientesDB() {
+            database.ref('clientesDB').on('value', (snapshot) => {
+                const data = snapshot.val() || {};
+                clientesDB = Object.values(data);
+                if(document.getElementById('adminClientes').classList.contains('active')){
+                    renderClientesDB();
+                }
+            });
+        }
+        
+        // Cargar combos
+        function loadCombos() {
+            database.ref('combos').on('value', (snapshot) => {
+                combosSorteo = snapshot.val() || {};
             });
         }
 
@@ -3402,7 +3964,9 @@
                 showSection('adminSection');
                 renderAdminSorteos();
                 updateSelect();
+                updateSelectCombos();
                 actualizarDashboard();
+                loadClientesDB();
             }else{
                 document.getElementById('pwdError').style.display='block';
             }
@@ -3423,6 +3987,7 @@
             clearInterval(timerInterval);
             showSection('homeSection');
             renderSorteos();
+            setupSorteosRealtimeListeners();
             document.getElementById('scarcityBar').style.display = 'none';
         }
         
@@ -3436,6 +4001,8 @@
             btn.classList.add('active');
             document.getElementById('admin'+tab.charAt(0).toUpperCase()+tab.slice(1)).classList.add('active');
             if(tab === 'numeros') updateSelect();
+            if(tab === 'combos') updateSelectCombos();
+            if(tab === 'clientes') renderClientesDB();
             if(tab === 'dashboard') actualizarDashboard();
         }
 
@@ -3460,6 +4027,7 @@
                 
                 const card=document.createElement('div');
                 card.className='sorteo-card';
+                card.setAttribute('data-sorteo-id', s.id);
                 if(hours<6)card.classList.add('urgent');
                 
                 // Badge de urgencia si quedan menos de 6 horas
@@ -3468,11 +4036,26 @@
                     urgencyBadge = `<div class="sorteo-urgency-badge">⏰ CIERRA PRONTO</div>`;
                 }
                 
+                // Calcular disponibilidad
+                const disponibles = s.disponibles !== undefined ? s.disponibles : 100;
+                const porcentaje = (disponibles / 100) * 100;
+                const claseDispo = porcentaje > 50 ? 'alto' : porcentaje > 20 ? 'medio' : 'bajo';
+                const claseTexto = porcentaje <= 20 ? 'bajo' : porcentaje > 50 ? 'alto' : 'medio';
+                
                 const premiosHtml=`
                     <div class="premios-box">
                         <h4>🏆 Premios</h4>
                         <div class="premio-item premio-mayor"><span>Mayor:</span><span>$${parseInt(s.premioMayor).toLocaleString()}</span></div>
                         <div class="premio-item"><span>Secos:</span><span>$${parseInt(s.premioSeco1).toLocaleString()}</span></div>
+                    </div>
+                    <div class="sorteo-disponibilidad">
+                        <div class="dispo-header">
+                            <span class="dispo-label">📊 Disponibles</span>
+                            <span class="dispo-value ${claseTexto}">${disponibles}/100</span>
+                        </div>
+                        <div class="dispo-bar">
+                            <div class="dispo-fill ${claseDispo}" style="width:${porcentaje}%"></div>
+                        </div>
                     </div>
                     <div class="precios-box">
                         <div class="precio-individual">Número: $${parseInt(s.precioNumero).toLocaleString()}</div>
@@ -3515,18 +4098,19 @@
             
             selected=[];
             
+            // Suscribirse a cambios en tiempo real
             database.ref('occupied/'+id).on('value',(snapshot)=>{
                 occupied=snapshot.val()||{};
                 renderGrid();
                 updateCart();
-                updateScarcityBar();
+                updateGameDisponibilidad();
             });
             
             database.ref('pending/'+id).on('value',(snapshot)=>{
                 pending=snapshot.val()||{};
                 renderGrid();
                 updateCart();
-                updateScarcityBar();
+                updateGameDisponibilidad();
             });
             
             database.ref('clients/'+id).on('value',(snapshot)=>{
@@ -3560,6 +4144,9 @@
             
             document.getElementById('precioInd').textContent='$'+parseInt(currentSorteo.precioNumero).toLocaleString();
             
+            // Cargar y mostrar combos
+            cargarCombosCliente();
+            
             updateCart();
             showSection('gameSection');
             document.getElementById('scarcityBar').style.display = 'block';
@@ -3578,6 +4165,38 @@
                 const s=Math.floor((diff%(1000*60))/1000);
                 el.textContent=`${h.toString().padStart(2,'0')}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
             },1000);
+        }
+        
+        // ===== ACTUALIZAR DISPONIBILIDAD EN TIEMPO REAL EN GAME =====
+        function updateGameDisponibilidad() {
+            const total = 100;
+            const pagados = Object.keys(occupied).length;
+            const reservados = Object.keys(pending).length;
+            const disponibles = total - pagados - reservados;
+            const porcentaje = (disponibles / total) * 100;
+            
+            // Actualizar texto principal
+            const valueEl = document.getElementById('gameDispoValue');
+            valueEl.textContent = `${disponibles}/100`;
+            
+            // Actualizar estadísticas
+            document.getElementById('statLibres').textContent = disponibles;
+            document.getElementById('statReservados').textContent = reservados;
+            document.getElementById('statPagados').textContent = pagados;
+            
+            // Actualizar clase del valor
+            valueEl.className = 'game-dispo-value';
+            if(porcentaje > 50) valueEl.classList.add('alto');
+            else if(porcentaje > 20) valueEl.classList.add('medio');
+            else valueEl.classList.add('bajo');
+            
+            // Actualizar barra
+            const fill = document.getElementById('gameDispoFill');
+            fill.style.width = `${porcentaje}%`;
+            fill.className = 'game-dispo-fill';
+            if(porcentaje > 50) fill.classList.add('alto');
+            else if(porcentaje > 20) fill.classList.add('medio');
+            else fill.classList.add('bajo');
         }
 
         function updateScarcityBar() {
@@ -3657,17 +4276,125 @@
             updateCart();
             renderGrid();
         }
+        
+        // ===== CARGAR COMBOS PARA EL CLIENTE =====
+        function cargarCombosCliente() {
+            const container = document.getElementById('combosList');
+            const combosAplicado = document.getElementById('combosAplicado');
+            const combosAhorro = document.getElementById('combosAhorro');
+            
+            if(!currentSorteo) return;
+            
+            // Obtener combos del sorteo o usar defaults
+            const combos = combosSorteo[currentSorteo.id] || [
+                {nombre: 'Combo 3', cantidad: 3, precio: 0},
+                {nombre: 'Combo 7', cantidad: 7, precio: 0},
+                {nombre: 'Combo 10', cantidad: 10, precio: 0}
+            ];
+            
+            // Filtrar solo combos configurados (precio > 0)
+            const combosActivos = combos.filter(c => c.precio > 0 && c.cantidad > 0);
+            
+            if(combosActivos.length === 0) {
+                document.getElementById('combosInfoSection').style.display = 'none';
+                return;
+            }
+            
+            document.getElementById('combosInfoSection').style.display = 'block';
+            
+            // Ordenar por cantidad
+            combosActivos.sort((a, b) => a.cantidad - b.cantidad);
+            
+            container.innerHTML = '';
+            combosActivos.forEach((combo, index) => {
+                const item = document.createElement('div');
+                item.className = 'combo-info-item';
+                item.id = `combo-item-${combo.cantidad}`;
+                
+                item.innerHTML = `
+                    <div class="combo-info-left">
+                        <div class="combo-info-cantidad">${combo.cantidad}</div>
+                        <div class="combo-info-text">${combo.nombre}</div>
+                    </div>
+                    <div class="combo-info-precio">$${parseInt(combo.precio).toLocaleString()}</div>
+                `;
+                
+                container.appendChild(item);
+            });
+        }
+        
+        // ===== CALCULAR MEJOR COMBO =====
+        function calcularMejorCombo(cantidad, precioUnitario) {
+            if(!currentSorteo) return { total: cantidad * precioUnitario, ahorro: 0, combo: null };
+            
+            const combos = combosSorteo[currentSorteo.id] || [];
+            const combosActivos = combos.filter(c => c.precio > 0 && c.cantidad > 0);
+            
+            if(combosActivos.length === 0) {
+                return { total: cantidad * precioUnitario, ahorro: 0, combo: null };
+            }
+            
+            // Precio normal
+            const precioNormal = cantidad * precioUnitario;
+            
+            // Buscar el mejor combo que se ajuste
+            let mejorCombo = null;
+            let mejorPrecio = precioNormal;
+            let mejorAhorro = 0;
+            
+            // Ordenar combos por cantidad descendente para priorizar combos grandes
+            const combosOrdenados = [...combosActivos].sort((a, b) => b.cantidad - a.cantidad);
+            
+            // Intentar aplicar combos múltiples
+            let numerosRestantes = cantidad;
+            let precioConCombos = 0;
+            let combosAplicados = [];
+            
+            for(let combo of combosOrdenados) {
+                while(numerosRestantes >= combo.cantidad) {
+                    precioConCombos += parseInt(combo.precio);
+                    numerosRestantes -= combo.cantidad;
+                    combosAplicados.push(combo);
+                }
+            }
+            
+            // Sumar números restantes al precio normal
+            precioConCombos += numerosRestantes * precioUnitario;
+            
+            const ahorro = precioNormal - precioConCombos;
+            
+            if(ahorro > 0 && precioConCombos < mejorPrecio) {
+                mejorPrecio = precioConCombos;
+                mejorAhorro = ahorro;
+                mejorCombo = combosAplicados;
+            }
+            
+            // Si no hay ahorro, retornar precio normal
+            if(mejorAhorro <= 0) {
+                return { total: precioNormal, ahorro: 0, combo: null };
+            }
+            
+            return { total: mejorPrecio, ahorro: mejorAhorro, combo: mejorCombo };
+        }
 
         function updateCart(){
             const list=document.getElementById('selectedList');
             const totalEl=document.getElementById('totalPrice');
             const btn=document.getElementById('waBtn');
             const precioNum=parseInt(currentSorteo.precioNumero);
+            const comboText = document.getElementById('comboText');
+            
+            // Resetear estilos de combos
+            document.querySelectorAll('.combo-info-item').forEach(item => {
+                item.classList.remove('best');
+            });
+            document.getElementById('combosAplicado').style.display = 'none';
             
             if(selected.length===0){
                 list.innerHTML='<span style="color:#999;width:100%;text-align:center">Toca los números</span>';
                 totalEl.textContent='$0';
                 btn.disabled=true;
+                comboText.textContent = '';
                 return;
             }
             
@@ -3679,9 +4406,30 @@
                 list.appendChild(tag);
             });
             
-            const total = selected.length * precioNum;
-            totalEl.textContent='$'+total.toLocaleString();
+            // Calcular con el mejor combo
+            const resultado = calcularMejorCombo(selected.length, precioNum);
+            
+            totalEl.textContent='$'+resultado.total.toLocaleString();
             btn.disabled=false;
+            
+            // Mostrar info de combo aplicado
+            if(resultado.combo && resultado.ahorro > 0) {
+                comboText.textContent = `¡Ahorras $${resultado.ahorro.toLocaleString()}!`;
+                
+                // Resaltar combos aplicados
+                if(Array.isArray(resultado.combo)) {
+                    resultado.combo.forEach(c => {
+                        const item = document.getElementById(`combo-item-${c.cantidad}`);
+                        if(item) item.classList.add('best');
+                    });
+                }
+                
+                // Mostrar banner de ahorro
+                document.getElementById('combosAplicado').style.display = 'block';
+                document.getElementById('combosAhorro').textContent = `Estás ahorrando $${resultado.ahorro.toLocaleString()}`;
+            } else {
+                comboText.textContent = '';
+            }
         }
 
         function removeNum(num){
@@ -3695,9 +4443,11 @@
 
         function abrirConfirmModal() {
             if(selected.length===0) return;
-            const total = selected.length * parseInt(currentSorteo.precioNumero);
+            const precioNum = parseInt(currentSorteo.precioNumero);
+            const resultado = calcularMejorCombo(selected.length, precioNum);
+            
             document.getElementById('confirmNumbersList').textContent = selected.join(', ');
-            document.getElementById('confirmTotal').textContent = 'Total: $' + total.toLocaleString();
+            document.getElementById('confirmTotal').textContent = 'Total: $' + resultado.total.toLocaleString();
             document.getElementById('confirmNombre').value = '';
             document.getElementById('confirmTelefono').value = '';
             document.getElementById('confirmModal').classList.add('active');
@@ -3714,7 +4464,9 @@
             if(!nombre){alert('Ingresa tu nombre');return;}
             if(!telefono){alert('Ingresa tu teléfono');return;}
             
-            const total = selected.length * parseInt(currentSorteo.precioNumero);
+            const precioNum = parseInt(currentSorteo.precioNumero);
+            const resultado = calcularMejorCombo(selected.length, precioNum);
+            
             showLoading(true);
             
             const updates = {};
@@ -3722,6 +4474,10 @@
                 updates['pending/'+currentSorteo.id+'/'+num] = {nombre, telefono, timestamp: Date.now()};
                 updates['clients/'+currentSorteo.id+'/'+num] = {nombre, telefono};
             });
+            
+            // Guardar en base de datos de clientes
+            const clienteKey = telefono.replace(/\D/g, '');
+            updates['clientesDB/' + clienteKey] = {nombre, telefono, ultimaCompra: Date.now()};
             
             database.ref().update(updates).then(()=>{
                 showLoading(false);
@@ -3731,8 +4487,11 @@
                 msg+=`Mi nombre: ${nombre}\n`;
                 msg+=`Mi teléfono: ${telefono}\n\n`;
                 msg+=`Números: ${selected.join(', ')}\n`;
-                msg+=`Total: $${total.toLocaleString()}\n\n`;
-                msg+=`¿Cómo pago?`;
+                msg+=`Total: $${resultado.total.toLocaleString()}\n`;
+                if(resultado.ahorro > 0) {
+                    msg+=`¡Ahorré: $${resultado.ahorro.toLocaleString()}!\n`;
+                }
+                msg+=`\n¿Cómo pago?`;
                 
                 window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`,'_blank');
                 selected=[];
@@ -3784,6 +4543,7 @@
             
             const newSorteo={
                 name, lottery, date, precioNumero, premioMayor, premioSeco1, premioSeco2, premioSeco3,
+                disponibles: 100,
                 created:Date.now()
             };
             
@@ -3856,6 +4616,7 @@
             updates['occupied/'+id]=null;
             updates['pending/'+id]=null;
             updates['clients/'+id]=null;
+            updates['combos/'+id]=null;
             
             database.ref().update(updates).then(()=>showLoading(false))
             .catch(err=>{showLoading(false);alert('Error: '+err.message);});
@@ -3870,6 +4631,19 @@
                 const opt=document.createElement('option');
                 opt.value=s.id;
                 opt.textContent=s.name;
+                sel.appendChild(opt);
+            });
+        }
+        
+        function updateSelectCombos() {
+            const sel = document.getElementById('selectSorteoCombos');
+            sel.innerHTML = '<option value="">-- Seleccionar Sorteo --</option>';
+            const now = new Date();
+            const active = sorteos.filter(s => new Date(s.date) > now).sort((a, b) => new Date(a.date) - new Date(b.date));
+            active.forEach(s => {
+                const opt = document.createElement('option');
+                opt.value = s.id;
+                opt.textContent = s.name;
                 sel.appendChild(opt);
             });
         }
@@ -4019,6 +4793,81 @@
         function cerrarGestionModal() {
             document.getElementById('gestionModal').classList.remove('active');
         }
+        
+        // ===== ABRIR CONTACTOS =====
+        function abrirContactos() {
+            // Usar la API de Contact Picker si está disponible
+            if ('contacts' in navigator && 'ContactsManager' in window) {
+                navigator.contacts.select(['name', 'tel'], {multiple: false})
+                    .then(contactos => {
+                        if(contactos.length > 0) {
+                            const contacto = contactos[0];
+                            const nombre = contacto.name && contacto.name[0] ? contacto.name[0] : '';
+                            const telefono = contacto.tel && contacto.tel[0] ? contacto.tel[0].replace(/\D/g, '') : '';
+                            
+                            document.getElementById('gestionNombre').value = nombre;
+                            document.getElementById('gestionTelefono').value = telefono;
+                        }
+                    })
+                    .catch(err => {
+                        console.log('Error al acceder a contactos:', err);
+                        // Fallback: mostrar base de datos de clientes
+                        mostrarSelectorClientes();
+                    });
+            } else {
+                // Fallback para navegadores sin soporte
+                mostrarSelectorClientes();
+            }
+        }
+        
+        function mostrarSelectorClientes() {
+            // Crear modal temporal con la lista de clientes
+            const modal = document.createElement('div');
+            modal.className = 'modal active';
+            modal.innerHTML = `
+                <div class="modal-content" style="max-height:80vh;overflow-y:auto;">
+                    <h3>👥 Seleccionar Cliente</h3>
+                    <div class="clientes-search" style="margin:15px 0;">
+                        <input type="text" id="modalClientesSearch" placeholder="Buscar..." style="width:100%;padding:10px;border:2px solid var(--verde-medio);border-radius:25px;">
+                    </div>
+                    <div id="modalClientesList" style="max-height:50vh;overflow-y:auto;"></div>
+                    <button class="btn btn-danger" onclick="this.closest('.modal').remove()" style="margin-top:15px;">Cerrar</button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+            
+            const renderLista = () => {
+                const search = document.getElementById('modalClientesSearch').value.toLowerCase();
+                const lista = document.getElementById('modalClientesList');
+                const filtrados = clientesDB.filter(c => 
+                    c.nombre.toLowerCase().includes(search) || 
+                    c.telefono.includes(search)
+                );
+                
+                if(filtrados.length === 0) {
+                    lista.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">No hay clientes registrados</p>';
+                    return;
+                }
+                
+                lista.innerHTML = filtrados.map(c => `
+                    <div class="cliente-item" onclick="seleccionarClienteDB('${c.nombre}', '${c.telefono}');this.closest('.modal').remove();">
+                        <div class="cliente-info">
+                            <div class="cliente-nombre">${c.nombre}</div>
+                            <div class="cliente-telefono">${c.telefono}</div>
+                        </div>
+                        <button class="cliente-select-btn">Seleccionar</button>
+                    </div>
+                `).join('');
+            };
+            
+            document.getElementById('modalClientesSearch').addEventListener('input', renderLista);
+            renderLista();
+        }
+        
+        function seleccionarClienteDB(nombre, telefono) {
+            document.getElementById('gestionNombre').value = nombre;
+            document.getElementById('gestionTelefono').value = telefono;
+        }
 
         function seleccionarEstado(estado) {
             document.querySelectorAll('.estado-option').forEach(opt => opt.classList.remove('selected'));
@@ -4056,6 +4905,12 @@
                 }
             });
             
+            // Guardar en base de datos de clientes
+            if(estado !== 'disponible' && telefono) {
+                const clienteKey = telefono.replace(/\D/g, '');
+                updates['clientesDB/' + clienteKey] = {nombre, telefono, ultimaCompra: Date.now()};
+            }
+            
             database.ref().update(updates).then(() => {
                 showLoading(false);
                 adminSelected = [];
@@ -4066,6 +4921,115 @@
                 showLoading(false);
                 alert('Error: ' + err.message);
             });
+        }
+        
+        // ===== ADMIN COMBOS =====
+        function cargarCombosSorteo() {
+            const sorteoId = document.getElementById('selectSorteoCombos').value;
+            const section = document.getElementById('combosConfigSection');
+            
+            if(!sorteoId) {
+                section.style.display = 'none';
+                return;
+            }
+            
+            const sorteo = sorteos.find(s => s.id === sorteoId);
+            if(!sorteo) return;
+            
+            const container = document.getElementById('combosAdminList');
+            const combos = combosSorteo[sorteoId] || [
+                {nombre: 'Combo 3', cantidad: 3, precio: 0},
+                {nombre: 'Combo 7', cantidad: 7, precio: 0},
+                {nombre: 'Combo 10', cantidad: 10, precio: 0},
+                {nombre: '', cantidad: 0, precio: 0},
+                {nombre: '', cantidad: 0, precio: 0}
+            ];
+            
+            container.innerHTML = '';
+            for(let i = 0; i < 5; i++) {
+                const combo = combos[i] || {nombre: '', cantidad: 0, precio: 0};
+                const item = document.createElement('div');
+                item.className = 'combo-admin-item';
+                item.innerHTML = `
+                    <div class="combo-admin-header">
+                        <div class="combo-admin-num">${i + 1}</div>
+                        <span style="color:#666;font-size:0.85em;">Combo ${i + 1}</span>
+                    </div>
+                    <div class="combo-admin-fields">
+                        <input type="text" class="combo-nombre-${i}" placeholder="Nombre (ej: Combo 3)" value="${combo.nombre}">
+                        <input type="number" class="combo-cantidad-${i}" placeholder="Cantidad de números" value="${combo.cantidad || ''}">
+                        <input type="number" class="combo-precio-${i}" placeholder="Precio del combo ($)" value="${combo.precio || ''}">
+                    </div>
+                `;
+                container.appendChild(item);
+            }
+            
+            section.style.display = 'block';
+        }
+        
+        function guardarCombos() {
+            const sorteoId = document.getElementById('selectSorteoCombos').value;
+            if(!sorteoId) return;
+            
+            const combos = [];
+            for(let i = 0; i < 5; i++) {
+                const nombre = document.querySelector(`.combo-nombre-${i}`).value.trim();
+                const cantidad = parseInt(document.querySelector(`.combo-cantidad-${i}`).value) || 0;
+                const precio = parseInt(document.querySelector(`.combo-precio-${i}`).value) || 0;
+                
+                if(nombre && cantidad > 0 && precio > 0) {
+                    combos.push({nombre, cantidad, precio});
+                }
+            }
+            
+            showLoading(true);
+            database.ref('combos/' + sorteoId).set(combos).then(() => {
+                showLoading(false);
+                alert('Combos guardados correctamente');
+                combosSorteo[sorteoId] = combos;
+            }).catch(err => {
+                showLoading(false);
+                alert('Error: ' + err.message);
+            });
+        }
+        
+        function resetCombos() {
+            if(confirm('¿Restablecer todos los combos?')) {
+                for(let i = 0; i < 5; i++) {
+                    document.querySelector(`.combo-nombre-${i}`).value = '';
+                    document.querySelector(`.combo-cantidad-${i}`).value = '';
+                    document.querySelector(`.combo-precio-${i}`).value = '';
+                }
+            }
+        }
+        
+        // ===== BASE DE DATOS CLIENTES =====
+        function renderClientesDB() {
+            const container = document.getElementById('clientesList');
+            const search = document.getElementById('clientesSearchInput').value.toLowerCase();
+            
+            const filtrados = clientesDB.filter(c => 
+                c.nombre.toLowerCase().includes(search) || 
+                c.telefono.includes(search)
+            );
+            
+            if(filtrados.length === 0) {
+                container.innerHTML = '<p style="text-align:center;color:#999;padding:20px;">No hay clientes registrados</p>';
+                return;
+            }
+            
+            container.innerHTML = filtrados.map(c => `
+                <div class="cliente-item">
+                    <div class="cliente-info">
+                        <div class="cliente-nombre">${c.nombre}</div>
+                        <div class="cliente-telefono">${c.telefono}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function filtrarClientes() {
+            renderClientesDB();
         }
 
         // ===== DASHBOARD DE ESTADÍSTICAS =====
@@ -4112,6 +5076,10 @@
                 Object.keys(pendingData).forEach(num => {
                     numeroConteo[num] = (numeroConteo[num] || 0) + 1;
                 });
+                
+                // Actualizar disponibles en el sorteo
+                const disponibles = 100 - vendidos;
+                database.ref('sorteos/' + sorteo.id + '/disponibles').set(disponibles);
             }
             
             // Actualizar tarjetas
@@ -4202,6 +5170,7 @@
         initParticles();
         updateBuyersCount();
         loadSorteosFromFirebase();
+        loadCombos();
     </script>
 </body>
 </html>
