@@ -3443,6 +3443,11 @@
                 grid-template-columns: 1fr;
             }
         }    
+        
+        .contactos-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
     </style>
 </head>
 <body>
@@ -3563,11 +3568,10 @@
                     <div id="gestionNumeros"></div>
                 </div>
                 <div class="gestion-body">
-                    <button class="contactos-btn" onclick="abrirContactos()">
-                        <span>📱</span>
-                        <span>Buscar en Contactos</span>
-                    </button>
-                    
+       <button class="contactos-btn" onclick="abrirContactos()">
+    <span>📱</span>
+    <span id="contactosBtnText">Buscar en Contactos</span>
+</button>                 
                     <div class="input-group">
                         <label>Nombre</label>
                         <input type="text" id="gestionNombre" placeholder="Nombre del cliente">
@@ -3978,7 +3982,7 @@
                     <div class="combos-info-title">
                         <span class="fire">🔥</span>
                         <span>COMBOS DISPONIBLES</span>
-                        <span class="fire">🔥</span>
+                        <span class="fire">??</span>
                     </div>
                     <div class="combos-info-subtitle">¡Elige la cantidad y ahorra automáticamente!</div>
                 </div>
@@ -5338,13 +5342,46 @@
             });
         }
 
-        function abrirContactos(){
-            document.getElementById('adminClientes').classList.add('active');
-            document.getElementById('adminNumeros').classList.remove('active');
-            document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
-            document.querySelector('.admin-tab:nth-child(4)').classList.add('active');
-            renderClientesDB();
-        }
+function abrirContactos(){
+    // Verificar si el navegador soporta Contact Picker API
+    if ('contacts' in navigator && 'ContactsManager' in window) {
+        // Usar Contact Picker API
+        const props = ['name', 'tel'];
+        const opts = {multiple: false};
+        
+        navigator.contacts.select(props, opts)
+            .then((contacts) => {
+                if (contacts.length > 0) {
+                    const contact = contacts[0];
+                    // Rellenar campos del modal de gestión
+                    const nombre = contact.name && contact.name[0] ? contact.name[0] : '';
+                    const telefono = contact.tel && contact.tel[0] ? contact.tel[0] : '';
+                    
+                    document.getElementById('gestionNombre').value = nombre;
+                    document.getElementById('gestionTelefono').value = telefono;
+                    
+                    showNotification('✅ Contacto importado correctamente');
+                }
+            })
+            .catch((err) => {
+                console.error('Error al seleccionar contacto:', err);
+                // Fallback: abrir base de datos interna
+                abrirBaseDatosClientes();
+            });
+    } else {
+        // Fallback: navegador no soporta API, abrir base de datos interna
+        abrirBaseDatosClientes();
+    }
+}
+
+// Función separada para el fallback (tu lógica actual)
+function abrirBaseDatosClientes(){
+    document.getElementById('adminClientes').classList.add('active');
+    document.getElementById('adminNumeros').classList.remove('active');
+    document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelector('.admin-tab:nth-child(4)').classList.add('active');
+    renderClientesDB();
+}
 
         function renderClientesDB(){
             const container=document.getElementById('clientesList');
@@ -5597,6 +5634,15 @@
             loadSorteosFromFirebase();
             loadCombos();
         };
+        
+        // Detectar soporte de Contact Picker y actualizar UI
+if (!('contacts' in navigator && 'ContactsManager' in window)) {
+    // Si no hay soporte, cambiar texto del botón
+    const btnText = document.getElementById('contactosBtnText');
+    if (btnText) {
+        btnText.textContent = 'Buscar en Clientes';
+    }
+}
     </script>
 </body>
 </html>
