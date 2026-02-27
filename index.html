@@ -3662,12 +3662,17 @@
                 <h1>🎲 Sorteos Activos</h1>
                 <p>¡Toca un sorteo para participar y ganar!</p>
             </div>
-            
-            <div id="sorteosList" class="sorteos-grid"></div>
-            <div id="noSorteos" style="text-align:center;color:#fff;padding:40px;display:none">
-                <h3>No hay sorteos activos</h3>
-                <p>¡Vuelve pronto!</p>
-            </div>
+
+<div id="sorteosList" class="sorteos-grid">
+    <div style="text-align:center;color:var(--gold-400);padding:40px;">
+        <div class="spinner-container" style="margin:0 auto 20px;width:50px;height:50px;">
+            <div class="spinner"></div>
+            <div class="spinner-inner"></div>
+        </div>
+        <p>Cargando sorteos...</p>
+    </div>
+</div>
+
             
             <div class="combos-section">
                 <div class="combos-header">
@@ -5628,12 +5633,12 @@ function abrirBaseDatosClientes(){
                 });
             });
         }
-
-        window.onload=function(){
-            initParticles();
-            loadSorteosFromFirebase();
-            loadCombos();
-        };
+        
+document.addEventListener('DOMContentLoaded', function() {
+    initParticles();
+    loadSorteosFromFirebase();
+    loadCombos();
+});
         
         // Detectar soporte de Contact Picker y actualizar UI
 if (!('contacts' in navigator && 'ContactsManager' in window)) {
