@@ -4150,6 +4150,14 @@
                 <div id="adminClientes" class="admin-section">
                     <div class="clientes-db-section">
                         <div class="clientes-db-title">👥 Base de Datos de Clientes</div>
+                        <div style="background:rgba(0,0,0,.2);padding:16px;border-radius:14px;margin-bottom:16px;border:1px solid rgba(251,191,36,.3)">
+                            <div style="color:var(--gold-400);font-weight:800;font-size:.9em;margin-bottom:12px">➕ Agregar Cliente</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+                                <input type="text" id="newClienteNombre" placeholder="Nombre completo" style="padding:12px;border:2px solid rgba(251,191,36,.25);border-radius:14px;font-size:.88em;background:rgba(0,0,0,.2);color:#fff;width:100%">
+                                <input type="tel" id="newClienteTelefono" placeholder="Teléfono (sin +57)" style="padding:12px;border:2px solid rgba(251,191,36,.25);border-radius:14px;font-size:.88em;background:rgba(0,0,0,.2);color:#fff;width:100%">
+                            </div>
+                            <button class="btn btn-success" onclick="agregarClienteManual()" style="width:100%;margin:0">💾 Guardar Cliente</button>
+                        </div>
                         <div class="clientes-search">
                             <input type="text" id="clientesSearchInput" placeholder="Buscar por nombre o teléfono..." oninput="filtrarClientes()">
                         </div>
@@ -4391,7 +4399,7 @@
         function loadClientesDB() {
             database.ref('clientesDB').on('value', (snapshot) => {
                 const data = snapshot.val() || {};
-                clientesDB = Object.values(data);
+                clientesDB = Object.entries(data).map(([k,v])=>({...v,_key:k}));
                 if(document.getElementById('adminClientes').classList.contains('active')){
                     renderClientesDB();
                 }
@@ -5406,17 +5414,74 @@ function abrirBaseDatosClientes(){
             filtered.sort((a,b)=>new Date(b.ultimaCompra||0)-new Date(a.ultimaCompra||0));
             
             filtered.forEach(c=>{
+                const key=c._key||'';
+                const n=(c.nombre||'').replace(/'/g,"\'");
+                const t=(c.telefono||'').replace(/'/g,"\'");
+                const nA=(c.nombre||'').replace(/"/g,'&quot;');
+                const tA=(c.telefono||'').replace(/"/g,'&quot;');
+                const fecha=c.ultimaCompra?' · '+new Date(c.ultimaCompra).toLocaleDateString('es-CO'):'';
                 const item=document.createElement('div');
                 item.className='cliente-item';
+                item.style.flexDirection='column';
+                item.style.alignItems='stretch';
+                item.style.cursor='default';
                 item.innerHTML=`
-                    <div class="cliente-info">
-                        <div class="cliente-nombre">${c.nombre||'Sin nombre'}</div>
-                        <div class="cliente-telefono">${c.telefono||'Sin teléfono'}</div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+                        <div class="cliente-info">
+                            <div class="cliente-nombre">${c.nombre||'Sin nombre'}</div>
+                            <div class="cliente-telefono">${c.telefono||'Sin teléfono'}${fecha}</div>
+                        </div>
+                        <div style="display:flex;gap:6px;flex-shrink:0">
+                            <button class="cliente-select-btn" onclick="seleccionarCliente('${n}','${t}')">Usar</button>
+                            <button style="background:linear-gradient(145deg,#059669,#065f46);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="toggleEditCliente('edcl-${key}')">✏️</button>
+                            <button style="background:linear-gradient(90deg,#ef4444,#dc2626);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="eliminarCliente('${key}','${n}')">🗑️</button>
+                        </div>
                     </div>
-                    <button class="cliente-select-btn" onclick="seleccionarCliente('${c.nombre||''}','${c.telefono||''}')">Seleccionar</button>
+                    <div id="edcl-${key}" style="display:none;margin-top:10px;background:rgba(245,158,11,.08);border:2px solid rgba(251,191,36,.4);border-radius:14px;padding:14px">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+                            <input type="text" id="ednom-${key}" placeholder="Nombre" value="${nA}" style="padding:10px;border:1px solid rgba(251,191,36,.3);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font-size:.85em;width:100%">
+                            <input type="tel" id="edtel-${key}" placeholder="Teléfono" value="${tA}" style="padding:10px;border:1px solid rgba(251,191,36,.3);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font-size:.85em;width:100%">
+                        </div>
+                        <div style="display:flex;gap:10px">
+                            <button class="btn btn-danger" style="flex:1;margin:0" onclick="toggleEditCliente('edcl-${key}')">Cancelar</button>
+                            <button class="btn btn-success" style="flex:1;margin:0" onclick="guardarEdicionCliente('${key}')">💾 Guardar</button>
+                        </div>
+                    </div>
                 `;
                 container.appendChild(item);
             });
+        }
+
+        function toggleEditCliente(id){
+            const el=document.getElementById(id);
+            if(el) el.style.display=el.style.display==='none'?'block':'none';
+        }
+        function guardarEdicionCliente(key){
+            const nombre=document.getElementById('ednom-'+key)?.value.trim();
+            const telefono=document.getElementById('edtel-'+key)?.value.trim();
+            if(!nombre){alert('El nombre no puede estar vacío');return;}
+            showLoading(true);
+            database.ref('clientesDB/'+key).update({nombre,telefono:telefono||'',ultimaCompra:new Date().toISOString()})
+                .then(()=>{showLoading(false);showNotification('✅ Cliente actualizado');})
+                .catch(err=>{showLoading(false);alert('Error al actualizar');console.error(err);});
+        }
+        function eliminarCliente(key,nombre){
+            if(!confirm('¿Eliminar a "'+nombre+'"?'))return;
+            showLoading(true);
+            database.ref('clientesDB/'+key).remove()
+                .then(()=>{showLoading(false);showNotification('🗑️ Cliente eliminado');})
+                .catch(err=>{showLoading(false);alert('Error al eliminar');console.error(err);});
+        }
+        function agregarClienteManual(){
+            const nombre=document.getElementById('newClienteNombre').value.trim();
+            const telefono=document.getElementById('newClienteTelefono').value.trim();
+            if(!nombre){alert('Ingresa el nombre');return;}
+            if(!telefono){alert('Ingresa el teléfono');return;}
+            const key=telefono.replace(/\D/g,'');
+            showLoading(true);
+            database.ref('clientesDB/'+key).set({nombre,telefono,ultimaCompra:new Date().toISOString()})
+                .then(()=>{showLoading(false);document.getElementById('newClienteNombre').value='';document.getElementById('newClienteTelefono').value='';showNotification('✅ Cliente agregado');})
+                .catch(err=>{showLoading(false);alert('Error al agregar');console.error(err);});
         }
 
         function seleccionarCliente(nombre,telefono){
