@@ -3658,7 +3658,7 @@
                 </div>
             </div>
             
-            <video src="https://raw.githubusercontent.com/bolsillolleno/SorteosBolsilloLleno/main/lv_0_20260228133130.mp4" controls playsinline preload="none" style="width:100%;display:block;border-radius:20px;margin-bottom:18px;" onended="this.pause()"></video>
+            <video id="videoPromo" controls playsinline preload="none" style="width:100%;display:block;border-radius:20px;margin-bottom:18px;" onended="this.pause()"></video>
 
             <div class="header" id="sorteos">
                 <h1>🎲 Sorteos Activos</h1>
@@ -5706,7 +5706,40 @@ function abrirBaseDatosClientes(){
             initParticles();
             loadSorteosFromFirebase();
             loadCombos();
+            cargarVideoConCache();
         };
+
+        // ── Carga del video con Cache API ──────────────────────────────
+        const VIDEO_URL = 'https://raw.githubusercontent.com/bolsillolleno/SorteosBolsilloLleno/main/lv_0_20260228133130.mp4';
+        const VIDEO_CACHE = 'bolsillo-video-v1';
+
+        async function cargarVideoConCache(){
+            const video = document.getElementById('videoPromo');
+            if(!video) return;
+            try {
+                const cache = await caches.open(VIDEO_CACHE);
+                const cached = await cache.match(VIDEO_URL);
+                if(cached){
+                    // Ya está en caché → carga instantánea
+                    const blob = await cached.blob();
+                    video.src = URL.createObjectURL(blob);
+                } else {
+                    // Primera vez → descargar, guardar en caché y reproducir
+                    video.src = VIDEO_URL;
+                    video.addEventListener('canplaythrough', async function cachearVideo(){
+                        video.removeEventListener('canplaythrough', cachearVideo);
+                        try {
+                            const resp = await fetch(VIDEO_URL);
+                            if(resp.ok) await cache.put(VIDEO_URL, resp);
+                        } catch(e){}
+                    }, {once:true});
+                }
+            } catch(e){
+                // Si Cache API no disponible usa la URL directa como fallback
+                video.src = VIDEO_URL;
+            }
+        }
+        // ──────────────────────────────────────────────────────────────
         
         // Detectar soporte de Contact Picker y actualizar UI
 if (!('contacts' in navigator && 'ContactsManager' in window)) {
