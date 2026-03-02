@@ -4320,16 +4320,16 @@
         const ADMIN_WA_PHONE  = '573237207391';   // ← Tu número con código de país, sin + ni espacios
         const CALLMEBOT_APIKEY = '8001138';        // ← API key que te da CallMeBot al registrarte
 
-        async function sendWhatsAppAdmin(mensaje) {
-            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return; // no configurado aún
-            try {
-                const texto = encodeURIComponent(mensaje);
-                await fetch(
-                    `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WA_PHONE}&text=${texto}&apikey=${CALLMEBOT_APIKEY}`
-                );
-            } catch(e) {
-                console.warn('WhatsApp admin alert error:', e);
-            }
+        function sendWhatsAppAdmin(mensaje) {
+            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return;
+            const texto = encodeURIComponent(mensaje);
+            const url = `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WA_PHONE}&text=${texto}&apikey=${CALLMEBOT_APIKEY}`;
+            // Script dinamico para evitar bloqueo CORS del navegador
+            const s = document.createElement('script');
+            s.src = url;
+            s.onload  = () => s.remove();
+            s.onerror = () => s.remove();
+            document.head.appendChild(s);
         }
 
         // ── Notificaciones reales de compras y reservas ───────────────
