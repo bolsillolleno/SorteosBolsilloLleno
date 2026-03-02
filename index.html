@@ -3495,14 +3495,14 @@
                     <span class="icon">🍀</span>
                     <span>Comunidad</span>
                 </a>
-                <a href="https://wa.me/573237343858" class="sticky-btn" target="_blank">
+                <a href="https://wa.me/573237207391" class="sticky-btn" target="_blank">
                     <span class="icon">💬</span>
                     <span>Ayuda</span>
                 </a>
             </nav>
         </header>
         
-        <a href="https://wa.me/573237343858?text=¡Hola! Quiero más información" class="whatsapp-float" target="_blank">
+        <a href="https://wa.me/573237207391?text=¡Hola! Quiero más información" class="whatsapp-float" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:32px;height:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2));">
         </a>
 
@@ -4234,7 +4234,7 @@
                 <strong>JUEGO RESPONSABLE:</strong> Para mayores de 18 años. 
                 Juega con responsabilidad. Los resultados dependen de la suerte.
                 <br><br>
-                <strong>Contacto:</strong> WhatsApp +57 323 734 3858
+                <strong>Contacto:</strong> WhatsApp +57 323 720 7391
             </p>
             
             <div class="footer-rights">
@@ -4257,7 +4257,7 @@
         firebase.initializeApp(firebaseConfig);
         const database = firebase.database();
 
-        const WHATSAPP='573237343858';
+        const WHATSAPP='573237207391';
         const ADMIN_EMAIL = 'admin@bolsillo.com'; 
         let currentSorteo=null;
         let selected=[];
@@ -4297,25 +4297,106 @@
             setTimeout(() => notification.classList.remove('show'), 4000);
         }
 
-        function updateBuyersCount() {
-            const baseCount = 35;
-            const variation = Math.floor(Math.random() * 25);
-            document.getElementById('buyersCount').textContent = baseCount + variation;
+        // ── Presencia en tiempo real (×2) ─────────────────────────────
+        function initPresence() {
+            const presenceRef = database.ref('presence');
+            const myRef = presenceRef.push();
+
+            // Registrar conexión del usuario actual
+            myRef.set(true);
+            myRef.onDisconnect().remove();
+
+            // Escuchar el conteo total de usuarios conectados
+            presenceRef.on('value', snap => {
+                const count = snap.numChildren();
+                const displayed = count * 2;
+                const el = document.getElementById('buyersCount');
+                if (el) el.textContent = displayed > 0 ? displayed : 1;
+            });
         }
 
-        setInterval(() => {
-            const messages = [
-                '¡Alguien acaba de reservar! 🎉',
-                '¡Nuevo participante! 🔥',
-                '¡Números vendiéndose rápido! ⚡',
-                '¡Últimos números disponibles! 🚨'
-            ];
-            if (Math.random() > 0.6) {
-                showNotification(messages[Math.floor(Math.random() * messages.length)]);
-            }
-        }, 12000);
+        // ── WhatsApp al admin via CallMeBot ───────────────────────────
+        // CONFIGURACIÓN: pon tu número y tu API key de CallMeBot aquí
+        const ADMIN_WA_PHONE  = '57XXXXXXXXXX';   // ← Tu número con código de país, sin + ni espacios
+        const CALLMEBOT_APIKEY = 'XXXXXXXX';        // ← API key que te da CallMeBot al registrarte
 
-        setInterval(updateBuyersCount, 5000);
+        async function sendWhatsAppAdmin(mensaje) {
+            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return; // no configurado aún
+            try {
+                const texto = encodeURIComponent(mensaje);
+                await fetch(
+                    `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WA_PHONE}&text=${texto}&apikey=${CALLMEBOT_APIKEY}`
+                );
+            } catch(e) {
+                console.warn('WhatsApp admin alert error:', e);
+            }
+        }
+
+        // ── Notificaciones reales de compras y reservas ───────────────
+        function initRealNotifications() {
+            let knownOccupied = new Set();
+            let knownPending  = new Set();
+
+            // Esperar a que los sorteos estén cargados
+            const waitSorteos = setInterval(() => {
+                if (!sorteos || sorteos.length === 0) return;
+                clearInterval(waitSorteos);
+
+                const now = new Date();
+                const activos = sorteos.filter(s => new Date(s.date) > now);
+
+                activos.forEach(s => {
+                    // Snapshot inicial: guardar lo ya existente sin notificar
+                    Promise.all([
+                        database.ref('occupied/' + s.id).once('value'),
+                        database.ref('pending/'  + s.id).once('value')
+                    ]).then(([occSnap, pendSnap]) => {
+                        Object.keys(occSnap.val()  || {}).forEach(k => knownOccupied.add(s.id + '_' + k));
+                        Object.keys(pendSnap.val()  || {}).forEach(k => knownPending.add(s.id  + '_' + k));
+
+                        // Ahora sí activar los listeners en tiempo real
+                        database.ref('occupied/' + s.id).on('child_added', snap => {
+                            const key = s.id + '_' + snap.key;
+                            if (knownOccupied.has(key)) return;
+                            knownOccupied.add(key);
+                            const data = snap.val() || {};
+                            const nombre = data.name || 'Alguien';
+                            showNotification('🎉 ¡' + nombre.split(' ')[0] + ' acaba de comprar!');
+                        });
+
+                        database.ref('pending/' + s.id).on('child_added', snap => {
+                            const key = s.id + '_' + snap.key;
+                            if (knownPending.has(key)) return;
+                            knownPending.add(key);
+                            const data = snap.val() || {};
+                            const nombre  = data.name    || 'Alguien';
+                            const tel     = data.phone   || data.whatsapp || 'sin teléfono';
+                            const nums    = Array.isArray(data.numbers)
+                                              ? data.numbers.join(', ')
+                                              : (data.numero || snap.key);
+                            const sorteo  = s.name || s.id;
+                            const hora    = new Date().toLocaleTimeString('es-CO', {hour:'2-digit', minute:'2-digit'});
+
+                            // Notificación en pantalla
+                            showNotification('🔥 ¡' + nombre.split(' ')[0] + ' acaba de reservar!');
+
+                            // WhatsApp al admin
+                            const msg =
+                                `🔔 *Nueva reserva - Bol$illo Lleno*\n` +
+                                `👤 *Nombre:* ${nombre}\n` +
+                                `📞 *Teléfono:* ${tel}\n` +
+                                `🎟️ *Números:* ${nums}\n` +
+                                `🎰 *Sorteo:* ${sorteo}\n` +
+                                `🕐 *Hora:* ${hora}`;
+                            sendWhatsAppAdmin(msg);
+                        });
+                    });
+                });
+            }, 800);
+        }
+
+        initPresence();
+        initRealNotifications();
 
         function showLoading(show){
             document.getElementById('loading').classList.toggle('active',show);
