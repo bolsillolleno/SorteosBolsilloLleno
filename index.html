@@ -518,6 +518,33 @@
             gap:18px;
             margin-bottom:28px;
         }
+
+        /* Skeleton loader */
+        .skeleton-card{
+            background:var(--glass-bg);
+            border-radius:var(--radius-xl);
+            padding:24px;
+            border:1px solid var(--glass-border);
+            height:220px;
+            overflow:hidden;
+            position:relative;
+        }
+        .skeleton-card::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.07) 50%,transparent 100%);
+            animation:skeleton-sweep 1.4s ease-in-out infinite;
+        }
+        @keyframes skeleton-sweep{
+            0%{transform:translateX(-100%)}
+            100%{transform:translateX(100%)}
+        }
+        .skeleton-line{
+            background:rgba(255,255,255,.12);
+            border-radius:8px;
+            margin-bottom:14px;
+        }
         
         /* Tarjeta de sorteo - Glassmorphism */
         .sorteo-card{
@@ -4404,19 +4431,50 @@
             document.getElementById('loading').classList.toggle('active',show);
         }
 
+        function showSkeletons(){
+            const container = document.getElementById('sorteosList');
+            container.innerHTML = '';
+            // Muestra 2 tarjetas esqueleto mientras llega Firebase
+            for(let i=0;i<2;i++){
+                container.innerHTML += `
+                <div class="skeleton-card">
+                    <div class="skeleton-line" style="width:40%;height:14px;margin-bottom:18px"></div>
+                    <div class="skeleton-line" style="width:70%;height:22px"></div>
+                    <div class="skeleton-line" style="width:55%;height:14px"></div>
+                    <div class="skeleton-line" style="width:80%;height:14px"></div>
+                    <div class="skeleton-line" style="width:45%;height:38px;border-radius:12px;margin-top:20px"></div>
+                </div>`;
+            }
+        }
+
         function loadSorteosFromFirebase(){
-            showLoading(true);
-            database.ref('sorteos').on('value',(snapshot)=>{
-                const data=snapshot.val();
-                sorteos=data?Object.keys(data).map(key=>({id:key,...data[key]})):[];
+            // Muestra skeletons de inmediato, sin bloquear la pantalla
+            showSkeletons();
+
+            // Primera carga con once() — más rápido que on() para el primer render
+            database.ref('sorteos').once('value').then(snapshot => {
+                const data = snapshot.val();
+                sorteos = data ? Object.keys(data).map(key=>({id:key,...data[key]})) : [];
                 renderSorteos();
                 setupSorteosRealtimeListeners();
+            }).catch(()=>{
+                document.getElementById('sorteosList').innerHTML='';
+                document.getElementById('noSorteos').style.display='block';
+            });
+
+            // Luego mantener sincronía en tiempo real para actualizaciones posteriores
+            database.ref('sorteos').on('value', snapshot => {
+                const data = snapshot.val();
+                sorteos = data ? Object.keys(data).map(key=>({id:key,...data[key]})) : [];
+                if(document.getElementById('homeSection').classList.contains('active')){
+                    renderSorteos();
+                    setupSorteosRealtimeListeners();
+                }
                 if(document.getElementById('adminSection').classList.contains('active')){
                     renderAdminSorteos();
                     updateSelect();
                     updateSelectCombos();
                 }
-                showLoading(false);
             });
         }
         
@@ -4594,14 +4652,24 @@
         }
         
         function scrollToTestimonios() {
-            showSection('homeSection');
-            
-            setTimeout(() => {
-                const testimoniosSection = document.getElementById('testimoniosSection');
-                if(testimoniosSection) {
-                    testimoniosSection.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
+            const homeSection = document.getElementById('homeSection');
+            const isAlreadyHome = homeSection.classList.contains('active');
+
+            if (isAlreadyHome) {
+                // Ya estamos en home: scroll directo, sin competencia
+                document.getElementById('testimoniosSection').scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // Cambiamos de sección: primero switch instantáneo, luego un solo scroll suave
+                document.querySelectorAll('.sections').forEach(s => s.classList.remove('active'));
+                homeSection.classList.add('active');
+                // Saltar al top sin animación para no pelear con el scroll siguiente
+                window.scrollTo({ top: 0, behavior: 'instant' });
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        document.getElementById('testimoniosSection').scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+            }
         }
         
         function openLightbox(src) {
@@ -5780,12 +5848,12 @@ function abrirBaseDatosClientes(){
             });
         }
 
-        window.onload=function(){
+        document.addEventListener('DOMContentLoaded', function(){
             initParticles();
             loadSorteosFromFirebase();
             loadCombos();
             cargarVideoConCache();
-        };
+        });
 
         // ── Carga del video con Cache API ──────────────────────────────
         const VIDEO_URL = 'https://raw.githubusercontent.com/bolsillolleno/SorteosBolsilloLleno/main/lv_0_20260228133130.mp4';
