@@ -4279,7 +4279,9 @@
         function initParticles() {
             const container = document.getElementById('particles');
             const symbols = ['✨', '🙏', '🍀', '💰', '⭐', '💎'];
-            for (let i = 0; i < 15; i++) {
+            // Menos partículas en móvil para no sobrecargar el hilo de renderizado
+            const count = window.matchMedia('(max-width: 768px)').matches ? 6 : 12;
+            for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
                 particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
@@ -4320,16 +4322,16 @@
         const ADMIN_WA_PHONE  = '573237207391';   // ← Tu número con código de país, sin + ni espacios
         const CALLMEBOT_APIKEY = '8001138';        // ← API key que te da CallMeBot al registrarte
 
-        function sendWhatsAppAdmin(mensaje) {
-            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return;
-            const texto = encodeURIComponent(mensaje);
-            const url = `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WA_PHONE}&text=${texto}&apikey=${CALLMEBOT_APIKEY}`;
-            // Script dinamico para evitar bloqueo CORS del navegador
-            const s = document.createElement('script');
-            s.src = url;
-            s.onload  = () => s.remove();
-            s.onerror = () => s.remove();
-            document.head.appendChild(s);
+        async function sendWhatsAppAdmin(mensaje) {
+            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return; // no configurado aún
+            try {
+                const texto = encodeURIComponent(mensaje);
+                await fetch(
+                    `https://api.callmebot.com/whatsapp.php?phone=${ADMIN_WA_PHONE}&text=${texto}&apikey=${CALLMEBOT_APIKEY}`
+                );
+            } catch(e) {
+                console.warn('WhatsApp admin alert error:', e);
+            }
         }
 
         // ── Notificaciones reales de compras y reservas ───────────────
@@ -4427,33 +4429,31 @@
             
             active.forEach(s => {
                 const occupiedRef = database.ref('occupied/' + s.id);
-                const pendingRef = database.ref('pending/' + s.id);
+                const pendingRef  = database.ref('pending/'  + s.id);
                 
-                const updateDisponibilidad = () => {
-                    Promise.all([
-                        occupiedRef.once('value'),
-                        pendingRef.once('value')
-                    ]).then(([occupiedSnap, pendingSnap]) => {
-                        const occupiedData = occupiedSnap.val() || {};
-                        const pendingData = pendingSnap.val() || {};
-                        const pagados = Object.keys(occupiedData).length;
-                        const reservados = Object.keys(pendingData).length;
-                        const disponibles = 100 - pagados - reservados;
-                        
-                        database.ref('sorteos/' + s.id + '/disponibles').set(disponibles);
-                        
-                        if(document.getElementById('homeSection').classList.contains('active')) {
-                            actualizarDisponibilidadSorteoUI(s.id, disponibles);
-                        }
-                    });
+                // Contadores locales: evita 2 lecturas extra a Firebase por cada evento
+                let occupiedCount = 0;
+                let pendingCount  = 0;
+                let ready = { occ: false, pend: false };
+
+                const recalcular = () => {
+                    if (!ready.occ || !ready.pend) return;
+                    const disponibles = 100 - occupiedCount - pendingCount;
+                    database.ref('sorteos/' + s.id + '/disponibles').set(disponibles);
+                    if(document.getElementById('homeSection').classList.contains('active')) {
+                        actualizarDisponibilidadSorteoUI(s.id, disponibles);
+                    }
                 };
-                
-                occupiedRef.on('value', updateDisponibilidad);
-                pendingRef.on('value', updateDisponibilidad);
+
+                const onOccupied = snap => { occupiedCount = snap.numChildren(); ready.occ = true; recalcular(); };
+                const onPending  = snap => { pendingCount  = snap.numChildren(); ready.pend= true; recalcular(); };
+
+                occupiedRef.on('value', onOccupied);
+                pendingRef.on('value',  onPending);
                 
                 sorteosListeners[s.id] = () => {
-                    occupiedRef.off('value', updateDisponibilidad);
-                    pendingRef.off('value', updateDisponibilidad);
+                    occupiedRef.off('value', onOccupied);
+                    pendingRef.off('value',  onPending);
                 };
             });
         }
@@ -4820,57 +4820,57 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             document.getElementById('scarcityFill').style.width = `${porcentaje}%`;
         }
 
-       function renderGrid(){
-    const grid=document.getElementById('numbersGrid');
-    grid.innerHTML='';
-    for(let i=0;i<100;i++){
-        const num=i.toString().padStart(2,'0');
-        const cell=document.createElement('div');
-        cell.className='number-cell';
-        
-        if(occupied[num]){
-            cell.classList.add('occupied');
-            const client = clientData[num] || { nombre: 'Pagado', telefono: '' };
-            const nombreCorto = client.nombre.substring(0, 6);
-        const telefonoCifrado = client.telefono && client.telefono.length >= 3 ? 
-    '***' + client.telefono.substring(client.telefono.length - 3) : '';
-            
-            cell.innerHTML = `
-                <div class="client-info" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;">
-                    <span style="font-size:11px;font-weight:900;margin-bottom:1px;">${num}</span>
-                    <span class="client-name" style="font-size:7px;font-weight:700;line-height:1;">${nombreCorto}</span>
-                    ${telefonoCifrado ? `<span class="client-phone" style="font-size:6px;font-weight:600;opacity:0.9;">${telefonoCifrado}</span>` : ''}
-                </div>
-            `;
-        }else if(pending[num]){
-            cell.classList.add('pending');
-            const pendingData = pending[num];
-            let clientName = typeof pendingData === 'object' ? (pendingData.nombre || 'Pend') : 'Pend';
-            let clientPhone = typeof pendingData === 'object' ? (pendingData.telefono || '') : '';
-            const nombreCorto = clientName.substring(0, 6);
-            const telefonoCifrado = clientPhone && clientPhone.length >= 3 ? 
-    '***' + clientPhone.substring(clientPhone.length - 3) : '';
+        // Crea una celda individual (reutilizable para render completo y actualizaciones parciales)
+        function createNumberCell(num){
+            const cell=document.createElement('div');
+            cell.className='number-cell';
+            cell.dataset.num=num;
 
-            cell.innerHTML = `
-                <div class="client-info" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;">
-                    <span style="font-size:11px;font-weight:900;margin-bottom:1px;">${num}</span>
-                    <span class="client-name" style="font-size:7px;font-weight:700;line-height:1;">${nombreCorto}</span>
-                    ${telefonoCifrado ? `<span class="client-phone" style="font-size:6px;font-weight:600;opacity:0.9;">${telefonoCifrado}</span>` : ''}
-                </div>
-            `;
-        }else if(selected.includes(num)){
-            cell.classList.add('selected');
-            cell.innerHTML = `<span style="font-size:14px;font-weight:900;">${num}</span>`;
-            cell.onclick=()=>toggleNum(num);
-        }else{
-            cell.classList.add('available');
-            cell.innerHTML = `<span style="font-size:14px;font-weight:800;">${num}</span>`;
-            cell.onclick=()=>toggleNum(num);
+            if(occupied[num]){
+                cell.classList.add('occupied');
+                const client=clientData[num]||{nombre:'Pagado',telefono:''};
+                const nombreCorto=client.nombre.substring(0,6);
+                const telefonoCifrado=client.telefono&&client.telefono.length>=3?
+                    '***'+client.telefono.substring(client.telefono.length-3):'';
+                cell.innerHTML=`<div class="client-info" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;"><span style="font-size:11px;font-weight:900;margin-bottom:1px;">${num}</span><span class="client-name" style="font-size:7px;font-weight:700;line-height:1;">${nombreCorto}</span>${telefonoCifrado?`<span class="client-phone" style="font-size:6px;font-weight:600;opacity:0.9;">${telefonoCifrado}</span>`:''}</div>`;
+            }else if(pending[num]){
+                cell.classList.add('pending');
+                const pendingData=pending[num];
+                const clientName=typeof pendingData==='object'?(pendingData.nombre||'Pend'):'Pend';
+                const clientPhone=typeof pendingData==='object'?(pendingData.telefono||''):'';
+                const nombreCorto=clientName.substring(0,6);
+                const telefonoCifrado=clientPhone&&clientPhone.length>=3?
+                    '***'+clientPhone.substring(clientPhone.length-3):'';
+                cell.innerHTML=`<div class="client-info" style="display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100%;"><span style="font-size:11px;font-weight:900;margin-bottom:1px;">${num}</span><span class="client-name" style="font-size:7px;font-weight:700;line-height:1;">${nombreCorto}</span>${telefonoCifrado?`<span class="client-phone" style="font-size:6px;font-weight:600;opacity:0.9;">${telefonoCifrado}</span>`:''}</div>`;
+            }else if(selected.includes(num)){
+                cell.classList.add('selected');
+                cell.innerHTML=`<span style="font-size:14px;font-weight:900;">${num}</span>`;
+                cell.onclick=()=>toggleNum(num);
+            }else{
+                cell.classList.add('available');
+                cell.innerHTML=`<span style="font-size:14px;font-weight:800;">${num}</span>`;
+                cell.onclick=()=>toggleNum(num);
+            }
+            return cell;
         }
-        
-        grid.appendChild(cell);
-    }
-}
+
+        // Render inicial: usa DocumentFragment para una sola inserción al DOM
+        function renderGrid(){
+            const grid=document.getElementById('numbersGrid');
+            const fragment=document.createDocumentFragment();
+            for(let i=0;i<100;i++){
+                fragment.appendChild(createNumberCell(i.toString().padStart(2,'0')));
+            }
+            grid.innerHTML='';
+            grid.appendChild(fragment);
+        }
+
+        // Actualiza solo la celda afectada, sin tocar las otras 99
+        function updateGridCell(num){
+            const grid=document.getElementById('numbersGrid');
+            const existing=grid.querySelector(`[data-num="${num}"]`);
+            if(existing) grid.replaceChild(createNumberCell(num),existing);
+        }
 
         function toggleNum(num){
             if(occupied[num]||pending[num]){
@@ -4886,7 +4886,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                 selected.sort();
             }
             updateCart();
-            renderGrid();
+            updateGridCell(num); // Solo actualiza la celda tocada, no las 100
         }
         
         function cargarCombosCliente() {
@@ -5670,42 +5670,39 @@ function abrirBaseDatosClientes(){
             const now=new Date();
             const activos=sorteos.filter(s=>new Date(s.date)>now);
             
-            let totalNumeros=0;
-            let totalPendientes=0;
-            let ingresos=0;
-            
-            activos.forEach(s=>{
-                const sorteoId=s.id;
-                const occupiedRef=database.ref('occupied/'+sorteoId);
-                const pendingRef=database.ref('pending/'+sorteoId);
-                
-                Promise.all([occupiedRef.once('value'),pendingRef.once('value')]).then(([occSnap,pendSnap])=>{
-                    const occData=occSnap.val()||{};
-                    const pendData=pendSnap.val()||{};
-                    
-                    const pagados=Object.keys(occData).length;
-                    const reservados=Object.keys(pendData).length;
-                    
-                    totalNumeros+=pagados;
-                    totalPendientes+=reservados;
-                    ingresos+=pagados*(s.precioNumero||2000);
-                    
-                    document.getElementById('statTotalSorteos').textContent=activos.length;
-                    document.getElementById('statTotalNumeros').textContent=totalNumeros;
-                    document.getElementById('statTotalPendientes').textContent=totalPendientes;
-                    document.getElementById('statIngresos').textContent='$'+ingresos.toLocaleString();
-                });
-            });
-            
+            document.getElementById('statTotalSorteos').textContent=activos.length;
+
             if(activos.length===0){
-                document.getElementById('statTotalSorteos').textContent='0';
                 document.getElementById('statTotalNumeros').textContent='0';
                 document.getElementById('statTotalPendientes').textContent='0';
                 document.getElementById('statIngresos').textContent='$0';
+                renderVentasChart();
+                renderTopNumeros();
+                return;
             }
-            
-            renderVentasChart();
-            renderTopNumeros();
+
+            // Promise.all garantiza que los totales se calculan una sola vez, sin race condition
+            Promise.all(activos.map(s=>
+                Promise.all([
+                    database.ref('occupied/'+s.id).once('value'),
+                    database.ref('pending/'+s.id).once('value')
+                ]).then(([occSnap,pendSnap])=>({
+                    pagados:   Object.keys(occSnap.val()||{}).length,
+                    reservados:Object.keys(pendSnap.val()||{}).length,
+                    precio:    s.precioNumero||2000
+                }))
+            )).then(results=>{
+                const totalNumeros    = results.reduce((sum,r)=>sum+r.pagados,0);
+                const totalPendientes = results.reduce((sum,r)=>sum+r.reservados,0);
+                const ingresos        = results.reduce((sum,r)=>sum+r.pagados*r.precio,0);
+
+                document.getElementById('statTotalNumeros').textContent=totalNumeros;
+                document.getElementById('statTotalPendientes').textContent=totalPendientes;
+                document.getElementById('statIngresos').textContent='$'+ingresos.toLocaleString();
+
+                renderVentasChart();
+                renderTopNumeros();
+            });
         }
 
         function renderVentasChart(){
