@@ -3553,6 +3553,10 @@
                         <label>Seco 3:</label>
                         <input type="number" id="editPremioSeco3">
                     </div>
+                    <div class="form-group">
+                        <label>Seco 4:</label>
+                        <input type="number" id="editPremioSeco4">
+                    </div>
                 </div>
                 <div style="margin-top:18px">
                     <button class="btn btn-success" onclick="saveEditSorteo()">Guardar</button>
@@ -3745,17 +3749,17 @@
             
             <div class="main-info">
                 <h2>🎯 La Única Rifa donde LA SUERTE SI TE ALCANZA</h2>
-                <p>4 OPORTUNIDADES de ganar con un solo número</p>
+                <p>5 OPORTUNIDADES de ganar con un solo número</p>
                 
                 <div class="features">
                     <div class="feature">
                         <div class="feature-icon">🏆</div>
-                        <div class="feature-number">4X</div>
+                        <div class="feature-number">5X</div>
                         <div class="feature-text">Oportunidades</div>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">👑</div>
-                        <div class="feature-number">4</div>
+                        <div class="feature-number">5</div>
                         <div class="feature-text">Ganadores</div>
                     </div>
                     <div class="feature">
@@ -3765,7 +3769,7 @@
                 </div>
 
                 <div class="premios-explicacion">
-                    <h4>🍀 ¿CÓMO SE GANA? - 4 FORMAS DE GANAR</h4>
+                    <h4>🍀 ¿CÓMO SE GANA? - 5 FORMAS DE GANAR</h4>
                     
                     <div class="premio-detalle mayor">
                         <div class="premio-detalle-titulo mayor-texto">
@@ -3817,6 +3821,19 @@
                         </div>
                         <div class="premio-detalle-ejemplo">
                             📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>47</strong>, ¡GANAS EL SECO 3!
+                        </div>
+                    </div>
+                    
+                    <div class="premio-detalle">
+                        <div class="premio-detalle-titulo">
+                            <span style="font-size:1.3em;">✨</span>
+                            <span>SECO 4</span>
+                        </div>
+                        <div class="premio-detalle-desc">
+                            Ganas con las <strong>ÚLTIMAS DOS CIFRAS INVERTIDAS</strong> del número ganador de la lotería.
+                        </div>
+                        <div class="premio-detalle-ejemplo">
+                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>73</strong>, ¡GANAS EL SECO 4!
                         </div>
                     </div>
                 </div>
@@ -4083,6 +4100,10 @@
                             <div class="form-group">
                                 <label>Seco 3:</label>
                                 <input type="number" id="premioSeco3" value="10000">
+                            </div>
+                            <div class="form-group">
+                                <label>Seco 4:</label>
+                                <input type="number" id="premioSeco4" value="20000">
                             </div>
                         </div>
                     </div>
@@ -4758,6 +4779,10 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                     <span class="premio-nombre">✨ SECO 3</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco3).toLocaleString()}</span>
                 </div>
+                <div class="premio-activo">
+                    <span class="premio-nombre">✨ SECO 4</span>
+                    <span class="premio-valor">$${parseInt(currentSorteo.premioSeco4||20000).toLocaleString()}</span>
+                </div>
             `;
             
             document.getElementById('precioInd').textContent='$'+parseInt(currentSorteo.precioNumero).toLocaleString();
@@ -5115,6 +5140,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             const premioSeco1=parseInt(document.getElementById('premioSeco1').value)||10000;
             const premioSeco2=parseInt(document.getElementById('premioSeco2').value)||10000;
             const premioSeco3=parseInt(document.getElementById('premioSeco3').value)||10000;
+            const premioSeco4=parseInt(document.getElementById('premioSeco4').value)||20000;
             
             if(!name||!lottery||!date){
                 alert('Completa todos los campos');
@@ -5123,7 +5149,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             
             const newSorteo={
                 name,lottery,date,
-                precioNumero,premioMayor,premioSeco1,premioSeco2,premioSeco3,
+                precioNumero,premioMayor,premioSeco1,premioSeco2,premioSeco3,premioSeco4,
                 disponibles:100,
                 createdAt:new Date().toISOString()
             };
@@ -5176,6 +5202,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             document.getElementById('editPremioSeco1').value=s.premioSeco1||10000;
             document.getElementById('editPremioSeco2').value=s.premioSeco2||10000;
             document.getElementById('editPremioSeco3').value=s.premioSeco3||10000;
+            document.getElementById('editPremioSeco4').value=s.premioSeco4||20000;
             
             document.getElementById('editModal').classList.add('active');
         }
@@ -5190,7 +5217,8 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                 premioMayor:parseInt(document.getElementById('editPremioMayor').value)||100000,
                 premioSeco1:parseInt(document.getElementById('editPremioSeco1').value)||10000,
                 premioSeco2:parseInt(document.getElementById('editPremioSeco2').value)||10000,
-                premioSeco3:parseInt(document.getElementById('editPremioSeco3').value)||10000
+                premioSeco3:parseInt(document.getElementById('editPremioSeco3').value)||10000,
+                premioSeco4:parseInt(document.getElementById('editPremioSeco4').value)||20000
             };
             
             showLoading(true);
