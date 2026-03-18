@@ -2361,6 +2361,72 @@
         
         .admin-section{display:none}
         .admin-section.active{display:block;animation:fadeInUp .4s var(--ease-smooth)}
+
+        /* ── WhatsApp Bot Panel ── */
+        .wa-sub-tabs{display:flex;gap:6px;margin-bottom:18px;background:rgba(0,0,0,.2);padding:4px;border-radius:12px;flex-wrap:wrap}
+        .wa-sub-tab{flex:1;min-width:80px;padding:8px 6px;border:none;border-radius:9px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.72em;font-weight:700;background:transparent;color:rgba(255,255,255,.5);transition:all .2s;text-align:center}
+        .wa-sub-tab.active{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 12px rgba(37,211,102,.3)}
+        .wa-sub-section{display:none}
+        .wa-sub-section.active{display:block;animation:fadeInUp .3s ease}
+        .wa-field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+        .wa-field label{font-size:.72em;font-weight:700;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em}
+        .wa-field input,.wa-field select,.wa-field textarea{background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;color:#fff;font-family:'Inter',sans-serif;font-size:.85em;outline:none;transition:border-color .2s}
+        .wa-field input:focus,.wa-field textarea:focus,.wa-field select:focus{border-color:#25D366;box-shadow:0 0 0 3px rgba(37,211,102,.12)}
+        .wa-field input::placeholder,.wa-field textarea::placeholder{color:rgba(255,255,255,.3)}
+        .wa-field textarea{resize:vertical;min-height:80px}
+        .wa-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .wa-btn{padding:10px 16px;border:none;border-radius:10px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.8em;font-weight:700;transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+        .wa-btn-green{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.3)}
+        .wa-btn-green:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(37,211,102,.4)}
+        .wa-btn-gold{background:linear-gradient(135deg,var(--gold-400),var(--gold-600));color:#000;font-weight:800}
+        .wa-btn-ghost{background:rgba(255,255,255,.08);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.12)}
+        .wa-btn-ghost:hover{background:rgba(255,255,255,.14)}
+        .wa-btn-red{background:rgba(239,68,68,.15);color:#ef4444;border:1px solid rgba(239,68,68,.3)}
+        .wa-btn-full{width:100%;justify-content:center;padding:12px}
+        .wa-clients-list{display:flex;flex-direction:column;gap:6px;max-height:220px;overflow-y:auto;margin:10px 0;padding-right:4px}
+        .wa-clients-list::-webkit-scrollbar{width:3px}
+        .wa-clients-list::-webkit-scrollbar-thumb{background:#128C7E;border-radius:3px}
+        .wa-client-row{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:8px 10px;cursor:pointer;transition:all .15s}
+        .wa-client-row:hover,.wa-client-row.sel{border-color:rgba(37,211,102,.35);background:rgba(37,211,102,.08)}
+        .wa-chk{width:16px;height:16px;border-radius:4px;border:2px solid rgba(255,255,255,.25);display:grid;place-items:center;flex-shrink:0;transition:all .15s;font-size:.6em;color:#fff}
+        .wa-client-row.sel .wa-chk{background:#25D366;border-color:#25D366}
+        .wa-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--emerald-600),var(--emerald-800));display:grid;place-items:center;font-size:.78em;font-weight:700;flex-shrink:0;text-transform:uppercase}
+        .wa-ci{flex:1;min-width:0}
+        .wa-cn{font-size:.82em;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .wa-cp{font-size:.7em;color:rgba(255,255,255,.45);font-family:monospace}
+        .wa-templates{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+        .wa-tpl{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:9px;cursor:pointer;transition:all .2s;text-align:left;color:#fff;font-family:'Inter',sans-serif}
+        .wa-tpl:hover{border-color:rgba(37,211,102,.4);background:rgba(37,211,102,.07)}
+        .wa-tpl .ti{font-size:1em;margin-bottom:3px}
+        .wa-tpl .tn{font-size:.75em;font-weight:700}
+        .wa-tpl .td{font-size:.68em;color:rgba(255,255,255,.4)}
+        .wa-preview{background:#dcf8c6;color:#111;border-radius:14px 14px 14px 3px;padding:10px 12px;font-size:.78em;line-height:1.6;max-width:92%;white-space:pre-wrap;box-shadow:0 2px 8px rgba(0,0,0,.2);margin:8px 0;font-family:'Inter',sans-serif}
+        .wa-ptime{font-size:.65em;color:rgba(0,0,0,.4);text-align:right;margin-top:3px}
+        .wa-progress{height:5px;background:rgba(255,255,255,.1);border-radius:5px;overflow:hidden;margin:8px 0}
+        .wa-progress-fill{height:100%;background:linear-gradient(90deg,#25D366,#128C7E);border-radius:5px;transition:width .4s ease;width:0%}
+        .wa-log{display:flex;flex-direction:column;gap:6px;max-height:160px;overflow-y:auto;margin-top:10px}
+        .wa-log-item{display:flex;align-items:center;gap:8px;padding:7px 10px;border-radius:8px;font-size:.75em}
+        .wa-log-item.ok{background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2)}
+        .wa-log-item.err{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2)}
+        .wa-log-item.info{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2)}
+        .kb-list{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;margin:10px 0}
+        .kb-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;position:relative}
+        .kb-q{font-size:.8em;font-weight:700;color:var(--gold-400);margin-bottom:3px}
+        .kb-a{font-size:.77em;color:rgba(255,255,255,.7);line-height:1.5}
+        .kb-del{position:absolute;top:8px;right:8px;background:rgba(239,68,68,.15);border:none;color:#ef4444;border-radius:6px;padding:3px 7px;cursor:pointer;font-size:.7em;font-weight:700}
+        .bot-chat{background:rgba(0,0,0,.2);border-radius:12px;padding:12px;min-height:180px;max-height:280px;overflow-y:auto;margin-bottom:10px;display:flex;flex-direction:column;gap:8px}
+        .bot-msg-user{align-self:flex-end;background:linear-gradient(135deg,#005c4b,#007a63);color:#fff;border-radius:12px 12px 3px 12px;padding:8px 12px;font-size:.8em;max-width:80%;line-height:1.5}
+        .bot-msg-bot{align-self:flex-start;background:#dcf8c6;color:#111;border-radius:12px 12px 12px 3px;padding:8px 12px;font-size:.8em;max-width:85%;line-height:1.5;white-space:pre-wrap}
+        .bot-msg-thinking{align-self:flex-start;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);border-radius:12px;padding:8px 12px;font-size:.75em;font-style:italic}
+        .wa-stat-bar{display:flex;gap:10px;margin-bottom:14px}
+        .wa-stat{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:12px;text-align:center}
+        .wa-stat-v{font-family:'Plus Jakarta Sans',sans-serif;font-size:1.5em;font-weight:900;color:var(--gold-400)}
+        .wa-stat-l{font-size:.65em;color:rgba(255,255,255,.5);margin-top:2px;text-transform:uppercase;letter-spacing:.04em}
+        .wa-alert{border-radius:10px;padding:10px 12px;font-size:.78em;line-height:1.5;margin-bottom:10px}
+        .wa-alert-info{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);color:rgba(255,255,255,.8)}
+        .wa-alert-warn{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);color:rgba(255,255,255,.8)}
+        .wa-divider{height:1px;background:rgba(255,255,255,.07);margin:12px 0}
+        .wa-section-lbl{font-size:.68em;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:8px}
         
         .form-group{margin-bottom:16px}
         
@@ -3553,10 +3619,6 @@
                         <label>Seco 3:</label>
                         <input type="number" id="editPremioSeco3">
                     </div>
-                    <div class="form-group">
-                        <label>Seco 4:</label>
-                        <input type="number" id="editPremioSeco4">
-                    </div>
                 </div>
                 <div style="margin-top:18px">
                     <button class="btn btn-success" onclick="saveEditSorteo()">Guardar</button>
@@ -3749,17 +3811,17 @@
             
             <div class="main-info">
                 <h2>🎯 La Única Rifa donde LA SUERTE SI TE ALCANZA</h2>
-                <p>5 OPORTUNIDADES de ganar con un solo número</p>
+                <p>4 OPORTUNIDADES de ganar con un solo número</p>
                 
                 <div class="features">
                     <div class="feature">
                         <div class="feature-icon">🏆</div>
-                        <div class="feature-number">5X</div>
+                        <div class="feature-number">4X</div>
                         <div class="feature-text">Oportunidades</div>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">👑</div>
-                        <div class="feature-number">5</div>
+                        <div class="feature-number">4</div>
                         <div class="feature-text">Ganadores</div>
                     </div>
                     <div class="feature">
@@ -3769,7 +3831,7 @@
                 </div>
 
                 <div class="premios-explicacion">
-                    <h4>🍀 ¿CÓMO SE GANA? - 5 FORMAS DE GANAR</h4>
+                    <h4>🍀 ¿CÓMO SE GANA? - 4 FORMAS DE GANAR</h4>
                     
                     <div class="premio-detalle mayor">
                         <div class="premio-detalle-titulo mayor-texto">
@@ -3821,19 +3883,6 @@
                         </div>
                         <div class="premio-detalle-ejemplo">
                             📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>47</strong>, ¡GANAS EL SECO 3!
-                        </div>
-                    </div>
-                    
-                    <div class="premio-detalle">
-                        <div class="premio-detalle-titulo">
-                            <span style="font-size:1.3em;">✨</span>
-                            <span>SECO 4</span>
-                        </div>
-                        <div class="premio-detalle-desc">
-                            Ganas con las <strong>ÚLTIMAS DOS CIFRAS INVERTIDAS</strong> del número ganador de la lotería.
-                        </div>
-                        <div class="premio-detalle-ejemplo">
-                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>73</strong>, ¡GANAS EL SECO 4!
                         </div>
                     </div>
                 </div>
@@ -4061,6 +4110,7 @@
                     <button class="admin-tab" onclick="showAdminTab('combos',this)">🎁 Combos</button>
                     <button class="admin-tab" onclick="showAdminTab('clientes',this)">👥 Clientes</button>
                     <button class="admin-tab" onclick="showAdminTab('dashboard',this)">📊 Estadísticas</button>
+                    <button class="admin-tab" onclick="showAdminTab('whatsapp',this);initWaPanel()">📲 WhatsApp</button>
                 </div>
 
                 <div id="adminSorteos" class="admin-section active">
@@ -4100,10 +4150,6 @@
                             <div class="form-group">
                                 <label>Seco 3:</label>
                                 <input type="number" id="premioSeco3" value="10000">
-                            </div>
-                            <div class="form-group">
-                                <label>Seco 4:</label>
-                                <input type="number" id="premioSeco4" value="20000">
                             </div>
                         </div>
                     </div>
@@ -4229,6 +4275,137 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- ══ WHATSAPP SECTION ══ -->
+                <div id="adminWhatsapp" class="admin-section">
+                  <div class="wa-sub-tabs">
+                    <button class="wa-sub-tab active" onclick="waTab('enviar',this)">📤 Enviar</button>
+                    <button class="wa-sub-tab" onclick="waTab('bot',this)">🤖 Bot IA</button>
+                    <button class="wa-sub-tab" onclick="waTab('kb',this)">📚 Conocimiento</button>
+                    <button class="wa-sub-tab" onclick="waTab('cfg',this)">⚙️ Config</button>
+                  </div>
+
+                  <!-- ENVIAR -->
+                  <div id="waSec-enviar" class="wa-sub-section active">
+                    <div class="wa-stat-bar">
+                      <div class="wa-stat"><div class="wa-stat-v" id="wa-stat-c">0</div><div class="wa-stat-l">Clientes</div></div>
+                      <div class="wa-stat"><div class="wa-stat-v" id="wa-stat-s">0</div><div class="wa-stat-l">Selec.</div></div>
+                      <div class="wa-stat"><div class="wa-stat-v" id="wa-stat-e">0</div><div class="wa-stat-l">Enviados</div></div>
+                    </div>
+                    <div class="wa-grid-2">
+                      <div>
+                        <div class="wa-section-lbl">👥 Clientes</div>
+                        <div style="display:flex;gap:6px;margin-bottom:8px">
+                          <button class="wa-btn wa-btn-green" style="flex:1;font-size:.72em" onclick="waSyncFirebase()">🔄 Sync Firebase</button>
+                          <button class="wa-btn wa-btn-ghost" style="font-size:.72em" onclick="waToggleAll()">Sel. todos</button>
+                        </div>
+                        <div style="font-size:.72em;color:rgba(255,255,255,.5);margin-bottom:6px">Seleccionados: <strong id="wa-sel-cnt" style="color:#25D366">0</strong></div>
+                        <div class="wa-clients-list" id="waClientsList"></div>
+                        <div style="display:flex;gap:6px;margin-top:8px">
+                          <input id="waNewName" placeholder="Nombre" style="flex:1;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 10px;color:#fff;font-size:.8em;outline:none;font-family:'Inter',sans-serif">
+                          <input id="waNewPhone" placeholder="57300..." style="flex:1;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:8px;padding:7px 10px;color:#fff;font-size:.8em;outline:none;font-family:'Inter',sans-serif">
+                          <button class="wa-btn wa-btn-gold" onclick="waAddClient()" style="padding:7px 10px;font-size:.75em">+</button>
+                        </div>
+                      </div>
+                      <div>
+                        <div class="wa-section-lbl">✍️ Mensaje</div>
+                        <div class="wa-templates">
+                          <button class="wa-tpl" onclick="waTpl('sorteo')"><div class="ti">🎟️</div><div class="tn">Nuevo sorteo</div></button>
+                          <button class="wa-tpl" onclick="waTpl('ganador')"><div class="ti">🏆</div><div class="tn">Ganador</div></button>
+                          <button class="wa-tpl" onclick="waTpl('promo')"><div class="ti">🔥</div><div class="tn">Promoción</div></button>
+                          <button class="wa-tpl" onclick="waTpl('recordatorio')"><div class="ti">⏰</div><div class="tn">Recordatorio</div></button>
+                        </div>
+                        <textarea id="waMsgText" rows="5" style="width:100%;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px;color:#fff;font-family:'Inter',sans-serif;font-size:.82em;outline:none;resize:vertical" oninput="waUpdatePreview()" placeholder="Escribe tu mensaje...">🎟️ ¡Nuevo sorteo en Bol$illo Lleno!
+
+Premio: 💰 $500.000
+Precio por número: $2.000
+
+🔗 bolsillolleno.com
+¡Que la suerte te acompañe! 🍀</textarea>
+                        <div class="wa-preview" id="wa-preview-bubble" style="margin:6px 0">...</div>
+                        <div class="wa-progress"><div class="wa-progress-fill" id="wa-prog"></div></div>
+                        <div id="wa-send-status" style="font-size:.72em;color:rgba(255,255,255,.5);text-align:center;min-height:16px;margin-bottom:6px"></div>
+                        <button class="wa-btn wa-btn-green wa-btn-full" id="waSendBtn" onclick="waStartSend()">
+                          📤 Enviar a <span id="wa-n-sel">0</span> clientes
+                        </button>
+                      </div>
+                    </div>
+                    <div class="wa-divider"></div>
+                    <div class="wa-section-lbl">📋 Registro de envíos</div>
+                    <div class="wa-log" id="waLog"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.75em;padding:10px">Los envíos aparecerán aquí</div></div>
+                  </div>
+
+                  <!-- BOT IA -->
+                  <div id="waSec-bot" class="wa-sub-section">
+                    <div class="wa-alert wa-alert-info">🤖 Este bot usa <strong>Claude IA</strong> para responder automáticamente. Aprende de tu base de conocimiento y de los sorteos en Firebase.</div>
+                    <div class="wa-section-lbl">💬 Probar el Bot</div>
+                    <div class="bot-chat" id="botChat">
+                      <div class="bot-msg-bot">¡Hola! 👋 Soy el asistente de <strong>Bol$illo Lleno</strong>. Puedo ayudarte con información sobre sorteos, cómo participar, precios y más. ¿En qué te ayudo? 🎟️</div>
+                    </div>
+                    <div style="display:flex;gap:8px">
+                      <input id="botInput" placeholder="Escribe una pregunta..." style="flex:1;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;color:#fff;font-family:'Inter',sans-serif;font-size:.82em;outline:none" onkeydown="if(event.key==='Enter')botSend()">
+                      <button class="wa-btn wa-btn-green" onclick="botSend()">Enviar</button>
+                      <button class="wa-btn wa-btn-ghost" onclick="botClear()">🗑️</button>
+                    </div>
+                    <div class="wa-divider"></div>
+                    <div class="wa-section-lbl">⚙️ Personalidad del Bot</div>
+                    <div class="wa-field"><label>Nombre del bot</label><input id="botName" value="Asistente de Bol$illo Lleno"></div>
+                    <div class="wa-field"><label>Instrucciones (tono, restricciones…)</label><textarea id="botInstructions" rows="3">Sé amigable y entusiasta, usa emojis. Siempre invita a participar. Si no sabes algo, invita a escribirnos directamente.</textarea></div>
+                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="botSaveConfig()">💾 Guardar config del bot</button>
+                    <div class="wa-divider"></div>
+                    <div class="wa-alert wa-alert-warn">⚠️ El simulador muestra cómo responderá el bot. Para respuestas automáticas reales necesitas un webhook (backend). ¡Pídenos ayuda para activarlo!</div>
+                  </div>
+
+                  <!-- BASE DE CONOCIMIENTO -->
+                  <div id="waSec-kb" class="wa-sub-section">
+                    <div class="wa-alert wa-alert-info">📚 Enséñale al bot respuestas correctas. El bot usará esta info junto con los datos de tus sorteos en Firebase.</div>
+                    <div class="wa-section-lbl">➕ Nueva entrada</div>
+                    <div class="wa-field"><label>Pregunta (como la haría un cliente)</label><input id="kbQ" placeholder="Ej: ¿Cómo pago mi número?"></div>
+                    <div class="wa-field"><label>Respuesta del bot</label><textarea id="kbA" rows="3" placeholder="Ej: Puedes pagar por Nequi al 300..., envíanos el comprobante y confirmamos ✅"></textarea></div>
+                    <button class="wa-btn wa-btn-green" onclick="kbAdd()">✚ Agregar</button>
+                    <div class="wa-divider"></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+                      <div class="wa-section-lbl" style="margin-bottom:0">📋 Entradas (<span id="kb-count">0</span>)</div>
+                      <button class="wa-btn wa-btn-ghost" style="font-size:.7em;padding:5px 10px" onclick="kbExport()">📥 Exportar</button>
+                    </div>
+                    <div class="kb-list" id="kbList"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">Aún no hay entradas</div></div>
+                    <div class="wa-divider"></div>
+                    <div class="wa-section-lbl">🏢 Info del negocio</div>
+                    <div class="wa-field"><label>Métodos de pago</label><input id="bizPagos" placeholder="Ej: Nequi 3001234567, PSE, efectivo"></div>
+                    <div class="wa-field"><label>WhatsApp / Contacto</label><input id="bizContacto" placeholder="Ej: 573001234567"></div>
+                    <div class="wa-field"><label>Horario de atención</label><input id="bizHorario" placeholder="Ej: Lunes a sábado 8am - 9pm"></div>
+                    <div class="wa-field"><label>Info adicional</label><textarea id="bizInfo" rows="3" placeholder="Ej: Llevamos 3 años haciendo sorteos. Los sorteos son en vivo por Facebook. El premio se entrega en 48h..."></textarea></div>
+                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="bizSave()">💾 Guardar info del negocio</button>
+                  </div>
+
+                  <!-- CONFIG API -->
+                  <div id="waSec-cfg" class="wa-sub-section">
+                    <div class="wa-alert wa-alert-info">Obtén estos datos en <strong>developers.facebook.com</strong> → tu app → WhatsApp → API Setup</div>
+                    <div class="wa-grid-2">
+                      <div class="wa-field"><label>Access Token de Meta</label><input type="password" id="waCfgToken" placeholder="EAAxxxxxx..."></div>
+                      <div class="wa-field"><label>Phone Number ID</label><input id="waCfgPhoneId" placeholder="123456789012"></div>
+                    </div>
+                    <div class="wa-grid-2">
+                      <div class="wa-field"><label>Claude API Key (bot IA)</label><input type="password" id="waCfgClaude" placeholder="sk-ant-..."></div>
+                      <div class="wa-field"><label>Delay entre mensajes (ms)</label><input type="number" id="waCfgDelay" value="1500"></div>
+                    </div>
+                    <div style="display:flex;gap:8px;margin-top:6px">
+                      <button class="wa-btn wa-btn-gold" style="flex:1;padding:12px" onclick="waCfgSave()">💾 Guardar</button>
+                      <button class="wa-btn wa-btn-ghost" onclick="waCfgTest()">🧪 Probar API</button>
+                    </div>
+                    <div id="waCfgTestResult" style="margin-top:10px"></div>
+                    <div class="wa-divider"></div>
+                    <div class="wa-section-lbl">📋 Pasos para configurar</div>
+                    <div style="display:flex;flex-direction:column;gap:6px">
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">1.</span> Ve a developers.facebook.com y crea una app tipo "Business"</div>
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">2.</span> Agrega el producto <strong>WhatsApp</strong> a tu app</div>
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">3.</span> En WhatsApp → API Setup copia tu <strong>Phone Number ID</strong> y <strong>Access Token</strong></div>
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">4.</span> Para la API de Claude ve a console.anthropic.com → API Keys</div>
+                    </div>
+                  </div>
+
+                </div><!-- /adminWhatsapp -->
+
             </div>
         </div>
         
@@ -4779,10 +4956,6 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                     <span class="premio-nombre">✨ SECO 3</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco3).toLocaleString()}</span>
                 </div>
-                <div class="premio-activo">
-                    <span class="premio-nombre">✨ SECO 4</span>
-                    <span class="premio-valor">$${parseInt(currentSorteo.premioSeco4||20000).toLocaleString()}</span>
-                </div>
             `;
             
             document.getElementById('precioInd').textContent='$'+parseInt(currentSorteo.precioNumero).toLocaleString();
@@ -5140,7 +5313,6 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             const premioSeco1=parseInt(document.getElementById('premioSeco1').value)||10000;
             const premioSeco2=parseInt(document.getElementById('premioSeco2').value)||10000;
             const premioSeco3=parseInt(document.getElementById('premioSeco3').value)||10000;
-            const premioSeco4=parseInt(document.getElementById('premioSeco4').value)||20000;
             
             if(!name||!lottery||!date){
                 alert('Completa todos los campos');
@@ -5149,7 +5321,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             
             const newSorteo={
                 name,lottery,date,
-                precioNumero,premioMayor,premioSeco1,premioSeco2,premioSeco3,premioSeco4,
+                precioNumero,premioMayor,premioSeco1,premioSeco2,premioSeco3,
                 disponibles:100,
                 createdAt:new Date().toISOString()
             };
@@ -5202,7 +5374,6 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             document.getElementById('editPremioSeco1').value=s.premioSeco1||10000;
             document.getElementById('editPremioSeco2').value=s.premioSeco2||10000;
             document.getElementById('editPremioSeco3').value=s.premioSeco3||10000;
-            document.getElementById('editPremioSeco4').value=s.premioSeco4||20000;
             
             document.getElementById('editModal').classList.add('active');
         }
@@ -5217,8 +5388,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                 premioMayor:parseInt(document.getElementById('editPremioMayor').value)||100000,
                 premioSeco1:parseInt(document.getElementById('editPremioSeco1').value)||10000,
                 premioSeco2:parseInt(document.getElementById('editPremioSeco2').value)||10000,
-                premioSeco3:parseInt(document.getElementById('editPremioSeco3').value)||10000,
-                premioSeco4:parseInt(document.getElementById('editPremioSeco4').value)||20000
+                premioSeco3:parseInt(document.getElementById('editPremioSeco3').value)||10000
             };
             
             showLoading(true);
@@ -5809,6 +5979,552 @@ function abrirBaseDatosClientes(){
                 });
             });
         }
+
+
+        // ══════════════════════════════════════════════════════
+        //  WHATSAPP PANEL — JavaScript completo
+        // ══════════════════════════════════════════════════════
+
+        // ── Estado global ──────────────────────────────────────
+        const waState = {
+          clients: [],
+          sentToday: 0,
+          sending: false,
+          cfg: { token:'', phoneId:'', claudeKey:'', delay:1500 },
+          kb: [],       // [{q,a}]
+          biz: {},      // info del negocio
+          botCfg: { name:'Asistente de Bol$illo Lleno', instructions:'' },
+          botHistory: []
+        };
+
+        let waPanelInited = false;
+
+        function initWaPanel(){
+          if(waPanelInited) return;
+          waPanelInited = true;
+          waCfgLoad();
+          kbLoad();
+          bizLoad();
+          botCfgLoad();
+          waRenderClients();
+          waUpdatePreview();
+        }
+
+        // ── Sub-tabs ───────────────────────────────────────────
+        function waTab(name, btn){
+          document.querySelectorAll('.wa-sub-section').forEach(s=>s.classList.remove('active'));
+          document.querySelectorAll('.wa-sub-tab').forEach(b=>b.classList.remove('active'));
+          const sec = document.getElementById('waSec-'+name);
+          if(sec) sec.classList.add('active');
+          if(btn) btn.classList.add('active');
+        }
+
+        // ── Clientes ───────────────────────────────────────────
+        function waRenderClients(){
+          const list = document.getElementById('waClientsList');
+          if(!list) return;
+          if(!waState.clients.length){
+            list.innerHTML='<div style="text-align:center;color:rgba(255,255,255,.3);font-size:.75em;padding:12px">Sin clientes. Haz Sync Firebase o agrega manualmente.</div>';
+          } else {
+            list.innerHTML = waState.clients.map((c,i)=>`
+              <div class="wa-client-row ${c.sel?'sel':''}" onclick="waToggleClient(${i})">
+                <div class="wa-chk">${c.sel?'✓':''}</div>
+                <div class="wa-av">${(c.name||'?')[0]}</div>
+                <div class="wa-ci"><div class="wa-cn">${c.name||'Sin nombre'}</div><div class="wa-cp">+${c.phone}</div></div>
+              </div>`).join('');
+          }
+          waUpdateStats();
+        }
+
+        function waToggleClient(i){
+          waState.clients[i].sel = !waState.clients[i].sel;
+          waRenderClients();
+        }
+
+        function waToggleAll(){
+          const allSel = waState.clients.every(c=>c.sel);
+          waState.clients.forEach(c=>c.sel=!allSel);
+          waRenderClients();
+        }
+
+        function waUpdateStats(){
+          const sel = waState.clients.filter(c=>c.sel).length;
+          const sc = document.getElementById('wa-stat-c'); if(sc) sc.textContent=waState.clients.length;
+          const ss = document.getElementById('wa-stat-s'); if(ss) ss.textContent=sel;
+          const se = document.getElementById('wa-stat-e'); if(se) se.textContent=waState.sentToday;
+          const sct = document.getElementById('wa-sel-cnt'); if(sct) sct.textContent=sel;
+          const sn = document.getElementById('wa-n-sel'); if(sn) sn.textContent=sel;
+        }
+
+        function waAddClient(){
+          const name = (document.getElementById('waNewName').value||'').trim();
+          const phone = (document.getElementById('waNewPhone').value||'').replace(/\D/g,'');
+          if(phone.length<10){ alert('Ingresa un número válido con código de país (ej: 573001234567)'); return; }
+          if(waState.clients.find(c=>c.phone===phone)){ alert('Ese número ya existe'); return; }
+          waState.clients.push({id:Date.now(), name:name||phone, phone, sel:false});
+          document.getElementById('waNewName').value='';
+          document.getElementById('waNewPhone').value='';
+          waRenderClients();
+          waLog(`Cliente ${name||phone} agregado`, 'ok');
+        }
+
+        async function waSyncFirebase(){
+          if(typeof database === 'undefined'){ waLog('Firebase no inicializado', 'err'); return; }
+          waLog('Sincronizando clientes desde Firebase...', 'info');
+          try {
+            // Cargar desde occupied: extraer teléfonos de los datos de números
+            const sortSnap = await database.ref('sorteos').once('value');
+            const sortData = sortSnap.val()||{};
+            const phones = new Set();
+            const newClients = [];
+
+            // Intentar desde participants/ o desde occupied/
+            const partSnap = await database.ref('participants').once('value');
+            const partData = partSnap.val()||{};
+            Object.entries(partData).forEach(([k,v])=>{
+              const ph = (v.telefono||v.phone||'').replace(/\D/g,'');
+              if(ph.length>=10 && !phones.has(ph) && !waState.clients.find(c=>c.phone===ph)){
+                phones.add(ph);
+                newClients.push({id:k, name:v.nombre||v.name||ph, phone:ph, sel:false});
+              }
+            });
+
+            // También intentar desde cada sorteo en occupied/
+            for(const sid of Object.keys(sortData)){
+              const occSnap = await database.ref('occupied/'+sid).once('value');
+              const occ = occSnap.val()||{};
+              Object.values(occ).forEach(v=>{
+                const ph = (v.telefono||v.phone||'').replace(/\D/g,'');
+                const nm = v.nombre||v.name||ph;
+                if(ph.length>=10 && !phones.has(ph) && !waState.clients.find(c=>c.phone===ph)){
+                  phones.add(ph);
+                  newClients.push({id:Date.now()+Math.random(), name:nm, phone:ph, sel:false});
+                }
+              });
+            }
+
+            if(newClients.length){
+              waState.clients.push(...newClients);
+              waRenderClients();
+              waLog(`${newClients.length} clientes cargados desde Firebase ✓`, 'ok');
+            } else {
+              waLog('No se encontraron clientes nuevos con teléfono en Firebase', 'info');
+            }
+          } catch(e){ waLog('Error Firebase: '+e.message, 'err'); }
+        }
+
+        // ── Plantillas ─────────────────────────────────────────
+        const waTpls = {
+          sorteo:`🎟️ ¡Nuevo sorteo en Bol$illo Lleno!
+
+Premio: 💰 $500.000
+Números del 001 al 100
+Precio por número: $2.000
+
+🔗 Reserva ya tu número:
+bolsillolleno.com
+
+¡Que la suerte te acompañe! 🍀`,
+          ganador:`🏆 ¡TENEMOS GANADOR!
+
+Felicitaciones al portador del número *XXX* 🎉
+Premio: 💰 $500.000
+
+Gracias a todos por participar en Bol$illo Lleno 🙏
+¡Muy pronto el siguiente sorteo!`,
+          promo:`🔥 ¡OFERTA ESPECIAL por tiempo limitado!
+
+Combo 3 números → $5.000
+Combo 7 números → $10.000 🔥
+Combo 10 números → ¡Solo $13.000!
+
+⚡ Solo por hoy. ¡Aprovecha!
+bolsillolleno.com`,
+          recordatorio:`⏰ ¡Sorteo en menos de 24 horas!
+
+📅 Mañana se realiza el sorteo
+🎟️ Aún hay números disponibles
+💰 Premio: $500.000
+
+¡Si no tienes tu número, apúrate!
+bolsillolleno.com`
+        };
+
+        function waTpl(k){
+          const ta = document.getElementById('waMsgText');
+          if(ta){ ta.value=waTpls[k]||''; waUpdatePreview(); }
+        }
+
+        function waUpdatePreview(){
+          const ta = document.getElementById('waMsgText');
+          const pb = document.getElementById('wa-preview-bubble');
+          if(!ta||!pb) return;
+          const text = ta.value;
+          pb.innerHTML = text.replace(/\n/g,'<br>').replace(/\*(.*?)\*/g,'<strong>$1</strong>') +
+            '<div class="wa-ptime">'+new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})+' ✓✓</div>';
+          waUpdateStats();
+        }
+
+        // ── Envío ──────────────────────────────────────────────
+        async function waStartSend(){
+          if(waState.sending) return;
+          const selected = waState.clients.filter(c=>c.sel);
+          if(!selected.length){ alert('Selecciona al menos un cliente'); return; }
+          const text = (document.getElementById('waMsgText').value||'').trim();
+          if(!text){ alert('Escribe un mensaje'); return; }
+          const token = waState.cfg.token;
+          const phoneId = waState.cfg.phoneId;
+          if(!token||!phoneId){
+            alert('⚠️ Configura tu Access Token y Phone Number ID en la pestaña ⚙️ Config primero.');
+            waTab('cfg', document.querySelectorAll('.wa-sub-tab')[3]);
+            return;
+          }
+          waState.sending=true;
+          document.getElementById('waSendBtn').disabled=true;
+          const logDiv = document.getElementById('waLog');
+          logDiv.innerHTML='';
+          let ok=0, fail=0;
+          const delay=waState.cfg.delay||1500;
+          for(let i=0;i<selected.length;i++){
+            const c=selected[i];
+            const pct=Math.round((i/selected.length)*100);
+            const prog=document.getElementById('wa-prog');
+            if(prog) prog.style.width=pct+'%';
+            const ss=document.getElementById('wa-send-status');
+            if(ss) ss.textContent=`Enviando ${i+1} de ${selected.length}...`;
+            try{
+              const res=await waSendMsg(token,phoneId,waState.cfg.version||'v19.0',c.phone,text);
+              if(res.messages){ ok++; waLog('✅ '+c.name+' (+'+c.phone+')', 'ok'); }
+              else throw new Error(res.error?.message||'Error desconocido');
+            }catch(e){ fail++; waLog('❌ '+c.name+': '+e.message, 'err'); }
+            if(i<selected.length-1) await new Promise(r=>setTimeout(r,delay));
+          }
+          waState.sentToday+=ok;
+          waUpdateStats();
+          const prog2=document.getElementById('wa-prog');
+          if(prog2) prog2.style.width='100%';
+          const ss2=document.getElementById('wa-send-status');
+          if(ss2) ss2.textContent=`✅ ${ok} enviados${fail?` · ❌ ${fail} fallidos`:''}`;
+          document.getElementById('waSendBtn').disabled=false;
+          waState.sending=false;
+        }
+
+        async function waSendMsg(token,phoneId,version,to,text){
+          const res=await fetch(`https://graph.facebook.com/${version}/${phoneId}/messages`,{
+            method:'POST',
+            headers:{'Content-Type':'application/json','Authorization':'Bearer '+token},
+            body:JSON.stringify({messaging_product:'whatsapp',to,type:'text',text:{body:text,preview_url:false}})
+          });
+          return res.json();
+        }
+
+        function waLog(msg, type='ok'){
+          const list=document.getElementById('waLog');
+          if(!list) return;
+          const empty=list.querySelector('div[style]');
+          if(empty&&empty.textContent.includes('aparecerán')) empty.remove();
+          const item=document.createElement('div');
+          item.className='wa-log-item '+type;
+          item.innerHTML=`<span style="flex:1">${msg}</span><span style="color:rgba(255,255,255,.4);font-size:.7em">${new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})}</span>`;
+          list.prepend(item);
+        }
+
+        // ── BOT IA (Claude) ────────────────────────────────────
+        function botBuildSystemPrompt(){
+          const biz = waState.biz;
+          const kb = waState.kb;
+          const botCfg = waState.botCfg;
+
+          // Obtener sorteos activos del estado global si existe
+          let sorteosInfo = '';
+          if(typeof sorteos !== 'undefined' && sorteos.length){
+            const now = new Date();
+            const activos = sorteos.filter(s=>new Date(s.date)>now);
+            if(activos.length){
+              sorteosInfo = '\n\nSORTEOS ACTIVOS ACTUALMENTE:\n' + activos.map(s=>
+                `- ${s.name}: premio ${s.prize||'por confirmar'}, fecha ${s.date}, precio por número $${s.precioNumero||2000}`
+              ).join('\n');
+            }
+          }
+
+          // Base de conocimiento
+          let kbText = '';
+          if(kb.length){
+            kbText = '\n\nBASE DE CONOCIMIENTO (preguntas frecuentes):\n' + kb.map(e=>`P: ${e.q}\nR: ${e.a}`).join('\n\n');
+          }
+
+          // Info del negocio
+          let bizText = '';
+          if(biz.pagos||biz.contacto||biz.horario||biz.info){
+            bizText = '\n\nINFO DEL NEGOCIO:';
+            if(biz.pagos) bizText += `\n- Métodos de pago: ${biz.pagos}`;
+            if(biz.contacto) bizText += `\n- WhatsApp/Contacto: ${biz.contacto}`;
+            if(biz.horario) bizText += `\n- Horario: ${biz.horario}`;
+            if(biz.info) bizText += `\n- Info adicional: ${biz.info}`;
+          }
+
+          return `Eres ${botCfg.name}, el asistente virtual de Bol$illo Lleno, una empresa colombiana de sorteos y rifas.
+
+Tu trabajo es atender a clientes que preguntan sobre sorteos, precios, cómo participar, métodos de pago, ganadores y cualquier duda relacionada con el negocio.
+
+REGLAS IMPORTANTES:
+- Responde siempre en español colombiano, de forma amigable y cercana
+- Usa emojis con moderación para dar calidez
+- Sé conciso pero completo
+- Si no tienes la información exacta, invita al cliente a contactar directamente
+- Nunca inventes precios, fechas o información que no tengas
+- Siempre anima a participar en los sorteos${bizText}${sorteosInfo}${kbText}
+
+INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
+        }
+
+        async function botSend(){
+          const input = document.getElementById('botInput');
+          if(!input) return;
+          const userMsg = input.value.trim();
+          if(!userMsg) return;
+          input.value='';
+
+          const chat = document.getElementById('botChat');
+
+          // Añadir mensaje del usuario
+          const uDiv = document.createElement('div');
+          uDiv.className='bot-msg-user';
+          uDiv.textContent=userMsg;
+          chat.appendChild(uDiv);
+
+          // Indicador de pensando
+          const thinkDiv = document.createElement('div');
+          thinkDiv.className='bot-msg-thinking';
+          thinkDiv.textContent='✍️ Escribiendo...';
+          chat.appendChild(thinkDiv);
+          chat.scrollTop=chat.scrollHeight;
+
+          // Agregar al historial
+          waState.botHistory.push({role:'user', content:userMsg});
+
+          try {
+            const claudeKey = waState.cfg.claudeKey;
+            let respText = '';
+
+            if(claudeKey){
+              // Llamar a Claude API real
+              const res = await fetch('https://api.anthropic.com/v1/messages',{
+                method:'POST',
+                headers:{'Content-Type':'application/json','anthropic-version':'2023-06-01','x-api-key':claudeKey},
+                body: JSON.stringify({
+                  model:'claude-sonnet-4-20250514',
+                  max_tokens:500,
+                  system: botBuildSystemPrompt(),
+                  messages: waState.botHistory.slice(-10)
+                })
+              });
+              const data = await res.json();
+              respText = data.content?.[0]?.text || 'No pude generar una respuesta.';
+            } else {
+              // Respuesta simulada inteligente sin API key
+              respText = botSimulate(userMsg);
+            }
+
+            waState.botHistory.push({role:'assistant', content:respText});
+            thinkDiv.remove();
+            const bDiv=document.createElement('div');
+            bDiv.className='bot-msg-bot';
+            bDiv.innerHTML=respText.replace(/\n/g,'<br>');
+            chat.appendChild(bDiv);
+          } catch(e) {
+            thinkDiv.textContent='❌ Error: '+e.message;
+          }
+          chat.scrollTop=chat.scrollHeight;
+        }
+
+        function botSimulate(msg){
+          // Respuesta simulada cuando no hay Claude API key
+          const lMsg=msg.toLowerCase();
+          const kb=waState.kb;
+          // Buscar en base de conocimiento
+          for(const entry of kb){
+            if(entry.q && lMsg.includes(entry.q.toLowerCase().split(' ')[0])){
+              return entry.a;
+            }
+          }
+          if(lMsg.includes('precio')||lMsg.includes('cuesta')||lMsg.includes('valor')){
+            return `¡Hola! 😊 Los precios dependen del sorteo activo. Generalmente manejamos:\n\n🎟️ Número individual: $2.000\n🎁 Combo 3 números: $5.000\n🎁 Combo 7 números: $10.000\n🎁 Combo 10 números: $13.000\n\n¿Te gustaría reservar tu número? 🍀`;
+          }
+          if(lMsg.includes('pagar')||lMsg.includes('pago')||lMsg.includes('nequi')||lMsg.includes('transferencia')){
+            const pagos=waState.biz.pagos||'Nequi, transferencia bancaria o efectivo';
+            return `Puedes pagar por: ${pagos} 💳\n\nUna vez realices el pago, envíanos el comprobante y confirmamos tu número de inmediato ✅`;
+          }
+          if(lMsg.includes('sorteo')||lMsg.includes('rifa')||lMsg.includes('participar')){
+            return `¡Tenemos sorteos emocionantes! 🎟️\n\nPara participar:\n1️⃣ Elige tu número favorito\n2️⃣ Realiza el pago\n3️⃣ Envíanos el comprobante\n4️⃣ ¡Espera el sorteo en vivo! 🔴\n\n¿Te animamos a participar? 🍀`;
+          }
+          if(lMsg.includes('ganador')||lMsg.includes('ganar')||lMsg.includes('premio')){
+            return `Los sorteos se realizan en vivo por nuestras redes sociales 🔴\n\nEl ganador recibe su premio en menos de 48 horas 🏆💰\n\nSigue nuestro Facebook e Instagram para no perderte ningún sorteo!`;
+          }
+          if(lMsg.includes('confiable')||lMsg.includes('serio')||lMsg.includes('estafa')){
+            return `¡Somos 100% confiables! 🙌\n\nLlevamos años realizando sorteos transparentes y en vivo. Todos nuestros ganadores han recibido sus premios. Puedes ver los sorteos anteriores en nuestro Facebook 📲\n\n¡Tu confianza es lo más importante para nosotros! ❤️`;
+          }
+          if(lMsg.includes('hola')||lMsg.includes('buenas')||lMsg.includes('buen dia')){
+            return `¡Hola! 👋 Bienvenido/a a Bol$illo Lleno 🤑\n\n¿En qué te puedo ayudar hoy? Puedo darte información sobre:\n🎟️ Sorteos activos\n💰 Precios y combos\n💳 Métodos de pago\n🏆 Cómo participar`;
+          }
+          return `Gracias por tu mensaje 😊 Para darte la mejor respuesta, te recomendamos escribirnos directamente a nuestro WhatsApp${waState.biz.contacto?' al '+waState.biz.contacto:''}.\n\n¡Estamos aquí para ayudarte! 🙌`;
+        }
+
+        function botClear(){
+          waState.botHistory=[];
+          const chat=document.getElementById('botChat');
+          if(chat) chat.innerHTML='<div class="bot-msg-bot">¡Hola! 👋 Soy el asistente de <strong>Bol$illo Lleno</strong>. ¿En qué te ayudo? 🎟️</div>';
+        }
+
+        function botSaveConfig(){
+          waState.botCfg.name=(document.getElementById('botName').value||'Asistente de Bol$illo Lleno');
+          waState.botCfg.instructions=(document.getElementById('botInstructions').value||'');
+          try{ localStorage.setItem('wa_botcfg', JSON.stringify(waState.botCfg)); }catch(e){}
+          // Guardar en Firebase para que el bot backend lo lea
+          if(typeof database !== 'undefined'){
+            database.ref('wa_botcfg').set(waState.botCfg)
+              .then(()=>alert('✅ Config del bot guardada y sincronizada ✓'))
+              .catch(()=>alert('✅ Config guardada'));
+          } else {
+            alert('✅ Configuración del bot guardada');
+          }
+        }
+
+        function botCfgLoad(){
+          try{
+            const s=localStorage.getItem('wa_botcfg');
+            if(s){ Object.assign(waState.botCfg, JSON.parse(s)); }
+            const bn=document.getElementById('botName');
+            const bi=document.getElementById('botInstructions');
+            if(bn) bn.value=waState.botCfg.name||'Asistente de Bol$illo Lleno';
+            if(bi) bi.value=waState.botCfg.instructions||'';
+          }catch(e){}
+        }
+
+        // ── Base de conocimiento ───────────────────────────────
+        function kbAdd(){
+          const q=(document.getElementById('kbQ').value||'').trim();
+          const a=(document.getElementById('kbA').value||'').trim();
+          if(!q||!a){ alert('Escribe tanto la pregunta como la respuesta'); return; }
+          waState.kb.push({id:Date.now(), q, a});
+          document.getElementById('kbQ').value='';
+          document.getElementById('kbA').value='';
+          kbSave();
+          kbRender();
+        }
+
+        function kbDelete(id){
+          waState.kb=waState.kb.filter(e=>e.id!==id);
+          kbSave();
+          kbRender();
+        }
+
+        function kbRender(){
+          const list=document.getElementById('kbList');
+          const cnt=document.getElementById('kb-count');
+          if(cnt) cnt.textContent=waState.kb.length;
+          if(!list) return;
+          if(!waState.kb.length){
+            list.innerHTML='<div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">Aún no hay entradas</div>';
+            return;
+          }
+          list.innerHTML=waState.kb.map(e=>`
+            <div class="kb-item">
+              <button class="kb-del" onclick="kbDelete(${e.id})">✕</button>
+              <div class="kb-q">❓ ${e.q}</div>
+              <div class="kb-a">${e.a}</div>
+            </div>`).join('');
+        }
+
+        function kbSave(){
+          try{ localStorage.setItem('wa_kb', JSON.stringify(waState.kb)); }catch(e){}
+          // También guardar en Firebase para que el bot lo lea
+          if(typeof database !== 'undefined'){
+            database.ref('wa_kb').set(waState.kb).catch(e=>console.log('KB Firebase error:',e));
+          }
+        }
+
+        function kbLoad(){
+          try{
+            const s=localStorage.getItem('wa_kb');
+            if(s){ waState.kb=JSON.parse(s)||[]; }
+            kbRender();
+          }catch(e){}
+        }
+
+        function kbExport(){
+          const txt=waState.kb.map(e=>'P: '+e.q+'\nR: '+e.a).join('\n\n---\n\n');
+          const blob=new Blob([txt],{type:'text/plain;charset=utf-8'});
+          const a=document.createElement('a');
+          a.href=URL.createObjectURL(blob);
+          a.download='base_conocimiento_bot.txt';
+          a.click();
+        }
+
+        // ── Info del negocio ───────────────────────────────────
+        function bizSave(){
+          waState.biz.pagos=(document.getElementById('bizPagos').value||'').trim();
+          waState.biz.contacto=(document.getElementById('bizContacto').value||'').trim();
+          waState.biz.horario=(document.getElementById('bizHorario').value||'').trim();
+          waState.biz.info=(document.getElementById('bizInfo').value||'').trim();
+          try{ localStorage.setItem('wa_biz', JSON.stringify(waState.biz)); }catch(e){}
+          // Guardar en Firebase para que el bot backend lo lea
+          if(typeof database !== 'undefined'){
+            database.ref('wa_biz').set(waState.biz)
+              .then(()=>alert('✅ Info del negocio guardada y sincronizada con el bot ✓'))
+              .catch(()=>alert('✅ Info guardada localmente'));
+          } else {
+            alert('✅ Info del negocio guardada. El bot ya la usará en sus respuestas.');
+          }
+        }
+
+        function bizLoad(){
+          try{
+            const s=localStorage.getItem('wa_biz');
+            if(s){ Object.assign(waState.biz, JSON.parse(s)); }
+            const fields=['pagos','contacto','horario','info'];
+            fields.forEach(f=>{ const el=document.getElementById('biz'+f.charAt(0).toUpperCase()+f.slice(1)); if(el) el.value=waState.biz[f]||''; });
+          }catch(e){}
+        }
+
+        // ── Config API ─────────────────────────────────────────
+        function waCfgSave(){
+          waState.cfg.token=(document.getElementById('waCfgToken').value||'').trim();
+          waState.cfg.phoneId=(document.getElementById('waCfgPhoneId').value||'').trim();
+          waState.cfg.claudeKey=(document.getElementById('waCfgClaude').value||'').trim();
+          waState.cfg.delay=parseInt(document.getElementById('waCfgDelay').value)||1500;
+          try{
+            localStorage.setItem('wa_cfg', JSON.stringify({phoneId:waState.cfg.phoneId, delay:waState.cfg.delay}));
+          }catch(e){}
+          alert('✅ Configuración guardada');
+        }
+
+        function waCfgLoad(){
+          try{
+            const s=localStorage.getItem('wa_cfg');
+            if(s){ const p=JSON.parse(s); if(p.phoneId){document.getElementById('waCfgPhoneId').value=p.phoneId; waState.cfg.phoneId=p.phoneId;} if(p.delay){document.getElementById('waCfgDelay').value=p.delay; waState.cfg.delay=p.delay;} }
+          }catch(e){}
+        }
+
+        async function waCfgTest(){
+          const token=document.getElementById('waCfgToken').value.trim();
+          const phoneId=document.getElementById('waCfgPhoneId').value.trim();
+          const res=document.getElementById('waCfgTestResult');
+          if(!token||!phoneId){ if(res) res.innerHTML='<div class="wa-alert wa-alert-warn">⚠️ Completa Token y Phone Number ID</div>'; return; }
+          if(res) res.innerHTML='<div class="wa-alert wa-alert-info">⏳ Probando...</div>';
+          try{
+            const r=await fetch(`https://graph.facebook.com/v19.0/${phoneId}?fields=display_phone_number&access_token=${token}`);
+            const d=await r.json();
+            if(d.display_phone_number){
+              if(res) res.innerHTML=`<div class="wa-alert wa-alert-info">✅ Conectado. Número: <strong>${d.display_phone_number}</strong></div>`;
+            } else {
+              if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn">❌ ${d.error?.message||'Token o ID inválido'}</div>`;
+            }
+          }catch(e){ if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn">❌ Error: ${e.message}</div>`; }
+        }
+        // ══════════════════════════════════════════════════════
+        //  FIN WHATSAPP PANEL
+        // ══════════════════════════════════════════════════════
 
         window.onload=function(){
             initParticles();
