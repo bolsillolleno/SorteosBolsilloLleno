@@ -347,7 +347,7 @@
             box-shadow:0 15px 45px rgba(37,211,102,.6),0 0 0 8px rgba(37,211,102,.2);
         }
         
-        /* Notificación live */
+        /* Notificaci�n live */
         .live-notification{
             position:fixed;
             top:85px;
@@ -488,7 +488,7 @@
             to{opacity:1;transform:translateY(0)}
         }
         
-        /* Header de sección */
+        /* Header de secci�n */
         .header{
             text-align:center;
             color:var(--gold-400);
@@ -754,7 +754,7 @@
             text-shadow:0 0 20px rgba(245,158,11,.4);
         }
         
-        /* Botón JUGAR - Neumorfismo */
+        /* Bot�n JUGAR - Neumorfismo */
         .play-btn{
             width:100%;
             padding:18px;
@@ -1004,7 +1004,7 @@
             font-size:.88em;
         }
         
-        /* Cómo comprar glassmorphism */
+        /* C�mo comprar glassmorphism */
         .como-comprar-section{
             background:var(--glass-bg);
             border-radius:var(--radius-xl);
@@ -1111,7 +1111,7 @@
             font-family:'Plus Jakarta Sans',sans-serif;
         }
         
-        /* Premios explicación */
+        /* Premios explicaci�n */
         .premios-explicacion{
             margin-top:24px;
             padding:24px 20px;
@@ -1967,7 +1967,7 @@
         }
         
         .number-cell.selected::after{
-            content:'✓';
+            content:'';
             position:absolute;
             top:3px;
             right:3px;
@@ -2362,7 +2362,7 @@
         .admin-section{display:none}
         .admin-section.active{display:block;animation:fadeInUp .4s var(--ease-smooth)}
 
-        /* ── WhatsApp Bot Panel ── */
+        /*  WhatsApp Bot Panel  */
         .wa-sub-tabs{display:flex;gap:6px;margin-bottom:18px;background:rgba(0,0,0,.2);padding:4px;border-radius:12px;flex-wrap:wrap}
         .wa-sub-tab{flex:1;min-width:80px;padding:8px 6px;border:none;border-radius:9px;cursor:pointer;font-family:'Inter',sans-serif;font-size:.72em;font-weight:700;background:transparent;color:rgba(255,255,255,.5);transition:all .2s;text-align:center}
         .wa-sub-tab.active{background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;box-shadow:0 4px 12px rgba(37,211,102,.3)}
@@ -3424,7 +3424,7 @@
             50%{transform:scale(1.12);filter:drop-shadow(0 4px 10px rgba(225,48,108,.5))}
         }
         
-        /* Galería de testimonios */
+        /* Galer�a de testimonios */
         .testimonials-gallery {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -3503,7 +3503,7 @@
             transform: scale(1.2);
         }
         
-        /* Responsive: 1 columna en móvil */
+        /* Responsive: 1 columna en m�vil */
         @media(max-width: 480px) {
             .testimonials-gallery {
                 grid-template-columns: 1fr;
@@ -3520,8 +3520,8 @@
     <div class="particles-container" id="particles"></div>
     
     <div class="live-notification" id="liveNotification">
-        <span style="font-size:1.3em;margin-right:8px;">🎉</span>
-        <span id="notificationText">¡Alguien acaba de reservar!</span>
+        <span style="font-size:1.3em;margin-right:8px;"></span>
+        <span id="notificationText">�Alguien acaba de reservar!</span>
     </div>
 
     <div class="loading-overlay" id="loading">
@@ -3537,61 +3537,61 @@
         <div class="top-bar">
             <div class="logo-container" onclick="goHome()">
                 <img src="https://i.imgur.com/GYOYvqH.png" alt="Bol$illo Lleno" class="logo-img">
-                <span class="logo-text">Bol$illo Lleno 🤑</span>
+                <span class="logo-text">Bol$illo Lleno </span>
             </div>
-            <button class="admin-btn" onclick="openAdmin()">🔒 Admin</button>
+            <button class="admin-btn" onclick="openAdmin()"> Admin</button>
         </div>
 
         <!-- STICKY HEADER - DEBAJO DEL BANNER -->
         <header class="sticky-header" id="stickyHeader">
             <nav class="sticky-nav">
                 <button class="sticky-btn primary" onclick="showHome()">
-                    <span class="icon">🎰</span>
+                    <span class="icon"></span>
                     <span>Sorteos</span>
                 </button>
                 <button class="sticky-btn" onclick="showQuienesSomos()">
-                    <span class="icon">🙏</span>
+                    <span class="icon"></span>
                     <span>Nosotros</span>
                 </button>
                 <button class="sticky-btn" onclick="scrollToTestimonios()">
-                    <span class="icon">🏆</span>
+                    <span class="icon"></span>
                     <span>Ganadores</span>
                 </button>
                 <a href="https://chat.whatsapp.com/Hn8QhqoUUv0610x9dM6D67?mode=gi_t" class="sticky-btn" target="_blank">
-                    <span class="icon">🍀</span>
+                    <span class="icon"></span>
                     <span>Comunidad</span>
                 </a>
                 <a href="https://wa.me/573237207391" class="sticky-btn" target="_blank">
-                    <span class="icon">💬</span>
+                    <span class="icon"></span>
                     <span>Ayuda</span>
                 </a>
             </nav>
         </header>
         
-        <a href="https://wa.me/573237207391?text=¡Hola! Quiero más información" class="whatsapp-float" target="_blank">
+        <a href="https://wa.me/573237207391?text=�Hola! Quiero m�s informaci�n" class="whatsapp-float" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:32px;height:32px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.2));">
         </a>
 
         <div class="modal" id="adminModal">
             <div class="modal-content">
-                <h3>🔐 Acceso Admin</h3>
+                <h3> Acceso Admin</h3>
                 <input type="email" id="emailInput" placeholder="Email" style="margin-bottom:12px;" onkeypress="if(event.key==='Enter')document.getElementById('pwdInput').focus()">
-                <input type="password" id="pwdInput" placeholder="Contraseña" onkeypress="if(event.key==='Enter')checkPwd()">
+                <input type="password" id="pwdInput" placeholder="Contrase�a" onkeypress="if(event.key==='Enter')checkPwd()">
                 <button onclick="checkPwd()">Entrar</button>
-                <p class="error" id="pwdError">Contraseña incorrecta</p>
+                <p class="error" id="pwdError">Contrase�a incorrecta</p>
             </div>
         </div>
 
         <div class="modal" id="editModal">
             <div class="modal-content" style="max-width:500px;">
-                <h3>✏️ Editar Sorteo</h3>
+                <h3> Editar Sorteo</h3>
                 <input type="hidden" id="editId">
                 <div class="form-group">
                     <label>Nombre:</label>
                     <input type="text" id="editName">
                 </div>
                 <div class="form-group">
-                    <label>Lotería:</label>
+                    <label>Loter�a:</label>
                     <input type="text" id="editLottery">
                 </div>
                 <div class="form-group">
@@ -3630,12 +3630,12 @@
         <div class="modal" id="gestionModal">
             <div class="modal-content gestion-modal-content">
                 <div class="gestion-header">
-                    <h3>🔧 Gestionar Números</h3>
+                    <h3> Gestionar N�meros</h3>
                     <div id="gestionNumeros"></div>
                 </div>
                 <div class="gestion-body">
        <button class="contactos-btn" onclick="abrirContactos()">
-    <span>📱</span>
+    <span></span>
     <span id="contactosBtnText">Buscar en Contactos</span>
 </button>                 
                     <div class="input-group">
@@ -3643,10 +3643,10 @@
                         <input type="text" id="gestionNombre" placeholder="Nombre del cliente">
                     </div>
                     <div class="input-group">
-                        <label>Teléfono</label>
+                        <label>Tel�fono</label>
                         <div class="phone-input-wrapper">
                             <div class="country-code">
-                                <span>🇨🇴 +57</span>
+                                <span> +57</span>
                             </div>
                             <input type="tel" id="gestionTelefono" placeholder="300 123 4567" style="flex:1">
                         </div>
@@ -3676,7 +3676,7 @@
         <div class="modal" id="confirmModal">
             <div class="modal-content confirm-modal-content">
                 <div class="confirm-header">
-                    <h3>🍀 ¡Casi es tuyo!</h3>
+                    <h3> �Casi es tuyo!</h3>
                 </div>
                 <div class="confirm-body">
                     <div class="confirm-numbers">
@@ -3684,14 +3684,14 @@
                         <div class="confirm-total" id="confirmTotal"></div>
                     </div>
                     <div class="confirm-input-group">
-                        <label>🙏 Tu nombre</label>
-                        <input type="text" id="confirmNombre" placeholder="Ej: Juan Pérez">
+                        <label> Tu nombre</label>
+                        <input type="text" id="confirmNombre" placeholder="Ej: Juan P�rez">
                     </div>
                     <div class="confirm-input-group">
-                        <label>📱 Tu teléfono</label>
+                        <label> Tu tel�fono</label>
                         <div class="phone-input-wrapper">
                             <div class="country-code">
-                                <span>🇨🇴 +57</span>
+                                <span> +57</span>
                             </div>
                             <input type="tel" id="confirmTelefono" placeholder="300 123 4567" style="flex:1">
                         </div>
@@ -3706,190 +3706,190 @@
 
         <div id="homeSection" class="sections active">
             <div class="urgency-bar" id="urgencyBar">
-                <span>🔥</span>
+                <span></span>
                 <span><span class="urgency-number" id="buyersCount">47</span> personas viendo ahora</span>
-                <span>⚡</span>
+                <span></span>
             </div>
             
             <div class="scarcity-bar" id="scarcityBar" style="display:none;">
                 <div class="scarcity-header">
-                    <span>📊 Números disponibles</span>
+                    <span> N�meros disponibles</span>
                     <span id="disponiblesText">85/100</span>
                 </div>
                 <div class="scarcity-progress">
                     <div class="scarcity-fill" id="scarcityFill" style="width:85%"></div>
                 </div>
                 <div class="urgency-text">
-                    ⚡ ¡Se están vendiendo rápido!
+                     �Se est�n vendiendo r�pido!
                 </div>
             </div>
             
             <video id="videoPromo" controls playsinline preload="none" style="width:100%;display:block;border-radius:20px;margin-bottom:18px;" onended="this.pause()"></video>
 
             <div class="header" id="sorteos">
-                <h1>🎲 Sorteos Activos</h1>
-                <p>¡Toca un sorteo para participar y ganar!</p>
+                <h1> Sorteos Activos</h1>
+                <p>�Toca un sorteo para participar y ganar!</p>
             </div>
             
             <div id="sorteosList" class="sorteos-grid"></div>
             <div id="noSorteos" style="text-align:center;color:#fff;padding:40px;display:none">
                 <h3>No hay sorteos activos</h3>
-                <p>¡Vuelve pronto!</p>
+                <p>�Vuelve pronto!</p>
             </div>
             
             <div class="combos-section">
                 <div class="combos-header">
-                    <div class="combos-title">🎁 COMBOS ESPECIALES</div>
-                    <div class="combos-subtitle">¡Más números = Más oportunidades de ganar!</div>
+                    <div class="combos-title"> COMBOS ESPECIALES</div>
+                    <div class="combos-subtitle">�M�s n�meros = M�s oportunidades de ganar!</div>
                 </div>
                 <div class="combos-grid">
                     <div class="combo-card">
                         <div class="combo-cantidad">3</div>
-                        <div class="combo-texto">números</div>
+                        <div class="combo-texto">n�meros</div>
                     </div>
                     <div class="combo-card popular">
-                        <div class="combo-badge">🔥 MÁS VENDIDO</div>
+                        <div class="combo-badge"> M�S VENDIDO</div>
                         <div class="combo-cantidad">7</div>
-                        <div class="combo-texto">números</div>
+                        <div class="combo-texto">n�meros</div>
                     </div>
                     <div class="combo-card">
                         <div class="combo-cantidad">10</div>
-                        <div class="combo-texto">números</div>
+                        <div class="combo-texto">n�meros</div>
                     </div>
                 </div>
                 <div class="combos-footer">
-                    <div class="combos-footer-text">💡 Los combos se aplican automáticamente al seleccionar tus números</div>
+                    <div class="combos-footer-text"> Los combos se aplican autom�ticamente al seleccionar tus n�meros</div>
                 </div>
             </div>
             
             <div class="como-comprar-section">
                 <div class="como-comprar-header">
-                    <div class="como-comprar-title">🛒 ¿CÓMO COMPRAR?</div>
-                    <div class="como-comprar-subtitle">¡Es muy fácil! Sigue estos pasos:</div>
+                    <div class="como-comprar-title"> �C�MO COMPRAR?</div>
+                    <div class="como-comprar-subtitle">�Es muy f�cil! Sigue estos pasos:</div>
                 </div>
                 <div class="pasos-container">
                     <div class="paso">
                         <div class="paso-numero">1</div>
                         <div class="paso-content">
                             <div class="paso-titulo">Elige tu sorteo</div>
-                            <div class="paso-desc">Selecciona el sorteo activo que más te guste y toca "JUGAR AHORA"</div>
+                            <div class="paso-desc">Selecciona el sorteo activo que m�s te guste y toca "JUGAR AHORA"</div>
                         </div>
                     </div>
                     <div class="paso">
                         <div class="paso-numero">2</div>
                         <div class="paso-content">
-                            <div class="paso-titulo">Selecciona tus números</div>
-                            <div class="paso-desc">Toca los números que quieras comprar en la tabla. Puedes elegir hasta 15 números</div>
+                            <div class="paso-titulo">Selecciona tus n�meros</div>
+                            <div class="paso-desc">Toca los n�meros que quieras comprar en la tabla. Puedes elegir hasta 15 n�meros</div>
                         </div>
                     </div>
                     <div class="paso">
                         <div class="paso-numero">3</div>
                         <div class="paso-content">
                             <div class="paso-titulo">Aprovecha los combos</div>
-                            <div class="paso-desc">Si llevas 3, 7 o 10 números, el descuento se aplica automáticamente</div>
+                            <div class="paso-desc">Si llevas 3, 7 o 10 n�meros, el descuento se aplica autom�ticamente</div>
                         </div>
                     </div>
                     <div class="paso">
                         <div class="paso-numero">4</div>
                         <div class="paso-content">
-                            <div class="paso-titulo">Envía tu pedido</div>
-                            <div class="paso-desc">Toca "Asegurar Bendiciones", ingresa tus datos y envía por WhatsApp</div>
+                            <div class="paso-titulo">Env�a tu pedido</div>
+                            <div class="paso-desc">Toca "Asegurar Bendiciones", ingresa tus datos y env�a por WhatsApp</div>
                         </div>
                     </div>
                     <div class="paso">
                         <div class="paso-numero">5</div>
                         <div class="paso-content">
                             <div class="paso-titulo">Realiza el pago</div>
-                            <div class="paso-desc">Te indicaremos cómo pagar. ¡Una vez confirmado, tus números son tuyos!</div>
+                            <div class="paso-desc">Te indicaremos c�mo pagar. �Una vez confirmado, tus n�meros son tuyos!</div>
                         </div>
                     </div>
                 </div>
                 <div class="como-comprar-cta">
-                    <div class="como-comprar-cta-text">🍀 ¡Que la suerte te acompañe! 🍀</div>
+                    <div class="como-comprar-cta-text"> �Que la suerte te acompa�e! </div>
                 </div>
             </div>
             
             <div class="main-info">
-                <h2>🎯 La Única Rifa donde LA SUERTE SI TE ALCANZA</h2>
-                <p>4 OPORTUNIDADES de ganar con un solo número</p>
+                <h2> La �nica Rifa donde LA SUERTE SI TE ALCANZA</h2>
+                <p>4 OPORTUNIDADES de ganar con un solo n�mero</p>
                 
                 <div class="features">
                     <div class="feature">
-                        <div class="feature-icon">🏆</div>
+                        <div class="feature-icon"></div>
                         <div class="feature-number">4X</div>
                         <div class="feature-text">Oportunidades</div>
                     </div>
                     <div class="feature">
-                        <div class="feature-icon">👑</div>
+                        <div class="feature-icon"></div>
                         <div class="feature-number">4</div>
                         <div class="feature-text">Ganadores</div>
                     </div>
                     <div class="feature">
-                        <div class="feature-icon">💰</div>
-                        <div class="feature-text">La que<br><strong>MÁS PAGA</strong></div>
+                        <div class="feature-icon"></div>
+                        <div class="feature-text">La que<br><strong>M�S PAGA</strong></div>
                     </div>
                 </div>
 
                 <div class="premios-explicacion">
-                    <h4>🍀 ¿CÓMO SE GANA? - 4 FORMAS DE GANAR</h4>
+                    <h4> �C�MO SE GANA? - 4 FORMAS DE GANAR</h4>
                     
                     <div class="premio-detalle mayor">
                         <div class="premio-detalle-titulo mayor-texto">
-                            <span style="font-size:1.3em;">👑</span>
+                            <span style="font-size:1.3em;"></span>
                             <span>PREMIO MAYOR</span>
                         </div>
                         <div class="premio-detalle-desc">
-                            Ganas con las <strong>ÚLTIMAS 2 CIFRAS</strong> del número ganador de la lotería. 
-                            Es el premio más grande del sorteo.
+                            Ganas con las <strong>�LTIMAS 2 CIFRAS</strong> del n�mero ganador de la loter�a. 
+                            Es el premio m�s grande del sorteo.
                         </div>
                         <div class="premio-detalle-ejemplo">
-                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>37</strong>, ¡GANAS EL MAYOR!
+                             Ejemplo: Si el n�mero ganador es <strong>4237</strong> y tu n�mero es <strong>37</strong>, �GANAS EL MAYOR!
                         </div>
                     </div>
                     
                     <div class="premio-detalle">
                         <div class="premio-detalle-titulo">
-                            <span style="font-size:1.3em;">✨</span>
+                            <span style="font-size:1.3em;"></span>
                             <span>SECO 1</span>
                         </div>
                         <div class="premio-detalle-desc">
-                            Ganas con las <strong>PRIMERAS 2 CIFRAS</strong> del número ganador de la lotería.
+                            Ganas con las <strong>PRIMERAS 2 CIFRAS</strong> del n�mero ganador de la loter�a.
                         </div>
                         <div class="premio-detalle-ejemplo">
-                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>42</strong>, ¡GANAS EL SECO 1!
+                             Ejemplo: Si el n�mero ganador es <strong>4237</strong> y tu n�mero es <strong>42</strong>, �GANAS EL SECO 1!
                         </div>
                     </div>
                     
                     <div class="premio-detalle">
                         <div class="premio-detalle-titulo">
-                            <span style="font-size:1.3em;">✨</span>
+                            <span style="font-size:1.3em;"></span>
                             <span>SECO 2</span>
                         </div>
                         <div class="premio-detalle-desc">
-                            Ganas con las <strong>2 CIFRAS DEL MEDIO</strong> del número ganador de la lotería.
+                            Ganas con las <strong>2 CIFRAS DEL MEDIO</strong> del n�mero ganador de la loter�a.
                         </div>
                         <div class="premio-detalle-ejemplo">
-                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>23</strong>, ¡GANAS EL SECO 2!
+                             Ejemplo: Si el n�mero ganador es <strong>4237</strong> y tu n�mero es <strong>23</strong>, �GANAS EL SECO 2!
                         </div>
                     </div>
                     
                     <div class="premio-detalle">
                         <div class="premio-detalle-titulo">
-                            <span style="font-size:1.3em;">✨</span>
+                            <span style="font-size:1.3em;"></span>
                             <span>SECO 3</span>
                         </div>
                         <div class="premio-detalle-desc">
-                            Ganas con la <strong>PRIMERA Y ÚLTIMA CIFRA</strong> del número ganador de la lotería.
+                            Ganas con la <strong>PRIMERA Y �LTIMA CIFRA</strong> del n�mero ganador de la loter�a.
                         </div>
                         <div class="premio-detalle-ejemplo">
-                            📌 Ejemplo: Si el número ganador es <strong>4237</strong> y tu número es <strong>47</strong>, ¡GANAS EL SECO 3!
+                             Ejemplo: Si el n�mero ganador es <strong>4237</strong> y tu n�mero es <strong>47</strong>, �GANAS EL SECO 3!
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="testimonials-section" id="testimoniosSection">
-                <div class="testimonials-title">🏆 Ganadores Recientes</div>
+                <div class="testimonials-title"> Ganadores Recientes</div>
                 <div class="testimonials-gallery">
                     <div class="testimonial-img-container">
                         <img src="https://i.imgur.com/hVCHSvZ.jpeg" alt="Ganador 1" onclick="openLightbox(this.src)">
@@ -3918,7 +3918,7 @@
                 </div>
             </div>
             
-            <!-- Lightbox para ampliar imágenes -->
+            <!-- Lightbox para ampliar im�genes -->
             <div class="lightbox" id="lightbox" onclick="closeLightbox()">
                 <span class="lightbox-close">&times;</span>
                 <img id="lightbox-img" src="" alt="Testimonio ampliado">
@@ -3927,53 +3927,53 @@
 
         <div id="quienesSomosSection" class="sections">
             <div class="header">
-                <h1>🙏 Quienes Somos</h1>
+                <h1> Quienes Somos</h1>
             </div>
             
             <div class="founder-section" id="quienes-somos">
                 <div class="founder-image-wrapper">
                     <div class="founder-image-glow"></div>
                     <img src="https://i.imgur.com/tWtHasT.jpeg" alt="Fundador" class="founder-image">
-                    <div class="founder-badge">✨ Fundador</div>
+                    <div class="founder-badge"> Fundador</div>
                 </div>
                 
                 <div class="founder-title">Bol$illo Lleno</div>
                 
                 <div class="founder-name-box">
-                    <h3 class="founder-name">Camilo Martínez</h3>
-                    <p class="founder-subtitle">El corazón de Bol$illo Lleno</p>
+                    <h3 class="founder-name">Camilo Mart�nez</h3>
+                    <p class="founder-subtitle">El coraz�n de Bol$illo Lleno</p>
                 </div>
                 
                 <div class="founder-story">
                     <div class="story-highlight">
-                        En <strong>2025</strong>, cuando el desempleo quiso apagar mis sueños, 
-                        <strong>Dios me mostró que no era el final… era el comienzo.</strong>
+                        En <strong>2025</strong>, cuando el desempleo quiso apagar mis sue�os, 
+                        <strong>Dios me mostr� que no era el final� era el comienzo.</strong>
                     </div>
                     
-                    <p><span class="brand-name">Bol$illo Lleno</span> nació desde la <span class="faith-highlight">fe</span>, no desde la casualidad.</p>
+                    <p><span class="brand-name">Bol$illo Lleno</span> naci� desde la <span class="faith-highlight">fe</span>, no desde la casualidad.</p>
                     
-                    <p>Nació con un propósito: crear una comunidad donde <strong>el jugador sea prioridad</strong> y las oportunidades sean reales.</p>
+                    <p>Naci� con un prop�sito: crear una comunidad donde <strong>el jugador sea prioridad</strong> y las oportunidades sean reales.</p>
                     
                     <div class="belief-box">
                         <p class="belief-text">
-                            Aquí no creemos solo en la suerte.<br>
-                            Creemos en <span class="faith-word">fe</span>, <span class="discipline-word">disciplina</span> y <span class="purpose-word">propósito</span>.
+                            Aqu� no creemos solo en la suerte.<br>
+                            Creemos en <span class="faith-word">fe</span>, <span class="discipline-word">disciplina</span> y <span class="purpose-word">prop�sito</span>.
                         </p>
                     </div>
                     
                     <p style="text-align:center;color:var(--gold-400);font-weight:800;">
-                        Si llegaste hasta aquí, <strong>no es coincidencia.</strong>
+                        Si llegaste hasta aqu�, <strong>no es coincidencia.</strong>
                     </p>
                     
                     <div class="founder-slogan">
                         <span class="slogan-line">Bol$illo Lleno</span>
-                        <span style="color:#fff;">Fe en acción, estrategia con propósito</span>
+                        <span style="color:#fff;">Fe en acci�n, estrategia con prop�sito</span>
                     </div>
                 </div>
             </div>
             
             <div class="social-section">
-                <div class="social-title">📱 Síguenos en Redes</div>
+                <div class="social-title"> S�guenos en Redes</div>
                 <div class="social-grid">
                     <a href="https://chat.whatsapp.com/Hn8QhqoUUv0610x9dM6D67?mode=gi_t" class="social-btn whatsapp" target="_blank">
                         <img src="https://i.imgur.com/hRV1Bs5.png" alt="WhatsApp" class="social-icon-img">
@@ -3994,7 +3994,7 @@
         <div id="gameSection" class="sections">
             <div class="game-header">
                 <div class="back-btn-container" onclick="showHome()">
-                    <span class="back-btn">← Volver a Sorteos</span>
+                    <span class="back-btn"> Volver a Sorteos</span>
                 </div>
                 
                 <h2 class="game-title" id="gameTitle"></h2>
@@ -4005,7 +4005,7 @@
 </div>        
                 <div class="game-disponibilidad" id="gameDisponibilidad">
                     <div class="game-dispo-header">
-                        <span class="game-dispo-label">📊 Números disponibles</span>
+                        <span class="game-dispo-label"> N�meros disponibles</span>
                         <span class="game-dispo-value" id="gameDispoValue">--/100</span>
                     </div>
                     <div class="game-dispo-stats">
@@ -4044,9 +4044,9 @@
 </div>
 
 <div class="cart" id="cartSection">
-    <h3>🛒 Tu Selección</h3>
+    <h3> Tu Selecci�n</h3>
     <div class="selected-numbers" id="selectedList">
-        <span style="color:rgba(255,255,255,.5);width:100%;text-align:center">Toca los números</span>
+        <span style="color:rgba(255,255,255,.5);width:100%;text-align:center">Toca los n�meros</span>
     </div>
     <div class="pricing" id="pricingInfo">
         Precio: <span id="precioInd">$2.000</span>
@@ -4055,24 +4055,24 @@
     <div class="combo-text" id="comboText"></div>
     
     <button class="blessing-btn" id="waBtn" onclick="abrirConfirmModal()" disabled>
-        <span>🙏</span>
+        <span></span>
         <span>Asegurar Bendiciones</span>
-        <span>💪</span>
+        <span></span>
     </button>
     
     <button class="view-more-btn" onclick="showHome()">
-        🎰 Ver Otros Sorteos
+         Ver Otros Sorteos
     </button>
 </div>
 
             <div class="premios-activos blessed" id="premiosActivos">
                 <div class="blessed-header">
-                    <div class="blessed-icon">✨</div>
+                    <div class="blessed-icon"></div>
                     <h3 class="blessed-title">Bendiciones Disponibles</h3>
-                    <div class="blessed-icon">🙏</div>
+                    <div class="blessed-icon"></div>
                 </div>
                 
-                <p class="blessed-subtitle">"Cada número es una semilla de fe"</p>
+                <p class="blessed-subtitle">"Cada n�mero es una semilla de fe"</p>
                 
                 <div id="listaPremios" class="blessed-list"></div>
             </div>
@@ -4080,37 +4080,37 @@
             <div class="combos-info-section" id="combosInfoSection">
                 <div class="combos-info-header">
                     <div class="combos-info-title">
-                        <span class="fire">🔥</span>
+                        <span class="fire"></span>
                         <span>COMBOS DISPONIBLES</span>
                         <span class="fire">??</span>
                     </div>
-                    <div class="combos-info-subtitle">¡Elige la cantidad y ahorra automáticamente!</div>
+                    <div class="combos-info-subtitle">�Elige la cantidad y ahorra autom�ticamente!</div>
                 </div>
                 <div class="combos-list" id="combosList"></div>
                 <div class="combos-aplicado" id="combosAplicado" style="display:none;">
-                    <div class="combos-aplicado-text">🎉 ¡Combo aplicado!</div>
+                    <div class="combos-aplicado-text"> �Combo aplicado!</div>
                     <div class="combos-aplicado-ahorro" id="combosAhorro"></div>
                 </div>
             </div>
               
                 <button class="view-more-btn" onclick="showHome()">
-                    🎰 Ver Otros Sorteos
+                     Ver Otros Sorteos
                 </button>
             </div> 
         <div id="adminSection" class="sections">
             <div class="admin-panel">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
-                    <h2 style="color:var(--gold-400);font-size:1.5em;font-family:'Plus Jakarta Sans',sans-serif">⚙️ Panel Admin</h2>
+                    <h2 style="color:var(--gold-400);font-size:1.5em;font-family:'Plus Jakarta Sans',sans-serif"> Panel Admin</h2>
                     <button class="btn btn-danger" onclick="logout()">Salir</button>
                 </div>
                 
                 <div class="admin-tabs">
                     <button class="admin-tab active" onclick="showAdminTab('sorteos',this)">Sorteos</button>
-                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">Números</button>
-                    <button class="admin-tab" onclick="showAdminTab('combos',this)">🎁 Combos</button>
-                    <button class="admin-tab" onclick="showAdminTab('clientes',this)">👥 Clientes</button>
-                    <button class="admin-tab" onclick="showAdminTab('dashboard',this)">📊 Estadísticas</button>
-                    <button class="admin-tab" onclick="showAdminTab('whatsapp',this);initWaPanel()">📲 WhatsApp</button>
+                    <button class="admin-tab" onclick="showAdminTab('numeros',this)">N�meros</button>
+                    <button class="admin-tab" onclick="showAdminTab('combos',this)"> Combos</button>
+                    <button class="admin-tab" onclick="showAdminTab('clientes',this)"> Clientes</button>
+                    <button class="admin-tab" onclick="showAdminTab('dashboard',this)"> Estad�sticas</button>
+                    <button class="admin-tab" onclick="showAdminTab('whatsapp',this);initWaPanel()"> WhatsApp</button>
                 </div>
 
                 <div id="adminSorteos" class="admin-section active">
@@ -4120,7 +4120,7 @@
                         <input type="text" id="newName" placeholder="Ej: Sorteo Especial">
                     </div>
                     <div class="form-group">
-                        <label>Lotería:</label>
+                        <label>Loter�a:</label>
                         <input type="text" id="newLottery" placeholder="Ej: Sinuano, Chontico...">
                     </div>
                     <div class="form-group">
@@ -4129,9 +4129,9 @@
                     </div>
 
                     <div class="premios-form">
-                        <h4>💰 Precios y Premios</h4>
+                        <h4> Precios y Premios</h4>
                         <div class="form-group">
-                            <label>Precio por Número ($):</label>
+                            <label>Precio por N�mero ($):</label>
                             <input type="number" id="precioNumero" value="2000" min="1000" step="500">
                         </div>
                         <div class="form-group">
@@ -4199,7 +4199,7 @@
                 
                 <div id="adminCombos" class="admin-section">
                     <div class="combos-admin-section">
-                        <div class="combos-admin-title">🎁 Configurar Combos del Sorteo</div>
+                        <div class="combos-admin-title"> Configurar Combos del Sorteo</div>
                         <div class="form-group">
                             <label>Seleccionar Sorteo:</label>
                             <select id="selectSorteoCombos" onchange="cargarCombosSorteo()">
@@ -4209,8 +4209,8 @@
                         <div id="combosConfigSection" style="display:none;">
                             <div id="combosAdminList"></div>
                             <div class="combos-admin-actions">
-                                <button class="btn btn-success" onclick="guardarCombos()">💾 Guardar Combos</button>
-                                <button class="btn btn-danger" onclick="resetCombos()">🔄 Restablecer</button>
+                                <button class="btn btn-success" onclick="guardarCombos()"> Guardar Combos</button>
+                                <button class="btn btn-danger" onclick="resetCombos()"> Restablecer</button>
                             </div>
                         </div>
                     </div>
@@ -4218,17 +4218,17 @@
                 
                 <div id="adminClientes" class="admin-section">
                     <div class="clientes-db-section">
-                        <div class="clientes-db-title">👥 Base de Datos de Clientes</div>
+                        <div class="clientes-db-title"> Base de Datos de Clientes</div>
                         <div style="background:rgba(0,0,0,.2);padding:16px;border-radius:14px;margin-bottom:16px;border:1px solid rgba(251,191,36,.3)">
-                            <div style="color:var(--gold-400);font-weight:800;font-size:.9em;margin-bottom:12px">➕ Agregar Cliente</div>
+                            <div style="color:var(--gold-400);font-weight:800;font-size:.9em;margin-bottom:12px"> Agregar Cliente</div>
                             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
                                 <input type="text" id="newClienteNombre" placeholder="Nombre completo" style="padding:12px;border:2px solid rgba(251,191,36,.25);border-radius:14px;font-size:.88em;background:rgba(0,0,0,.2);color:#fff;width:100%">
-                                <input type="tel" id="newClienteTelefono" placeholder="Teléfono (sin +57)" style="padding:12px;border:2px solid rgba(251,191,36,.25);border-radius:14px;font-size:.88em;background:rgba(0,0,0,.2);color:#fff;width:100%">
+                                <input type="tel" id="newClienteTelefono" placeholder="Tel�fono (sin +57)" style="padding:12px;border:2px solid rgba(251,191,36,.25);border-radius:14px;font-size:.88em;background:rgba(0,0,0,.2);color:#fff;width:100%">
                             </div>
-                            <button class="btn btn-success" onclick="agregarClienteManual()" style="width:100%;margin:0">💾 Guardar Cliente</button>
+                            <button class="btn btn-success" onclick="agregarClienteManual()" style="width:100%;margin:0"> Guardar Cliente</button>
                         </div>
                         <div class="clientes-search">
-                            <input type="text" id="clientesSearchInput" placeholder="Buscar por nombre o teléfono..." oninput="filtrarClientes()">
+                            <input type="text" id="clientesSearchInput" placeholder="Buscar por nombre o tel�fono..." oninput="filtrarClientes()">
                         </div>
                         <div class="clientes-list" id="clientesList"></div>
                     </div>
@@ -4237,8 +4237,8 @@
                 <div id="adminDashboard" class="admin-section">
                     <div class="dashboard-section">
                         <div class="dashboard-header">
-                            <div class="dashboard-title">📊 Dashboard de Ventas</div>
-                            <div class="dashboard-subtitle">Estadísticas en tiempo real</div>
+                            <div class="dashboard-title"> Dashboard de Ventas</div>
+                            <div class="dashboard-subtitle">Estad�sticas en tiempo real</div>
                         </div>
                         
                         <div class="stats-grid" id="dashboardStats">
@@ -4248,7 +4248,7 @@
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-value" id="statTotalNumeros">0</div>
-                                <div class="stat-card-label">Números Vendidos</div>
+                                <div class="stat-card-label">N�meros Vendidos</div>
                             </div>
                             <div class="stat-card">
                                 <div class="stat-card-value" id="statTotalPendientes">0</div>
@@ -4261,28 +4261,28 @@
                         </div>
                         
                         <div class="chart-container">
-                            <div class="chart-title">📈 Ventas por Sorteo</div>
+                            <div class="chart-title"> Ventas por Sorteo</div>
                             <div class="bar-chart" id="ventasChart"></div>
                         </div>
                         
                         <div class="top-numbers">
-                            <div class="top-numbers-title">🔥 Números Más Populares</div>
+                            <div class="top-numbers-title"> N�meros M�s Populares</div>
                             <div id="topNumerosList"></div>
                         </div>
                         
                         <button class="refresh-btn" onclick="actualizarDashboard()">
-                            🔄 Actualizar Datos
+                             Actualizar Datos
                         </button>
                     </div>
                 </div>
 
-                <!-- ══ WHATSAPP SECTION ══ -->
+                <!--  WHATSAPP SECTION  -->
                 <div id="adminWhatsapp" class="admin-section">
                   <div class="wa-sub-tabs">
-                    <button class="wa-sub-tab active" onclick="waTab('enviar',this)">📤 Enviar</button>
-                    <button class="wa-sub-tab" onclick="waTab('bot',this)">🤖 Bot IA</button>
-                    <button class="wa-sub-tab" onclick="waTab('kb',this)">📚 Conocimiento</button>
-                    <button class="wa-sub-tab" onclick="waTab('cfg',this)">⚙️ Config</button>
+                    <button class="wa-sub-tab active" onclick="waTab('enviar',this)"> Enviar</button>
+                    <button class="wa-sub-tab" onclick="waTab('bot',this)"> Bot IA</button>
+                    <button class="wa-sub-tab" onclick="waTab('kb',this)"> Conocimiento</button>
+                    <button class="wa-sub-tab" onclick="waTab('cfg',this)"> Config</button>
                   </div>
 
                   <!-- ENVIAR -->
@@ -4294,9 +4294,9 @@
                     </div>
                     <div class="wa-grid-2">
                       <div>
-                        <div class="wa-section-lbl">👥 Clientes</div>
+                        <div class="wa-section-lbl"> Clientes</div>
                         <div style="display:flex;gap:6px;margin-bottom:8px">
-                          <button class="wa-btn wa-btn-green" style="flex:1;font-size:.72em" onclick="waSyncFirebase()">🔄 Sync Firebase</button>
+                          <button class="wa-btn wa-btn-green" style="flex:1;font-size:.72em" onclick="waSyncFirebase()"> Sync Firebase</button>
                           <button class="wa-btn wa-btn-ghost" style="font-size:.72em" onclick="waToggleAll()">Sel. todos</button>
                         </div>
                         <div style="font-size:.72em;color:rgba(255,255,255,.5);margin-bottom:6px">Seleccionados: <strong id="wa-sel-cnt" style="color:#25D366">0</strong></div>
@@ -4308,79 +4308,79 @@
                         </div>
                       </div>
                       <div>
-                        <div class="wa-section-lbl">✍️ Mensaje</div>
+                        <div class="wa-section-lbl"> Mensaje</div>
                         <div class="wa-templates">
-                          <button class="wa-tpl" onclick="waTpl('sorteo')"><div class="ti">🎟️</div><div class="tn">Nuevo sorteo</div></button>
-                          <button class="wa-tpl" onclick="waTpl('ganador')"><div class="ti">🏆</div><div class="tn">Ganador</div></button>
-                          <button class="wa-tpl" onclick="waTpl('promo')"><div class="ti">🔥</div><div class="tn">Promoción</div></button>
-                          <button class="wa-tpl" onclick="waTpl('recordatorio')"><div class="ti">⏰</div><div class="tn">Recordatorio</div></button>
+                          <button class="wa-tpl" onclick="waTpl('sorteo')"><div class="ti"></div><div class="tn">Nuevo sorteo</div></button>
+                          <button class="wa-tpl" onclick="waTpl('ganador')"><div class="ti"></div><div class="tn">Ganador</div></button>
+                          <button class="wa-tpl" onclick="waTpl('promo')"><div class="ti"></div><div class="tn">Promoci�n</div></button>
+                          <button class="wa-tpl" onclick="waTpl('recordatorio')"><div class="ti"></div><div class="tn">Recordatorio</div></button>
                         </div>
-                        <textarea id="waMsgText" rows="5" style="width:100%;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px;color:#fff;font-family:'Inter',sans-serif;font-size:.82em;outline:none;resize:vertical" oninput="waUpdatePreview()" placeholder="Escribe tu mensaje...">🎟️ ¡Nuevo sorteo en Bol$illo Lleno!
+                        <textarea id="waMsgText" rows="5" style="width:100%;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px;color:#fff;font-family:'Inter',sans-serif;font-size:.82em;outline:none;resize:vertical" oninput="waUpdatePreview()" placeholder="Escribe tu mensaje..."> �Nuevo sorteo en Bol$illo Lleno!
 
-Premio: 💰 $500.000
-Precio por número: $2.000
+Premio:  $500.000
+Precio por n�mero: $2.000
 
-🔗 bolsillolleno.com
-¡Que la suerte te acompañe! 🍀</textarea>
+ bolsillolleno.com
+�Que la suerte te acompa�e! </textarea>
                         <div class="wa-preview" id="wa-preview-bubble" style="margin:6px 0">...</div>
                         <div class="wa-progress"><div class="wa-progress-fill" id="wa-prog"></div></div>
                         <div id="wa-send-status" style="font-size:.72em;color:rgba(255,255,255,.5);text-align:center;min-height:16px;margin-bottom:6px"></div>
                         <button class="wa-btn wa-btn-green wa-btn-full" id="waSendBtn" onclick="waStartSend()">
-                          📤 Enviar a <span id="wa-n-sel">0</span> clientes
+                           Enviar a <span id="wa-n-sel">0</span> clientes
                         </button>
                       </div>
                     </div>
                     <div class="wa-divider"></div>
-                    <div class="wa-section-lbl">📋 Registro de envíos</div>
-                    <div class="wa-log" id="waLog"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.75em;padding:10px">Los envíos aparecerán aquí</div></div>
+                    <div class="wa-section-lbl"> Registro de env�os</div>
+                    <div class="wa-log" id="waLog"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.75em;padding:10px">Los env�os aparecer�n aqu�</div></div>
                   </div>
 
                   <!-- BOT IA -->
                   <div id="waSec-bot" class="wa-sub-section">
-                    <div class="wa-alert wa-alert-info">🤖 Este bot usa <strong>Claude IA</strong> para responder automáticamente. Aprende de tu base de conocimiento y de los sorteos en Firebase.</div>
-                    <div class="wa-section-lbl">💬 Probar el Bot</div>
+                    <div class="wa-alert wa-alert-info"> Este bot usa <strong>Claude IA</strong> para responder autom�ticamente. Aprende de tu base de conocimiento y de los sorteos en Firebase.</div>
+                    <div class="wa-section-lbl"> Probar el Bot</div>
                     <div class="bot-chat" id="botChat">
-                      <div class="bot-msg-bot">¡Hola! 👋 Soy el asistente de <strong>Bol$illo Lleno</strong>. Puedo ayudarte con información sobre sorteos, cómo participar, precios y más. ¿En qué te ayudo? 🎟️</div>
+                      <div class="bot-msg-bot">�Hola!  Soy el asistente de <strong>Bol$illo Lleno</strong>. Puedo ayudarte con informaci�n sobre sorteos, c�mo participar, precios y m�s. �En qu� te ayudo? </div>
                     </div>
                     <div style="display:flex;gap:8px">
                       <input id="botInput" placeholder="Escribe una pregunta..." style="flex:1;background:rgba(0,0,0,.3);border:1.5px solid rgba(255,255,255,.12);border-radius:10px;padding:9px 12px;color:#fff;font-family:'Inter',sans-serif;font-size:.82em;outline:none" onkeydown="if(event.key==='Enter')botSend()">
                       <button class="wa-btn wa-btn-green" onclick="botSend()">Enviar</button>
-                      <button class="wa-btn wa-btn-ghost" onclick="botClear()">🗑️</button>
+                      <button class="wa-btn wa-btn-ghost" onclick="botClear()"></button>
                     </div>
                     <div class="wa-divider"></div>
-                    <div class="wa-section-lbl">⚙️ Personalidad del Bot</div>
+                    <div class="wa-section-lbl"> Personalidad del Bot</div>
                     <div class="wa-field"><label>Nombre del bot</label><input id="botName" value="Asistente de Bol$illo Lleno"></div>
-                    <div class="wa-field"><label>Instrucciones (tono, restricciones…)</label><textarea id="botInstructions" rows="3">Sé amigable y entusiasta, usa emojis. Siempre invita a participar. Si no sabes algo, invita a escribirnos directamente.</textarea></div>
-                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="botSaveConfig()">💾 Guardar config del bot</button>
+                    <div class="wa-field"><label>Instrucciones (tono, restricciones�)</label><textarea id="botInstructions" rows="3">S� amigable y entusiasta, usa emojis. Siempre invita a participar. Si no sabes algo, invita a escribirnos directamente.</textarea></div>
+                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="botSaveConfig()"> Guardar config del bot</button>
                     <div class="wa-divider"></div>
-                    <div class="wa-alert wa-alert-warn">⚠️ El simulador muestra cómo responderá el bot. Para respuestas automáticas reales necesitas un webhook (backend). ¡Pídenos ayuda para activarlo!</div>
+                    <div class="wa-alert wa-alert-warn"> El simulador muestra c�mo responder� el bot. Para respuestas autom�ticas reales necesitas un webhook (backend). �P�denos ayuda para activarlo!</div>
                   </div>
 
                   <!-- BASE DE CONOCIMIENTO -->
                   <div id="waSec-kb" class="wa-sub-section">
-                    <div class="wa-alert wa-alert-info">📚 Enséñale al bot respuestas correctas. El bot usará esta info junto con los datos de tus sorteos en Firebase.</div>
-                    <div class="wa-section-lbl">➕ Nueva entrada</div>
-                    <div class="wa-field"><label>Pregunta (como la haría un cliente)</label><input id="kbQ" placeholder="Ej: ¿Cómo pago mi número?"></div>
-                    <div class="wa-field"><label>Respuesta del bot</label><textarea id="kbA" rows="3" placeholder="Ej: Puedes pagar por Nequi al 300..., envíanos el comprobante y confirmamos ✅"></textarea></div>
-                    <button class="wa-btn wa-btn-green" onclick="kbAdd()">✚ Agregar</button>
+                    <div class="wa-alert wa-alert-info"> Ens��ale al bot respuestas correctas. El bot usar� esta info junto con los datos de tus sorteos en Firebase.</div>
+                    <div class="wa-section-lbl"> Nueva entrada</div>
+                    <div class="wa-field"><label>Pregunta (como la har�a un cliente)</label><input id="kbQ" placeholder="Ej: �C�mo pago mi n�mero?"></div>
+                    <div class="wa-field"><label>Respuesta del bot</label><textarea id="kbA" rows="3" placeholder="Ej: Puedes pagar por Nequi al 300..., env�anos el comprobante y confirmamos "></textarea></div>
+                    <button class="wa-btn wa-btn-green" onclick="kbAdd()"> Agregar</button>
                     <div class="wa-divider"></div>
                     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
-                      <div class="wa-section-lbl" style="margin-bottom:0">📋 Entradas (<span id="kb-count">0</span>)</div>
-                      <button class="wa-btn wa-btn-ghost" style="font-size:.7em;padding:5px 10px" onclick="kbExport()">📥 Exportar</button>
+                      <div class="wa-section-lbl" style="margin-bottom:0"> Entradas (<span id="kb-count">0</span>)</div>
+                      <button class="wa-btn wa-btn-ghost" style="font-size:.7em;padding:5px 10px" onclick="kbExport()"> Exportar</button>
                     </div>
-                    <div class="kb-list" id="kbList"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">Aún no hay entradas</div></div>
+                    <div class="kb-list" id="kbList"><div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">A�n no hay entradas</div></div>
                     <div class="wa-divider"></div>
-                    <div class="wa-section-lbl">🏢 Info del negocio</div>
-                    <div class="wa-field"><label>Métodos de pago</label><input id="bizPagos" placeholder="Ej: Nequi 3001234567, PSE, efectivo"></div>
+                    <div class="wa-section-lbl"> Info del negocio</div>
+                    <div class="wa-field"><label>M�todos de pago</label><input id="bizPagos" placeholder="Ej: Nequi 3001234567, PSE, efectivo"></div>
                     <div class="wa-field"><label>WhatsApp / Contacto</label><input id="bizContacto" placeholder="Ej: 573001234567"></div>
-                    <div class="wa-field"><label>Horario de atención</label><input id="bizHorario" placeholder="Ej: Lunes a sábado 8am - 9pm"></div>
-                    <div class="wa-field"><label>Info adicional</label><textarea id="bizInfo" rows="3" placeholder="Ej: Llevamos 3 años haciendo sorteos. Los sorteos son en vivo por Facebook. El premio se entrega en 48h..."></textarea></div>
-                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="bizSave()">💾 Guardar info del negocio</button>
+                    <div class="wa-field"><label>Horario de atenci�n</label><input id="bizHorario" placeholder="Ej: Lunes a s�bado 8am - 9pm"></div>
+                    <div class="wa-field"><label>Info adicional</label><textarea id="bizInfo" rows="3" placeholder="Ej: Llevamos 3 a�os haciendo sorteos. Los sorteos son en vivo por Facebook. El premio se entrega en 48h..."></textarea></div>
+                    <button class="wa-btn wa-btn-gold wa-btn-full" onclick="bizSave()"> Guardar info del negocio</button>
                   </div>
 
                   <!-- CONFIG API -->
                   <div id="waSec-cfg" class="wa-sub-section">
-                    <div class="wa-alert wa-alert-info">Obtén estos datos en <strong>developers.facebook.com</strong> → tu app → WhatsApp → API Setup</div>
+                    <div class="wa-alert wa-alert-info">Obt�n estos datos en <strong>developers.facebook.com</strong>  tu app  WhatsApp  API Setup</div>
                     <div class="wa-grid-2">
                       <div class="wa-field"><label>Access Token de Meta</label><input type="password" id="waCfgToken" placeholder="EAAxxxxxx..."></div>
                       <div class="wa-field"><label>Phone Number ID</label><input id="waCfgPhoneId" placeholder="123456789012"></div>
@@ -4390,17 +4390,17 @@ Precio por número: $2.000
                       <div class="wa-field"><label>Delay entre mensajes (ms)</label><input type="number" id="waCfgDelay" value="1500"></div>
                     </div>
                     <div style="display:flex;gap:8px;margin-top:6px">
-                      <button class="wa-btn wa-btn-gold" style="flex:1;padding:12px" onclick="waCfgSave()">💾 Guardar</button>
-                      <button class="wa-btn wa-btn-ghost" onclick="waCfgTest()">🧪 Probar API</button>
+                      <button class="wa-btn wa-btn-gold" style="flex:1;padding:12px" onclick="waCfgSave()"> Guardar</button>
+                      <button class="wa-btn wa-btn-ghost" onclick="waCfgTest()"> Probar API</button>
                     </div>
                     <div id="waCfgTestResult" style="margin-top:10px"></div>
                     <div class="wa-divider"></div>
-                    <div class="wa-section-lbl">📋 Pasos para configurar</div>
+                    <div class="wa-section-lbl"> Pasos para configurar</div>
                     <div style="display:flex;flex-direction:column;gap:6px">
                       <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">1.</span> Ve a developers.facebook.com y crea una app tipo "Business"</div>
                       <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">2.</span> Agrega el producto <strong>WhatsApp</strong> a tu app</div>
-                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">3.</span> En WhatsApp → API Setup copia tu <strong>Phone Number ID</strong> y <strong>Access Token</strong></div>
-                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">4.</span> Para la API de Claude ve a console.anthropic.com → API Keys</div>
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">3.</span> En WhatsApp  API Setup copia tu <strong>Phone Number ID</strong> y <strong>Access Token</strong></div>
+                      <div style="background:rgba(255,255,255,.04);border-radius:10px;padding:10px;font-size:.78em;border:1px solid rgba(255,255,255,.07)"><span style="color:var(--gold-400);font-weight:800">4.</span> Para la API de Claude ve a console.anthropic.com  API Keys</div>
                     </div>
                   </div>
 
@@ -4410,8 +4410,8 @@ Precio por número: $2.000
         </div>
         
         <footer class="footer-professional">
-            <div class="footer-logo">Bol$illo Lleno 🤑</div>
-            <p class="footer-tagline">"Fe en acción, estrategia con propósito"</p>
+            <div class="footer-logo">Bol$illo Lleno </div>
+            <p class="footer-tagline">"Fe en acci�n, estrategia con prop�sito"</p>
             
             <div class="social-grid" style="margin-bottom:24px;">
                 <a href="https://chat.whatsapp.com/Hn8QhqoUUv0610x9dM6D67?mode=gi_t" class="social-btn whatsapp" target="_blank">
@@ -4429,14 +4429,14 @@ Precio por número: $2.000
             </div>
             
             <p class="footer-legal">
-                <strong>JUEGO RESPONSABLE:</strong> Para mayores de 18 años. 
+                <strong>JUEGO RESPONSABLE:</strong> Para mayores de 18 a�os. 
                 Juega con responsabilidad. Los resultados dependen de la suerte.
                 <br><br>
                 <strong>Contacto:</strong> WhatsApp +57 323 720 7391
             </p>
             
             <div class="footer-rights">
-                © 2025 Bol$illo Lleno. Todos los derechos reservados.
+                � 2025 Bol$illo Lleno. Todos los derechos reservados.
             </div>
         </footer>
     </div>
@@ -4476,8 +4476,8 @@ Precio por número: $2.000
 
         function initParticles() {
             const container = document.getElementById('particles');
-            const symbols = ['✨', '🙏', '🍀', '💰', '⭐', '💎'];
-            // Menos partículas en móvil para no sobrecargar el hilo de renderizado
+            const symbols = ['', '', '', '', '', ''];
+            // Menos part�culas en m�vil para no sobrecargar el hilo de renderizado
             const count = window.matchMedia('(max-width: 768px)').matches ? 6 : 12;
             for (let i = 0; i < count; i++) {
                 const particle = document.createElement('div');
@@ -4497,12 +4497,12 @@ Precio por número: $2.000
             setTimeout(() => notification.classList.remove('show'), 4000);
         }
 
-        // ── Presencia en tiempo real (×2) ─────────────────────────────
+        //  Presencia en tiempo real (�2) 
         function initPresence() {
             const presenceRef = database.ref('presence');
             const myRef = presenceRef.push();
 
-            // Registrar conexión del usuario actual
+            // Registrar conexi�n del usuario actual
             myRef.set(true);
             myRef.onDisconnect().remove();
 
@@ -4515,13 +4515,13 @@ Precio por número: $2.000
             });
         }
 
-        // ── WhatsApp al admin via CallMeBot ───────────────────────────
-        // CONFIGURACIÓN: pon tu número y tu API key de CallMeBot aquí
-        const ADMIN_WA_PHONE  = '573237207391';   // ← Tu número con código de país, sin + ni espacios
-        const CALLMEBOT_APIKEY = '8001138';        // ← API key que te da CallMeBot al registrarte
+        //  WhatsApp al admin via CallMeBot 
+        // CONFIGURACI�N: pon tu n�mero y tu API key de CallMeBot aqu�
+        const ADMIN_WA_PHONE  = '573237207391';   //  Tu n�mero con c�digo de pa�s, sin + ni espacios
+        const CALLMEBOT_APIKEY = '8001138';        //  API key que te da CallMeBot al registrarte
 
         async function sendWhatsAppAdmin(mensaje) {
-            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return; // no configurado aún
+            if (ADMIN_WA_PHONE.includes('X') || CALLMEBOT_APIKEY.includes('X')) return; // no configurado a�n
             try {
                 const texto = encodeURIComponent(mensaje);
                 await fetch(
@@ -4532,12 +4532,12 @@ Precio por número: $2.000
             }
         }
 
-        // ── Notificaciones reales de compras y reservas ───────────────
+        //  Notificaciones reales de compras y reservas 
         function initRealNotifications() {
             let knownOccupied = new Set();
             let knownPending  = new Set();
 
-            // Esperar a que los sorteos estén cargados
+            // Esperar a que los sorteos est�n cargados
             const waitSorteos = setInterval(() => {
                 if (!sorteos || sorteos.length === 0) return;
                 clearInterval(waitSorteos);
@@ -4554,14 +4554,14 @@ Precio por número: $2.000
                         Object.keys(occSnap.val()  || {}).forEach(k => knownOccupied.add(s.id + '_' + k));
                         Object.keys(pendSnap.val()  || {}).forEach(k => knownPending.add(s.id  + '_' + k));
 
-                        // Ahora sí activar los listeners en tiempo real
+                        // Ahora s� activar los listeners en tiempo real
                         database.ref('occupied/' + s.id).on('child_added', snap => {
                             const key = s.id + '_' + snap.key;
                             if (knownOccupied.has(key)) return;
                             knownOccupied.add(key);
                             const data = snap.val() || {};
                             const nombre = data.name || 'Alguien';
-                            showNotification('🎉 ¡' + nombre.split(' ')[0] + ' acaba de comprar!');
+                            showNotification(' �' + nombre.split(' ')[0] + ' acaba de comprar!');
                         });
 
                         database.ref('pending/' + s.id).on('child_added', snap => {
@@ -4570,24 +4570,24 @@ Precio por número: $2.000
                             knownPending.add(key);
                             const data = snap.val() || {};
                             const nombre  = data.name    || 'Alguien';
-                            const tel     = data.phone   || data.whatsapp || 'sin teléfono';
+                            const tel     = data.phone   || data.whatsapp || 'sin tel�fono';
                             const nums    = Array.isArray(data.numbers)
                                               ? data.numbers.join(', ')
                                               : (data.numero || snap.key);
                             const sorteo  = s.name || s.id;
                             const hora    = new Date().toLocaleTimeString('es-CO', {hour:'2-digit', minute:'2-digit'});
 
-                            // Notificación en pantalla
-                            showNotification('🔥 ¡' + nombre.split(' ')[0] + ' acaba de reservar!');
+                            // Notificaci�n en pantalla
+                            showNotification(' �' + nombre.split(' ')[0] + ' acaba de reservar!');
 
                             // WhatsApp al admin
                             const msg =
-                                `🔔 *Nueva reserva - Bol$illo Lleno*\n` +
-                                `👤 *Nombre:* ${nombre}\n` +
-                                `📞 *Teléfono:* ${tel}\n` +
-                                `🎟️ *Números:* ${nums}\n` +
-                                `🎰 *Sorteo:* ${sorteo}\n` +
-                                `🕐 *Hora:* ${hora}`;
+                                ` *Nueva reserva - Bol$illo Lleno*\n` +
+                                ` *Nombre:* ${nombre}\n` +
+                                ` *Tel�fono:* ${tel}\n` +
+                                ` *N�meros:* ${nums}\n` +
+                                ` *Sorteo:* ${sorteo}\n` +
+                                ` *Hora:* ${hora}`;
                             sendWhatsAppAdmin(msg);
                         });
                     });
@@ -4721,7 +4721,7 @@ Precio por número: $2.000
             const password = document.getElementById('pwdInput').value;
             
             if(!email || !password){
-                document.getElementById('pwdError').textContent = 'Ingresa email y contraseña';
+                document.getElementById('pwdError').textContent = 'Ingresa email y contrase�a';
                 document.getElementById('pwdError').style.display='block';
                 return;
             }
@@ -4748,10 +4748,10 @@ Precio por número: $2.000
                 })
                 .catch((error) => {
                     showLoading(false);
-                    let mensaje = 'Error al iniciar sesión';
+                    let mensaje = 'Error al iniciar sesi�n';
                     if(error.code === 'auth/user-not-found') mensaje = 'Usuario no encontrado';
-                    if(error.code === 'auth/wrong-password') mensaje = 'Contraseña incorrecta';
-                    if(error.code === 'auth/invalid-email') mensaje = 'Email inválido';
+                    if(error.code === 'auth/wrong-password') mensaje = 'Contrase�a incorrecta';
+                    if(error.code === 'auth/invalid-email') mensaje = 'Email inv�lido';
                     document.getElementById('pwdError').textContent = mensaje;
                     document.getElementById('pwdError').style.display='block';
                 });
@@ -4762,7 +4762,7 @@ Precio por número: $2.000
                 showSection('homeSection');
                 renderSorteos();
             }).catch((error) => {
-                console.error('Error al cerrar sesión:', error);
+                console.error('Error al cerrar sesi�n:', error);
             });
         }
 
@@ -4792,7 +4792,7 @@ Precio por número: $2.000
         }
         
         function scrollToTestimonios() {
-            // Activar la sección sin disparar el scroll-to-top de showSection
+            // Activar la secci�n sin disparar el scroll-to-top de showSection
             document.querySelectorAll('.sections').forEach(s => s.classList.remove('active'));
             document.getElementById('homeSection').classList.add('active');
 
@@ -4850,7 +4850,7 @@ Precio por número: $2.000
                 
                 let urgencyBadge = '';
                 if(hours < 6 && hours > 0) {
-                    urgencyBadge = `<div class="sorteo-urgency-badge">⏰ CIERRA PRONTO</div>`;
+                    urgencyBadge = `<div class="sorteo-urgency-badge"> CIERRA PRONTO</div>`;
                 }
                 
                 const disponibles = s.disponibles !== undefined ? s.disponibles : 100;
@@ -4860,13 +4860,13 @@ Precio por número: $2.000
                 
                 const premiosHtml=`
                     <div class="premios-box">
-                        <h4>🏆 Premios</h4>
+                        <h4> Premios</h4>
                         <div class="premio-item premio-mayor"><span>Mayor:</span><span>$${parseInt(s.premioMayor).toLocaleString()}</span></div>
                         <div class="premio-item"><span>Secos:</span><span>$${parseInt(s.premioSeco1).toLocaleString()}</span></div>
                     </div>
                     <div class="sorteo-disponibilidad">
                         <div class="dispo-header">
-                            <span class="dispo-label">📊 Disponibles</span>
+                            <span class="dispo-label"> Disponibles</span>
                             <span class="dispo-value ${claseTexto}">${disponibles}/100</span>
                         </div>
                         <div class="dispo-bar">
@@ -4874,7 +4874,7 @@ Precio por número: $2.000
                         </div>
                     </div>
                     <div class="precios-box">
-                        <div class="precio-individual">Número: $${parseInt(s.precioNumero).toLocaleString()}</div>
+                        <div class="precio-individual">N�mero: $${parseInt(s.precioNumero).toLocaleString()}</div>
                     </div>
                 `;
                 
@@ -4882,11 +4882,11 @@ Precio por número: $2.000
                     ${urgencyBadge}
                     <div class="sorteo-status">ACTIVO</div>
                     <div class="sorteo-name">${s.name}</div>
-                    <div class="sorteo-info">🎲 ${s.lottery}</div>
-                    <div class="sorteo-info">📅 ${formatDate(date)}</div>
+                    <div class="sorteo-info"> ${s.lottery}</div>
+                    <div class="sorteo-info"> ${formatDate(date)}</div>
                     ${premiosHtml}
                     <div class="countdown"><div class="countdown-time" id="cd-${s.id}">00:00:00</div></div>
-                    <button class="play-btn" onclick="enterGame('${s.id}')">🎬 JUGAR AHORA</button>
+                    <button class="play-btn" onclick="enterGame('${s.id}')"> JUGAR AHORA</button>
                 `;
                 container.appendChild(card);
                 startCountdown(s.id,date);
@@ -4934,26 +4934,26 @@ Precio por número: $2.000
             });
             
             document.getElementById('gameTitle').textContent=currentSorteo.name;
-            document.getElementById('gameLottery').textContent='🎲 '+currentSorteo.lottery;
-document.getElementById('gameDate').textContent='📅 '+formatDate(new Date(currentSorteo.date));
-document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorteo.precioNumero).toLocaleString()+' c/u';
+            document.getElementById('gameLottery').textContent=' '+currentSorteo.lottery;
+document.getElementById('gameDate').textContent=' '+formatDate(new Date(currentSorteo.date));
+document.getElementById('gamePrecio').textContent=' $'+parseInt(currentSorteo.precioNumero).toLocaleString()+' c/u';
 
             const premiosDiv=document.getElementById('listaPremios');
             premiosDiv.innerHTML=`
                 <div class="premio-activo premio-mayor-activo">
-                    <span class="premio-nombre">👑 PREMIO MAYOR</span>
+                    <span class="premio-nombre"> PREMIO MAYOR</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioMayor).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre">✨ SECO 1</span>
+                    <span class="premio-nombre"> SECO 1</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco1).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre">✨ SECO 2</span>
+                    <span class="premio-nombre"> SECO 2</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco2).toLocaleString()}</span>
                 </div>
                 <div class="premio-activo">
-                    <span class="premio-nombre">✨ SECO 3</span>
+                    <span class="premio-nombre"> SECO 3</span>
                     <span class="premio-valor">$${parseInt(currentSorteo.premioSeco3).toLocaleString()}</span>
                 </div>
             `;
@@ -5054,7 +5054,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             return cell;
         }
 
-        // Render inicial: usa DocumentFragment para una sola inserción al DOM
+        // Render inicial: usa DocumentFragment para una sola inserci�n al DOM
         function renderGrid(){
             const grid=document.getElementById('numbersGrid');
             const fragment=document.createDocumentFragment();
@@ -5074,14 +5074,14 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
 
         function toggleNum(num){
             if(occupied[num]||pending[num]){
-                showNotification('❌ Número no disponible');
+                showNotification(' N�mero no disponible');
                 return;
             }
             const idx=selected.indexOf(num);
             if(idx>-1){
                 selected.splice(idx,1);
             }else{
-                if(selected.length>=MAX_NUMEROS){alert(`Máximo ${MAX_NUMEROS} números`);return;}
+                if(selected.length>=MAX_NUMEROS){alert(`M�ximo ${MAX_NUMEROS} n�meros`);return;}
                 selected.push(num);
                 selected.sort();
             }
@@ -5191,7 +5191,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             document.getElementById('combosAplicado').style.display = 'none';
             
             if(selected.length===0){
-                list.innerHTML='<span style="color:rgba(255,255,255,.5);width:100%;text-align:center">Toca los números</span>';
+                list.innerHTML='<span style="color:rgba(255,255,255,.5);width:100%;text-align:center">Toca los n�meros</span>';
                 totalEl.textContent='$0';
                 btn.disabled=true;
                 comboText.textContent = '';
@@ -5202,7 +5202,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             selected.forEach(n=>{
                 const tag=document.createElement('div');
                 tag.className='selected-tag';
-                tag.innerHTML=`${n} <span onclick="removeNum('${n}')">✕</span>`;
+                tag.innerHTML=`${n} <span onclick="removeNum('${n}')"></span>`;
                 list.appendChild(tag);
             });
             
@@ -5212,7 +5212,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             btn.disabled=false;
             
             if(resultado.combo && resultado.ahorro > 0) {
-                comboText.textContent = `¡Ahorras $${resultado.ahorro.toLocaleString()}!`;
+                comboText.textContent = `�Ahorras $${resultado.ahorro.toLocaleString()}!`;
                 
                 if(Array.isArray(resultado.combo)) {
                     resultado.combo.forEach(c => {
@@ -5222,7 +5222,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                 }
                 
                 document.getElementById('combosAplicado').style.display = 'block';
-                document.getElementById('combosAhorro').textContent = `Estás ahorrando $${resultado.ahorro.toLocaleString()}`;
+                document.getElementById('combosAhorro').textContent = `Est�s ahorrando $${resultado.ahorro.toLocaleString()}`;
             } else {
                 comboText.textContent = '';
             }
@@ -5258,7 +5258,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
             const telefono = document.getElementById('confirmTelefono').value.trim();
             
             if(!nombre){alert('Ingresa tu nombre');return;}
-            if(!telefono){alert('Ingresa tu teléfono');return;}
+            if(!telefono){alert('Ingresa tu tel�fono');return;}
             
             const precioNum = parseInt(currentSorteo.precioNumero);
             const resultado = calcularMejorCombo(selected.length, precioNum);
@@ -5278,12 +5278,12 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
                 showLoading(false);
                 
                 const numerosTexto = selected.join(', ');
-                const mensaje = `¡Hola! Quiero reservar estos números para el sorteo *${currentSorteo.name}*:\n\n` +
-                    `🎰 Números: *${numerosTexto}*\n` +
-                    `💰 Total: *$${resultado.total.toLocaleString()}*\n` +
-                    `🙏 Nombre: *${nombre}*\n` +
-                    `📱 Teléfono: *+57 ${telefono}*\n\n` +
-                    `¿Cómo hago el pago?`;
+                const mensaje = `�Hola! Quiero reservar estos n�meros para el sorteo *${currentSorteo.name}*:\n\n` +
+                    ` N�meros: *${numerosTexto}*\n` +
+                    ` Total: *$${resultado.total.toLocaleString()}*\n` +
+                    ` Nombre: *${nombre}*\n` +
+                    ` Tel�fono: *+57 ${telefono}*\n\n` +
+                    `�C�mo hago el pago?`;
                 
                 const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
                 window.open(url, '_blank');
@@ -5408,7 +5408,7 @@ document.getElementById('gamePrecio').textContent='💰 $'+parseInt(currentSorte
         }
 
         function deleteSorteo(id){
-            if(!confirm('¿Eliminar este sorteo?'))return;
+            if(!confirm('�Eliminar este sorteo?'))return;
             
             showLoading(true);
             Promise.all([
@@ -5650,14 +5650,14 @@ function abrirContactos(){
             .then((contacts) => {
                 if (contacts.length > 0) {
                     const contact = contacts[0];
-                    // Rellenar campos del modal de gestión
+                    // Rellenar campos del modal de gesti�n
                     const nombre = contact.name && contact.name[0] ? contact.name[0] : '';
                     const telefono = contact.tel && contact.tel[0] ? contact.tel[0] : '';
                     
                     document.getElementById('gestionNombre').value = nombre;
                     document.getElementById('gestionTelefono').value = telefono;
                     
-                    showNotification('✅ Contacto importado correctamente');
+                    showNotification(' Contacto importado correctamente');
                 }
             })
             .catch((err) => {
@@ -5671,7 +5671,7 @@ function abrirContactos(){
     }
 }
 
-// Función separada para el fallback (tu lógica actual)
+// Funci�n separada para el fallback (tu l�gica actual)
 function abrirBaseDatosClientes(){
     document.getElementById('adminClientes').classList.add('active');
     document.getElementById('adminNumeros').classList.remove('active');
@@ -5702,7 +5702,7 @@ function abrirBaseDatosClientes(){
                 const t=(c.telefono||'').replace(/'/g,"\'");
                 const nA=(c.nombre||'').replace(/"/g,'&quot;');
                 const tA=(c.telefono||'').replace(/"/g,'&quot;');
-                const fecha=c.ultimaCompra?' · '+new Date(c.ultimaCompra).toLocaleDateString('es-CO'):'';
+                const fecha=c.ultimaCompra?' � '+new Date(c.ultimaCompra).toLocaleDateString('es-CO'):'';
                 const item=document.createElement('div');
                 item.className='cliente-item';
                 item.style.flexDirection='column';
@@ -5712,22 +5712,22 @@ function abrirBaseDatosClientes(){
                     <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
                         <div class="cliente-info">
                             <div class="cliente-nombre">${c.nombre||'Sin nombre'}</div>
-                            <div class="cliente-telefono">${c.telefono||'Sin teléfono'}${fecha}</div>
+                            <div class="cliente-telefono">${c.telefono||'Sin tel�fono'}${fecha}</div>
                         </div>
                         <div style="display:flex;gap:6px;flex-shrink:0">
                             <button class="cliente-select-btn" onclick="seleccionarCliente('${n}','${t}')">Usar</button>
-                            <button style="background:linear-gradient(145deg,#059669,#065f46);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="toggleEditCliente('edcl-${key}')">✏️</button>
-                            <button style="background:linear-gradient(90deg,#ef4444,#dc2626);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="eliminarCliente('${key}','${n}')">🗑️</button>
+                            <button style="background:linear-gradient(145deg,#059669,#065f46);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="toggleEditCliente('edcl-${key}')"></button>
+                            <button style="background:linear-gradient(90deg,#ef4444,#dc2626);color:#fff;border:none;padding:9px 12px;border-radius:20px;font-weight:800;font-size:.75em;cursor:pointer" onclick="eliminarCliente('${key}','${n}')"></button>
                         </div>
                     </div>
                     <div id="edcl-${key}" style="display:none;margin-top:10px;background:rgba(245,158,11,.08);border:2px solid rgba(251,191,36,.4);border-radius:14px;padding:14px">
                         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
                             <input type="text" id="ednom-${key}" placeholder="Nombre" value="${nA}" style="padding:10px;border:1px solid rgba(251,191,36,.3);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font-size:.85em;width:100%">
-                            <input type="tel" id="edtel-${key}" placeholder="Teléfono" value="${tA}" style="padding:10px;border:1px solid rgba(251,191,36,.3);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font-size:.85em;width:100%">
+                            <input type="tel" id="edtel-${key}" placeholder="Tel�fono" value="${tA}" style="padding:10px;border:1px solid rgba(251,191,36,.3);border-radius:10px;background:rgba(0,0,0,.25);color:#fff;font-size:.85em;width:100%">
                         </div>
                         <div style="display:flex;gap:10px">
                             <button class="btn btn-danger" style="flex:1;margin:0" onclick="toggleEditCliente('edcl-${key}')">Cancelar</button>
-                            <button class="btn btn-success" style="flex:1;margin:0" onclick="guardarEdicionCliente('${key}')">💾 Guardar</button>
+                            <button class="btn btn-success" style="flex:1;margin:0" onclick="guardarEdicionCliente('${key}')"> Guardar</button>
                         </div>
                     </div>
                 `;
@@ -5742,28 +5742,28 @@ function abrirBaseDatosClientes(){
         function guardarEdicionCliente(key){
             const nombre=document.getElementById('ednom-'+key)?.value.trim();
             const telefono=document.getElementById('edtel-'+key)?.value.trim();
-            if(!nombre){alert('El nombre no puede estar vacío');return;}
+            if(!nombre){alert('El nombre no puede estar vac�o');return;}
             showLoading(true);
             database.ref('clientesDB/'+key).update({nombre,telefono:telefono||'',ultimaCompra:new Date().toISOString()})
-                .then(()=>{showLoading(false);showNotification('✅ Cliente actualizado');})
+                .then(()=>{showLoading(false);showNotification(' Cliente actualizado');})
                 .catch(err=>{showLoading(false);alert('Error al actualizar');console.error(err);});
         }
         function eliminarCliente(key,nombre){
-            if(!confirm('¿Eliminar a "'+nombre+'"?'))return;
+            if(!confirm('�Eliminar a "'+nombre+'"?'))return;
             showLoading(true);
             database.ref('clientesDB/'+key).remove()
-                .then(()=>{showLoading(false);showNotification('🗑️ Cliente eliminado');})
+                .then(()=>{showLoading(false);showNotification(' Cliente eliminado');})
                 .catch(err=>{showLoading(false);alert('Error al eliminar');console.error(err);});
         }
         function agregarClienteManual(){
             const nombre=document.getElementById('newClienteNombre').value.trim();
             const telefono=document.getElementById('newClienteTelefono').value.trim();
             if(!nombre){alert('Ingresa el nombre');return;}
-            if(!telefono){alert('Ingresa el teléfono');return;}
+            if(!telefono){alert('Ingresa el tel�fono');return;}
             const key=telefono.replace(/\D/g,'');
             showLoading(true);
             database.ref('clientesDB/'+key).set({nombre,telefono,ultimaCompra:new Date().toISOString()})
-                .then(()=>{showLoading(false);document.getElementById('newClienteNombre').value='';document.getElementById('newClienteTelefono').value='';showNotification('✅ Cliente agregado');})
+                .then(()=>{showLoading(false);document.getElementById('newClienteNombre').value='';document.getElementById('newClienteTelefono').value='';showNotification(' Cliente agregado');})
                 .catch(err=>{showLoading(false);alert('Error al agregar');console.error(err);});
         }
 
@@ -5843,7 +5843,7 @@ function abrirBaseDatosClientes(){
         }
 
         function resetCombos(){
-            if(!confirm('¿Restablecer combos predeterminados?'))return;
+            if(!confirm('�Restablecer combos predeterminados?'))return;
             
             const sorteoId=document.getElementById('selectSorteoCombos').value;
             if(!sorteoId)return;
@@ -5972,7 +5972,7 @@ function abrirBaseDatosClientes(){
                     item.className='top-number-item';
                     item.innerHTML=`
                         <span class="top-number-rank">#${index+1}</span>
-                        <span class="top-number-value">Número ${num}</span>
+                        <span class="top-number-value">N�mero ${num}</span>
                         <span class="top-number-count">${count} veces</span>
                     `;
                     container.appendChild(item);
@@ -5981,11 +5981,11 @@ function abrirBaseDatosClientes(){
         }
 
 
-        // ══════════════════════════════════════════════════════
-        //  WHATSAPP PANEL — JavaScript completo
-        // ══════════════════════════════════════════════════════
+        // 
+        //  WHATSAPP PANEL � JavaScript completo
+        // 
 
-        // ── Estado global ──────────────────────────────────────
+        //  Estado global 
         const waState = {
           clients: [],
           sentToday: 0,
@@ -6010,7 +6010,7 @@ function abrirBaseDatosClientes(){
           waUpdatePreview();
         }
 
-        // ── Sub-tabs ───────────────────────────────────────────
+        //  Sub-tabs 
         function waTab(name, btn){
           document.querySelectorAll('.wa-sub-section').forEach(s=>s.classList.remove('active'));
           document.querySelectorAll('.wa-sub-tab').forEach(b=>b.classList.remove('active'));
@@ -6019,7 +6019,7 @@ function abrirBaseDatosClientes(){
           if(btn) btn.classList.add('active');
         }
 
-        // ── Clientes ───────────────────────────────────────────
+        //  Clientes 
         function waRenderClients(){
           const list = document.getElementById('waClientsList');
           if(!list) return;
@@ -6028,7 +6028,7 @@ function abrirBaseDatosClientes(){
           } else {
             list.innerHTML = waState.clients.map((c,i)=>`
               <div class="wa-client-row ${c.sel?'sel':''}" onclick="waToggleClient(${i})">
-                <div class="wa-chk">${c.sel?'✓':''}</div>
+                <div class="wa-chk">${c.sel?'':''}</div>
                 <div class="wa-av">${(c.name||'?')[0]}</div>
                 <div class="wa-ci"><div class="wa-cn">${c.name||'Sin nombre'}</div><div class="wa-cp">+${c.phone}</div></div>
               </div>`).join('');
@@ -6059,8 +6059,8 @@ function abrirBaseDatosClientes(){
         function waAddClient(){
           const name = (document.getElementById('waNewName').value||'').trim();
           const phone = (document.getElementById('waNewPhone').value||'').replace(/\D/g,'');
-          if(phone.length<10){ alert('Ingresa un número válido con código de país (ej: 573001234567)'); return; }
-          if(waState.clients.find(c=>c.phone===phone)){ alert('Ese número ya existe'); return; }
+          if(phone.length<10){ alert('Ingresa un n�mero v�lido con c�digo de pa�s (ej: 573001234567)'); return; }
+          if(waState.clients.find(c=>c.phone===phone)){ alert('Ese n�mero ya existe'); return; }
           waState.clients.push({id:Date.now(), name:name||phone, phone, sel:false});
           document.getElementById('waNewName').value='';
           document.getElementById('waNewPhone').value='';
@@ -6072,7 +6072,7 @@ function abrirBaseDatosClientes(){
           if(typeof database === 'undefined'){ waLog('Firebase no inicializado', 'err'); return; }
           waLog('Sincronizando clientes desde Firebase...', 'info');
           try {
-            // Cargar desde occupied: extraer teléfonos de los datos de números
+            // Cargar desde occupied: extraer tel�fonos de los datos de n�meros
             const sortSnap = await database.ref('sorteos').once('value');
             const sortData = sortSnap.val()||{};
             const phones = new Set();
@@ -6089,7 +6089,7 @@ function abrirBaseDatosClientes(){
               }
             });
 
-            // También intentar desde cada sorteo en occupied/
+            // Tambi�n intentar desde cada sorteo en occupied/
             for(const sid of Object.keys(sortData)){
               const occSnap = await database.ref('occupied/'+sid).once('value');
               const occ = occSnap.val()||{};
@@ -6106,47 +6106,47 @@ function abrirBaseDatosClientes(){
             if(newClients.length){
               waState.clients.push(...newClients);
               waRenderClients();
-              waLog(`${newClients.length} clientes cargados desde Firebase ✓`, 'ok');
+              waLog(`${newClients.length} clientes cargados desde Firebase `, 'ok');
             } else {
-              waLog('No se encontraron clientes nuevos con teléfono en Firebase', 'info');
+              waLog('No se encontraron clientes nuevos con tel�fono en Firebase', 'info');
             }
           } catch(e){ waLog('Error Firebase: '+e.message, 'err'); }
         }
 
-        // ── Plantillas ─────────────────────────────────────────
+        //  Plantillas 
         const waTpls = {
-          sorteo:`🎟️ ¡Nuevo sorteo en Bol$illo Lleno!
+          sorteo:` �Nuevo sorteo en Bol$illo Lleno!
 
-Premio: 💰 $500.000
-Números del 001 al 100
-Precio por número: $2.000
+Premio:  $500.000
+N�meros del 001 al 100
+Precio por n�mero: $2.000
 
-🔗 Reserva ya tu número:
+ Reserva ya tu n�mero:
 bolsillolleno.com
 
-¡Que la suerte te acompañe! 🍀`,
-          ganador:`🏆 ¡TENEMOS GANADOR!
+�Que la suerte te acompa�e! `,
+          ganador:` �TENEMOS GANADOR!
 
-Felicitaciones al portador del número *XXX* 🎉
-Premio: 💰 $500.000
+Felicitaciones al portador del n�mero *XXX* 
+Premio:  $500.000
 
-Gracias a todos por participar en Bol$illo Lleno 🙏
-¡Muy pronto el siguiente sorteo!`,
-          promo:`🔥 ¡OFERTA ESPECIAL por tiempo limitado!
+Gracias a todos por participar en Bol$illo Lleno 
+�Muy pronto el siguiente sorteo!`,
+          promo:` �OFERTA ESPECIAL por tiempo limitado!
 
-Combo 3 números → $5.000
-Combo 7 números → $10.000 🔥
-Combo 10 números → ¡Solo $13.000!
+Combo 3 n�meros  $5.000
+Combo 7 n�meros  $10.000 
+Combo 10 n�meros  �Solo $13.000!
 
-⚡ Solo por hoy. ¡Aprovecha!
+ Solo por hoy. �Aprovecha!
 bolsillolleno.com`,
-          recordatorio:`⏰ ¡Sorteo en menos de 24 horas!
+          recordatorio:` �Sorteo en menos de 24 horas!
 
-📅 Mañana se realiza el sorteo
-🎟️ Aún hay números disponibles
-💰 Premio: $500.000
+ Ma�ana se realiza el sorteo
+ A�n hay n�meros disponibles
+ Premio: $500.000
 
-¡Si no tienes tu número, apúrate!
+�Si no tienes tu n�mero, ap�rate!
 bolsillolleno.com`
         };
 
@@ -6161,11 +6161,11 @@ bolsillolleno.com`
           if(!ta||!pb) return;
           const text = ta.value;
           pb.innerHTML = text.replace(/\n/g,'<br>').replace(/\*(.*?)\*/g,'<strong>$1</strong>') +
-            '<div class="wa-ptime">'+new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})+' ✓✓</div>';
+            '<div class="wa-ptime">'+new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})+' </div>';
           waUpdateStats();
         }
 
-        // ── Envío ──────────────────────────────────────────────
+        //  Env�o 
         async function waStartSend(){
           if(waState.sending) return;
           const selected = waState.clients.filter(c=>c.sel);
@@ -6175,7 +6175,7 @@ bolsillolleno.com`
           const token = waState.cfg.token;
           const phoneId = waState.cfg.phoneId;
           if(!token||!phoneId){
-            alert('⚠️ Configura tu Access Token y Phone Number ID en la pestaña ⚙️ Config primero.');
+            alert(' Configura tu Access Token y Phone Number ID en la pesta�a  Config primero.');
             waTab('cfg', document.querySelectorAll('.wa-sub-tab')[3]);
             return;
           }
@@ -6194,9 +6194,9 @@ bolsillolleno.com`
             if(ss) ss.textContent=`Enviando ${i+1} de ${selected.length}...`;
             try{
               const res=await waSendMsg(token,phoneId,waState.cfg.version||'v19.0',c.phone,text);
-              if(res.messages){ ok++; waLog('✅ '+c.name+' (+'+c.phone+')', 'ok'); }
+              if(res.messages){ ok++; waLog(' '+c.name+' (+'+c.phone+')', 'ok'); }
               else throw new Error(res.error?.message||'Error desconocido');
-            }catch(e){ fail++; waLog('❌ '+c.name+': '+e.message, 'err'); }
+            }catch(e){ fail++; waLog(' '+c.name+': '+e.message, 'err'); }
             if(i<selected.length-1) await new Promise(r=>setTimeout(r,delay));
           }
           waState.sentToday+=ok;
@@ -6204,7 +6204,7 @@ bolsillolleno.com`
           const prog2=document.getElementById('wa-prog');
           if(prog2) prog2.style.width='100%';
           const ss2=document.getElementById('wa-send-status');
-          if(ss2) ss2.textContent=`✅ ${ok} enviados${fail?` · ❌ ${fail} fallidos`:''}`;
+          if(ss2) ss2.textContent=` ${ok} enviados${fail?` �  ${fail} fallidos`:''}`;
           document.getElementById('waSendBtn').disabled=false;
           waState.sending=false;
         }
@@ -6222,14 +6222,14 @@ bolsillolleno.com`
           const list=document.getElementById('waLog');
           if(!list) return;
           const empty=list.querySelector('div[style]');
-          if(empty&&empty.textContent.includes('aparecerán')) empty.remove();
+          if(empty&&empty.textContent.includes('aparecer�n')) empty.remove();
           const item=document.createElement('div');
           item.className='wa-log-item '+type;
           item.innerHTML=`<span style="flex:1">${msg}</span><span style="color:rgba(255,255,255,.4);font-size:.7em">${new Date().toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})}</span>`;
           list.prepend(item);
         }
 
-        // ── BOT IA (Claude) ────────────────────────────────────
+        //  BOT IA (Claude) 
         function botBuildSystemPrompt(){
           const biz = waState.biz;
           const kb = waState.kb;
@@ -6242,7 +6242,7 @@ bolsillolleno.com`
             const activos = sorteos.filter(s=>new Date(s.date)>now);
             if(activos.length){
               sorteosInfo = '\n\nSORTEOS ACTIVOS ACTUALMENTE:\n' + activos.map(s=>
-                `- ${s.name}: premio ${s.prize||'por confirmar'}, fecha ${s.date}, precio por número $${s.precioNumero||2000}`
+                `- ${s.name}: premio ${s.prize||'por confirmar'}, fecha ${s.date}, precio por n�mero $${s.precioNumero||2000}`
               ).join('\n');
             }
           }
@@ -6257,7 +6257,7 @@ bolsillolleno.com`
           let bizText = '';
           if(biz.pagos||biz.contacto||biz.horario||biz.info){
             bizText = '\n\nINFO DEL NEGOCIO:';
-            if(biz.pagos) bizText += `\n- Métodos de pago: ${biz.pagos}`;
+            if(biz.pagos) bizText += `\n- M�todos de pago: ${biz.pagos}`;
             if(biz.contacto) bizText += `\n- WhatsApp/Contacto: ${biz.contacto}`;
             if(biz.horario) bizText += `\n- Horario: ${biz.horario}`;
             if(biz.info) bizText += `\n- Info adicional: ${biz.info}`;
@@ -6265,17 +6265,17 @@ bolsillolleno.com`
 
           return `Eres ${botCfg.name}, el asistente virtual de Bol$illo Lleno, una empresa colombiana de sorteos y rifas.
 
-Tu trabajo es atender a clientes que preguntan sobre sorteos, precios, cómo participar, métodos de pago, ganadores y cualquier duda relacionada con el negocio.
+Tu trabajo es atender a clientes que preguntan sobre sorteos, precios, c�mo participar, m�todos de pago, ganadores y cualquier duda relacionada con el negocio.
 
 REGLAS IMPORTANTES:
-- Responde siempre en español colombiano, de forma amigable y cercana
-- Usa emojis con moderación para dar calidez
-- Sé conciso pero completo
-- Si no tienes la información exacta, invita al cliente a contactar directamente
-- Nunca inventes precios, fechas o información que no tengas
+- Responde siempre en espa�ol colombiano, de forma amigable y cercana
+- Usa emojis con moderaci�n para dar calidez
+- S� conciso pero completo
+- Si no tienes la informaci�n exacta, invita al cliente a contactar directamente
+- Nunca inventes precios, fechas o informaci�n que no tengas
 - Siempre anima a participar en los sorteos${bizText}${sorteosInfo}${kbText}
 
-INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
+INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'S� amigable y �til.'}`;
         }
 
         async function botSend(){
@@ -6287,7 +6287,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
 
           const chat = document.getElementById('botChat');
 
-          // Añadir mensaje del usuario
+          // A�adir mensaje del usuario
           const uDiv = document.createElement('div');
           uDiv.className='bot-msg-user';
           uDiv.textContent=userMsg;
@@ -6296,7 +6296,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           // Indicador de pensando
           const thinkDiv = document.createElement('div');
           thinkDiv.className='bot-msg-thinking';
-          thinkDiv.textContent='✍️ Escribiendo...';
+          thinkDiv.textContent=' Escribiendo...';
           chat.appendChild(thinkDiv);
           chat.scrollTop=chat.scrollHeight;
 
@@ -6333,7 +6333,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
             bDiv.innerHTML=respText.replace(/\n/g,'<br>');
             chat.appendChild(bDiv);
           } catch(e) {
-            thinkDiv.textContent='❌ Error: '+e.message;
+            thinkDiv.textContent=' Error: '+e.message;
           }
           chat.scrollTop=chat.scrollHeight;
         }
@@ -6349,31 +6349,31 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
             }
           }
           if(lMsg.includes('precio')||lMsg.includes('cuesta')||lMsg.includes('valor')){
-            return `¡Hola! 😊 Los precios dependen del sorteo activo. Generalmente manejamos:\n\n🎟️ Número individual: $2.000\n🎁 Combo 3 números: $5.000\n🎁 Combo 7 números: $10.000\n🎁 Combo 10 números: $13.000\n\n¿Te gustaría reservar tu número? 🍀`;
+            return `�Hola!  Los precios dependen del sorteo activo. Generalmente manejamos:\n\n N�mero individual: $2.000\n Combo 3 n�meros: $5.000\n Combo 7 n�meros: $10.000\n Combo 10 n�meros: $13.000\n\n�Te gustar�a reservar tu n�mero? `;
           }
           if(lMsg.includes('pagar')||lMsg.includes('pago')||lMsg.includes('nequi')||lMsg.includes('transferencia')){
             const pagos=waState.biz.pagos||'Nequi, transferencia bancaria o efectivo';
-            return `Puedes pagar por: ${pagos} 💳\n\nUna vez realices el pago, envíanos el comprobante y confirmamos tu número de inmediato ✅`;
+            return `Puedes pagar por: ${pagos} \n\nUna vez realices el pago, env�anos el comprobante y confirmamos tu n�mero de inmediato `;
           }
           if(lMsg.includes('sorteo')||lMsg.includes('rifa')||lMsg.includes('participar')){
-            return `¡Tenemos sorteos emocionantes! 🎟️\n\nPara participar:\n1️⃣ Elige tu número favorito\n2️⃣ Realiza el pago\n3️⃣ Envíanos el comprobante\n4️⃣ ¡Espera el sorteo en vivo! 🔴\n\n¿Te animamos a participar? 🍀`;
+            return `�Tenemos sorteos emocionantes! \n\nPara participar:\n1 Elige tu n�mero favorito\n2 Realiza el pago\n3 Env�anos el comprobante\n4 �Espera el sorteo en vivo! \n\n�Te animamos a participar? `;
           }
           if(lMsg.includes('ganador')||lMsg.includes('ganar')||lMsg.includes('premio')){
-            return `Los sorteos se realizan en vivo por nuestras redes sociales 🔴\n\nEl ganador recibe su premio en menos de 48 horas 🏆💰\n\nSigue nuestro Facebook e Instagram para no perderte ningún sorteo!`;
+            return `Los sorteos se realizan en vivo por nuestras redes sociales \n\nEl ganador recibe su premio en menos de 48 horas \n\nSigue nuestro Facebook e Instagram para no perderte ning�n sorteo!`;
           }
           if(lMsg.includes('confiable')||lMsg.includes('serio')||lMsg.includes('estafa')){
-            return `¡Somos 100% confiables! 🙌\n\nLlevamos años realizando sorteos transparentes y en vivo. Todos nuestros ganadores han recibido sus premios. Puedes ver los sorteos anteriores en nuestro Facebook 📲\n\n¡Tu confianza es lo más importante para nosotros! ❤️`;
+            return `�Somos 100% confiables! \n\nLlevamos a�os realizando sorteos transparentes y en vivo. Todos nuestros ganadores han recibido sus premios. Puedes ver los sorteos anteriores en nuestro Facebook \n\n�Tu confianza es lo m�s importante para nosotros! `;
           }
           if(lMsg.includes('hola')||lMsg.includes('buenas')||lMsg.includes('buen dia')){
-            return `¡Hola! 👋 Bienvenido/a a Bol$illo Lleno 🤑\n\n¿En qué te puedo ayudar hoy? Puedo darte información sobre:\n🎟️ Sorteos activos\n💰 Precios y combos\n💳 Métodos de pago\n🏆 Cómo participar`;
+            return `�Hola!  Bienvenido/a a Bol$illo Lleno \n\n�En qu� te puedo ayudar hoy? Puedo darte informaci�n sobre:\n Sorteos activos\n Precios y combos\n M�todos de pago\n C�mo participar`;
           }
-          return `Gracias por tu mensaje 😊 Para darte la mejor respuesta, te recomendamos escribirnos directamente a nuestro WhatsApp${waState.biz.contacto?' al '+waState.biz.contacto:''}.\n\n¡Estamos aquí para ayudarte! 🙌`;
+          return `Gracias por tu mensaje  Para darte la mejor respuesta, te recomendamos escribirnos directamente a nuestro WhatsApp${waState.biz.contacto?' al '+waState.biz.contacto:''}.\n\n�Estamos aqu� para ayudarte! `;
         }
 
         function botClear(){
           waState.botHistory=[];
           const chat=document.getElementById('botChat');
-          if(chat) chat.innerHTML='<div class="bot-msg-bot">¡Hola! 👋 Soy el asistente de <strong>Bol$illo Lleno</strong>. ¿En qué te ayudo? 🎟️</div>';
+          if(chat) chat.innerHTML='<div class="bot-msg-bot">�Hola!  Soy el asistente de <strong>Bol$illo Lleno</strong>. �En qu� te ayudo? </div>';
         }
 
         function botSaveConfig(){
@@ -6383,10 +6383,10 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           // Guardar en Firebase para que el bot backend lo lea
           if(typeof database !== 'undefined'){
             database.ref('wa_botcfg').set(waState.botCfg)
-              .then(()=>alert('✅ Config del bot guardada y sincronizada ✓'))
-              .catch(()=>alert('✅ Config guardada'));
+              .then(()=>alert(' Config del bot guardada y sincronizada '))
+              .catch(()=>alert(' Config guardada'));
           } else {
-            alert('✅ Configuración del bot guardada');
+            alert(' Configuraci�n del bot guardada');
           }
         }
 
@@ -6401,7 +6401,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           }catch(e){}
         }
 
-        // ── Base de conocimiento ───────────────────────────────
+        //  Base de conocimiento 
         function kbAdd(){
           const q=(document.getElementById('kbQ').value||'').trim();
           const a=(document.getElementById('kbA').value||'').trim();
@@ -6425,20 +6425,20 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           if(cnt) cnt.textContent=waState.kb.length;
           if(!list) return;
           if(!waState.kb.length){
-            list.innerHTML='<div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">Aún no hay entradas</div>';
+            list.innerHTML='<div style="text-align:center;color:rgba(255,255,255,.3);font-size:.78em;padding:15px">A�n no hay entradas</div>';
             return;
           }
           list.innerHTML=waState.kb.map(e=>`
             <div class="kb-item">
-              <button class="kb-del" onclick="kbDelete(${e.id})">✕</button>
-              <div class="kb-q">❓ ${e.q}</div>
+              <button class="kb-del" onclick="kbDelete(${e.id})"></button>
+              <div class="kb-q"> ${e.q}</div>
               <div class="kb-a">${e.a}</div>
             </div>`).join('');
         }
 
         function kbSave(){
           try{ localStorage.setItem('wa_kb', JSON.stringify(waState.kb)); }catch(e){}
-          // También guardar en Firebase para que el bot lo lea
+          // Tambi�n guardar en Firebase para que el bot lo lea
           if(typeof database !== 'undefined'){
             database.ref('wa_kb').set(waState.kb).catch(e=>console.log('KB Firebase error:',e));
           }
@@ -6461,7 +6461,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           a.click();
         }
 
-        // ── Info del negocio ───────────────────────────────────
+        //  Info del negocio 
         function bizSave(){
           waState.biz.pagos=(document.getElementById('bizPagos').value||'').trim();
           waState.biz.contacto=(document.getElementById('bizContacto').value||'').trim();
@@ -6471,10 +6471,10 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           // Guardar en Firebase para que el bot backend lo lea
           if(typeof database !== 'undefined'){
             database.ref('wa_biz').set(waState.biz)
-              .then(()=>alert('✅ Info del negocio guardada y sincronizada con el bot ✓'))
-              .catch(()=>alert('✅ Info guardada localmente'));
+              .then(()=>alert(' Info del negocio guardada y sincronizada con el bot '))
+              .catch(()=>alert(' Info guardada localmente'));
           } else {
-            alert('✅ Info del negocio guardada. El bot ya la usará en sus respuestas.');
+            alert(' Info del negocio guardada. El bot ya la usar� en sus respuestas.');
           }
         }
 
@@ -6487,7 +6487,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           }catch(e){}
         }
 
-        // ── Config API ─────────────────────────────────────────
+        //  Config API 
         function waCfgSave(){
           waState.cfg.token=(document.getElementById('waCfgToken').value||'').trim();
           waState.cfg.phoneId=(document.getElementById('waCfgPhoneId').value||'').trim();
@@ -6496,7 +6496,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           try{
             localStorage.setItem('wa_cfg', JSON.stringify({phoneId:waState.cfg.phoneId, delay:waState.cfg.delay}));
           }catch(e){}
-          alert('✅ Configuración guardada');
+          alert(' Configuraci�n guardada');
         }
 
         function waCfgLoad(){
@@ -6510,21 +6510,21 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
           const token=document.getElementById('waCfgToken').value.trim();
           const phoneId=document.getElementById('waCfgPhoneId').value.trim();
           const res=document.getElementById('waCfgTestResult');
-          if(!token||!phoneId){ if(res) res.innerHTML='<div class="wa-alert wa-alert-warn">⚠️ Completa Token y Phone Number ID</div>'; return; }
-          if(res) res.innerHTML='<div class="wa-alert wa-alert-info">⏳ Probando...</div>';
+          if(!token||!phoneId){ if(res) res.innerHTML='<div class="wa-alert wa-alert-warn"> Completa Token y Phone Number ID</div>'; return; }
+          if(res) res.innerHTML='<div class="wa-alert wa-alert-info"> Probando...</div>';
           try{
             const r=await fetch(`https://graph.facebook.com/v19.0/${phoneId}?fields=display_phone_number&access_token=${token}`);
             const d=await r.json();
             if(d.display_phone_number){
-              if(res) res.innerHTML=`<div class="wa-alert wa-alert-info">✅ Conectado. Número: <strong>${d.display_phone_number}</strong></div>`;
+              if(res) res.innerHTML=`<div class="wa-alert wa-alert-info"> Conectado. N�mero: <strong>${d.display_phone_number}</strong></div>`;
             } else {
-              if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn">❌ ${d.error?.message||'Token o ID inválido'}</div>`;
+              if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn"> ${d.error?.message||'Token o ID inv�lido'}</div>`;
             }
-          }catch(e){ if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn">❌ Error: ${e.message}</div>`; }
+          }catch(e){ if(res) res.innerHTML=`<div class="wa-alert wa-alert-warn"> Error: ${e.message}</div>`; }
         }
-        // ══════════════════════════════════════════════════════
+        // 
         //  FIN WHATSAPP PANEL
-        // ══════════════════════════════════════════════════════
+        // 
 
         window.onload=function(){
             initParticles();
@@ -6533,7 +6533,7 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
             cargarVideoConCache();
         };
 
-        // ── Carga del video con Cache API ──────────────────────────────
+        //  Carga del video con Cache API 
         const VIDEO_URL = 'https://raw.githubusercontent.com/bolsillolleno/SorteosBolsilloLleno/main/lv_0_20260228133130.mp4';
         const VIDEO_CACHE = 'bolsillo-video-v1';
 
@@ -6544,11 +6544,11 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
                 const cache = await caches.open(VIDEO_CACHE);
                 const cached = await cache.match(VIDEO_URL);
                 if(cached){
-                    // Ya está en caché → carga instantánea
+                    // Ya est� en cach�  carga instant�nea
                     const blob = await cached.blob();
                     video.src = URL.createObjectURL(blob);
                 } else {
-                    // Primera vez → descargar, guardar en caché y reproducir
+                    // Primera vez  descargar, guardar en cach� y reproducir
                     video.src = VIDEO_URL;
                     video.addEventListener('canplaythrough', async function cachearVideo(){
                         video.removeEventListener('canplaythrough', cachearVideo);
@@ -6563,11 +6563,11 @@ INSTRUCCIONES ADICIONALES: ${botCfg.instructions||'Sé amigable y útil.'}`;
                 video.src = VIDEO_URL;
             }
         }
-        // ──────────────────────────────────────────────────────────────
+        // 
         
         // Detectar soporte de Contact Picker y actualizar UI
 if (!('contacts' in navigator && 'ContactsManager' in window)) {
-    // Si no hay soporte, cambiar texto del botón
+    // Si no hay soporte, cambiar texto del bot�n
     const btnText = document.getElementById('contactosBtnText');
     if (btnText) {
         btnText.textContent = 'Buscar en Clientes';
